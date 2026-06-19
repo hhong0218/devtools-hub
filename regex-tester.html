@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regex Tester — Free Online Regular Expression Tester | DevTools Hub</title>
+  <meta name="description" content="Free online regex tester. Test your regular expressions against any text, highlight matches live, inspect captured groups, and toggle g/i/m/s flags — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="regex tester, regular expression tester online, regex match, test regex, regex online, javascript regex, regex groups">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Regex Tester — Free Online Regular Expression Tester">
+  <meta property="og:description" content="Test regular expressions instantly in your browser. Live match highlighting, captured groups, and flag toggles. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+    /* tool-specific additions, themed to match */
+    .field{margin-bottom:.75rem}
+    .field label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.35rem}
+    .pattern-row{display:flex;align-items:stretch;gap:.5rem;flex-wrap:wrap}
+    .pattern-row .delim{display:flex;align-items:center;color:var(--muted);font-family:'SFMono-Regular',Consolas,monospace;font-size:1.1rem}
+    input[type=text]{flex:1;min-width:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.6rem .75rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.95rem}
+    input[type=text]:focus{outline:none;border-color:var(--accent)}
+    .flags{display:flex;flex-wrap:wrap;gap:1rem;margin:.5rem 0 1rem}
+    .flags label{display:flex;align-items:center;gap:.4rem;font-size:.9rem;color:var(--text);cursor:pointer}
+    .flags code{color:var(--accent);font-family:'SFMono-Regular',Consolas,monospace}
+    mark{background:rgba(88,166,255,.30);color:var(--text);border-radius:3px;padding:0 1px}
+    .groups{margin-top:1rem}
+    .groups h3{font-size:.95rem;margin-bottom:.5rem;color:var(--text)}
+    .match-block{border:1px solid var(--border);border-radius:6px;padding:.6rem .75rem;margin-bottom:.5rem;background:var(--panel);font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem}
+    .match-block .mhead{color:var(--accent);margin-bottom:.25rem}
+    .match-block .grp{color:var(--muted)}
+    .match-block .grp b{color:var(--text);font-weight:600}
+    .empty-note{color:var(--muted);font-size:.9rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Regex Tester</p>
+    <h1>Regex Tester</h1>
+    <p class="lead">Type a regular expression and a test string to see matches highlighted live, count them, and inspect captured groups. Everything runs locally in your browser — your data is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="loadSample()">Sample</button>
+      <button onclick="clearAll()">Clear</button>
+    </div>
+
+    <div class="field">
+      <label for="pattern">Regular expression</label>
+      <div class="pattern-row">
+        <span class="delim">/</span>
+        <input type="text" id="pattern" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="\b\w+@\w+\.\w+\b">
+        <span class="delim">/</span>
+      </div>
+    </div>
+
+    <div class="flags">
+      <label><input type="checkbox" id="flag-g" checked> <code>g</code> global</label>
+      <label><input type="checkbox" id="flag-i"> <code>i</code> ignore case</label>
+      <label><input type="checkbox" id="flag-m"> <code>m</code> multiline</label>
+      <label><input type="checkbox" id="flag-s"> <code>s</code> dotAll</label>
+    </div>
+
+    <div class="field">
+      <label for="input">Test string</label>
+      <textarea id="input" spellcheck="false" placeholder="Paste or type the text you want to test against your regex here."></textarea>
+    </div>
+
+    <p id="status" class="status"></p>
+
+    <div class="output-wrap"><pre id="output"></pre></div>
+
+    <div class="groups" id="groups"></div>
+
+    <section class="seo">
+      <h2>What is a regex tester?</h2>
+      <p>A regex tester lets you build and check a regular expression — a pattern used to search, match, and extract text — against sample input without writing any code. As you type, this tool runs your pattern with the JavaScript regular expression engine, highlights every match in the test string, counts how many it found, and breaks out any captured groups so you can confirm the pattern behaves exactly as intended before you drop it into your project.</p>
+      <h2>How to use it</h2>
+      <p>1. Type your pattern in the <strong>Regular expression</strong> field (no surrounding slashes needed — they are shown for you). 2. Toggle the <strong>flags</strong> you need below it. 3. Paste your text into the <strong>Test string</strong> box. Matches are highlighted live, the match count appears above the result, and each match's captured groups are listed underneath. If your pattern is invalid, the error message is shown in red and nothing breaks — just keep editing. Click <strong>Sample</strong> to load an example, or <strong>Clear</strong> to start over.</p>
+      <h2>Regex flags explained</h2>
+      <p><strong>g (global)</strong> finds all matches instead of stopping at the first one. <strong>i (ignore case)</strong> makes the match case-insensitive, so <code>abc</code> matches <code>ABC</code>. <strong>m (multiline)</strong> makes the anchors <code>^</code> and <code>$</code> match the start and end of each line rather than the whole string. <strong>s (dotAll)</strong> lets the dot <code>.</code> match newline characters too, which it normally skips.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. This tester runs entirely in your browser using the built-in JavaScript <code>RegExp</code> engine. Nothing you type — neither your pattern nor your test string — is ever sent to a server.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    const patternEl = document.getElementById('pattern');
+    const inputEl = document.getElementById('input');
+    const outputEl = document.getElementById('output');
+    const groupsEl = document.getElementById('groups');
+    const statusEl = document.getElementById('status');
+    const flagEls = {
+      g: document.getElementById('flag-g'),
+      i: document.getElementById('flag-i'),
+      m: document.getElementById('flag-m'),
+      s: document.getElementById('flag-s')
+    };
+
+    function setStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status' + (type ? ' ' + type : ''); }
+
+    function getFlags(){
+      let f = '';
+      if(flagEls.g.checked) f += 'g';
+      if(flagEls.i.checked) f += 'i';
+      if(flagEls.m.checked) f += 'm';
+      if(flagEls.s.checked) f += 's';
+      return f;
+    }
+
+    function escapeHtml(s){
+      return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    }
+
+    function run(){
+      const pattern = patternEl.value;
+      const text = inputEl.value;
+
+      // Empty pattern: just show the raw text, no matching.
+      if(pattern === ''){
+        outputEl.innerHTML = escapeHtml(text);
+        groupsEl.innerHTML = '';
+        setStatus('Enter a regular expression to begin.', '');
+        return;
+      }
+
+      let flags = getFlags();
+      let re;
+      try {
+        re = new RegExp(pattern, flags);
+      } catch(e){
+        outputEl.innerHTML = escapeHtml(text);
+        groupsEl.innerHTML = '';
+        setStatus('Invalid regular expression: ' + e.message, 'error');
+        return;
+      }
+
+      // Collect matches. Force global iteration so we can highlight all of them
+      // while still reporting the flags the user actually chose.
+      const iterRe = new RegExp(pattern, flags.includes('g') ? flags : flags + 'g');
+      const matches = [];
+      let m;
+      let guard = 0;
+      while((m = iterRe.exec(text)) !== null){
+        matches.push(m);
+        // Avoid infinite loops on zero-length matches.
+        if(m.index === iterRe.lastIndex){ iterRe.lastIndex++; }
+        if(++guard > 100000){ break; }
+      }
+
+      // Build highlighted output.
+      if(matches.length === 0){
+        outputEl.innerHTML = escapeHtml(text);
+      } else {
+        let html = '';
+        let last = 0;
+        for(const mm of matches){
+          const start = mm.index;
+          const end = start + mm[0].length;
+          html += escapeHtml(text.slice(last, start));
+          if(mm[0].length > 0){
+            html += '<mark>' + escapeHtml(mm[0]) + '</mark>';
+          }
+          last = end;
+        }
+        html += escapeHtml(text.slice(last));
+        outputEl.innerHTML = html;
+      }
+
+      // Status / match count.
+      const count = matches.length;
+      if(count === 0){
+        setStatus('No matches.', '');
+      } else {
+        setStatus(count + (count === 1 ? ' match found.' : ' matches found.'), 'ok');
+      }
+
+      // Captured groups per match.
+      renderGroups(matches);
+    }
+
+    function renderGroups(matches){
+      if(matches.length === 0){ groupsEl.innerHTML = ''; return; }
+
+      // Only bother with a groups panel if at least one match has captures.
+      const hasGroups = matches.some(mm => mm.length > 1 || (mm.groups && Object.keys(mm.groups).length));
+      let html = '<h3>Matches &amp; captured groups</h3>';
+
+      matches.forEach((mm, i) => {
+        html += '<div class="match-block">';
+        html += '<div class="mhead">Match ' + (i + 1) + ' at index ' + mm.index + ': "' + escapeHtml(mm[0]) + '"</div>';
+        if(mm.length > 1){
+          for(let g = 1; g < mm.length; g++){
+            const val = mm[g] === undefined ? '(no match)' : '"' + escapeHtml(mm[g]) + '"';
+            html += '<div class="grp"><b>Group ' + g + ':</b> ' + val + '</div>';
+          }
+        }
+        if(mm.groups){
+          for(const name of Object.keys(mm.groups)){
+            const val = mm.groups[name] === undefined ? '(no match)' : '"' + escapeHtml(mm.groups[name]) + '"';
+            html += '<div class="grp"><b>&lt;' + escapeHtml(name) + '&gt;:</b> ' + val + '</div>';
+          }
+        }
+        if(mm.length <= 1 && !(mm.groups && Object.keys(mm.groups).length)){
+          html += '<div class="grp">No capturing groups.</div>';
+        }
+        html += '</div>';
+      });
+
+      groupsEl.innerHTML = html;
+    }
+
+    function loadSample(){
+      patternEl.value = '\\b\\w+@\\w+\\.\\w+\\b';
+      flagEls.g.checked = true;
+      flagEls.i.checked = false;
+      flagEls.m.checked = false;
+      flagEls.s.checked = false;
+      inputEl.value = 'Contact us at support@devtools.com or sales@example.org for help.\nInvalid: not-an-email @ nowhere.';
+      run();
+    }
+
+    function clearAll(){
+      patternEl.value = '';
+      inputEl.value = '';
+      outputEl.innerHTML = '';
+      groupsEl.innerHTML = '';
+      setStatus('');
+      patternEl.focus();
+    }
+
+    // Live updates on any edit.
+    patternEl.addEventListener('input', run);
+    inputEl.addEventListener('input', run);
+    Object.values(flagEls).forEach(el => el.addEventListener('change', run));
+
+    // Initial render.
+    run();
+  </script>
+</body>
+</html>

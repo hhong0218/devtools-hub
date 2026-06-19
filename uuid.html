@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UUID Generator — Free Online v4 UUID / GUID Generator | DevTools Hub</title>
+  <meta name="description" content="Free online UUID generator. Generate random v4 UUIDs (GUIDs) in bulk, with optional uppercase output — all in your browser using the cryptographic RNG. Nothing is uploaded to a server.">
+  <meta name="keywords" content="uuid generator, guid generator, generate uuid v4 online, random uuid, uuid v4, guid online">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="UUID Generator — Free Online v4 UUID / GUID Generator">
+  <meta property="og:description" content="Generate random v4 UUIDs (GUIDs) instantly in your browser. Bulk generation, uppercase option. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .controls{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:.75rem;color:var(--muted);font-size:.9rem}
+    .controls label{display:flex;align-items:center;gap:.4rem}
+    .controls input[type=number]{width:5rem;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.4rem .5rem;font-size:.9rem}
+    .controls input[type=number]:focus{outline:none;border-color:var(--accent)}
+    .controls input[type=checkbox]{accent-color:var(--accent);width:1rem;height:1rem}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › UUID Generator</p>
+    <h1>UUID Generator</h1>
+    <p class="lead">Generate random version&nbsp;4 UUIDs (also called GUIDs) instantly. Everything runs locally in your browser using its cryptographic random number generator — nothing is uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="controls">
+      <label>How many <input type="number" id="count" min="1" max="100" value="1"></label>
+      <label><input type="checkbox" id="uppercase"> Uppercase</label>
+    </div>
+    <div class="toolbar">
+      <button class="primary" onclick="generate()">Generate</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+    </div>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+    <p class="note">UUIDs are generated entirely on your device using the browser's cryptographic RNG (<code>crypto.randomUUID()</code>). No network calls are made.</p>
+
+    <section class="seo">
+      <h2>What is a UUID?</h2>
+      <p>A UUID (Universally Unique Identifier), also known as a GUID (Globally Unique Identifier) on Microsoft platforms, is a 128-bit value used to uniquely identify information without a central authority. It is written as 32 hexadecimal digits split into five groups separated by hyphens, in the form <code>8-4-4-4-12</code>, for example <code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code>.</p>
+      <h2>How to use it</h2>
+      <p>1. Set <strong>How many</strong> to the number of UUIDs you need (1–100). 2. Tick <strong>Uppercase</strong> if you want the hex digits in capitals. 3. Click <strong>Generate</strong> — each UUID appears on its own line above. 4. Click <strong>Copy</strong> to copy them all to your clipboard.</p>
+      <h2>UUID v4 explained</h2>
+      <p>Version&nbsp;4 UUIDs are generated from random (or pseudo-random) numbers. Of the 128 bits, a few are reserved to mark the version (4) and variant, leaving 122 random bits — enough that the chance of a collision is negligible for practical purposes. This generator uses <code>crypto.randomUUID()</code>, which draws from the browser's cryptographically secure random source, so the output is suitable for identifiers such as database keys, request IDs, and tokens.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    const out = document.getElementById('output');
+    const status = document.getElementById('status');
+    const countEl = document.getElementById('count');
+    const upperEl = document.getElementById('uppercase');
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function newUuid(){
+      if(window.crypto && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+      // Fallback using crypto.getRandomValues for older browsers
+      const b = crypto.getRandomValues(new Uint8Array(16));
+      b[6] = (b[6] & 0x0f) | 0x40;
+      b[8] = (b[8] & 0x3f) | 0x80;
+      const h = [...b].map(x => x.toString(16).padStart(2, '0'));
+      return `${h[0]}${h[1]}${h[2]}${h[3]}-${h[4]}${h[5]}-${h[6]}${h[7]}-${h[8]}${h[9]}-${h[10]}${h[11]}${h[12]}${h[13]}${h[14]}${h[15]}`;
+    }
+    function generate(){
+      let n = parseInt(countEl.value, 10);
+      if(isNaN(n) || n < 1){ n = 1; countEl.value = 1; }
+      if(n > 100){ n = 100; countEl.value = 100; }
+      const list = [];
+      for(let i = 0; i < n; i++) list.push(newUuid());
+      let text = list.join('\n');
+      if(upperEl.checked) text = text.toUpperCase();
+      out.textContent = text;
+      setStatus('Generated ' + n + ' UUID' + (n === 1 ? '' : 's') + '.', 'ok');
+    }
+    function copyOut(){
+      const t = out.textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(()=>setStatus('Copied to clipboard.', 'ok'));
+    }
+    function clearAll(){ out.textContent=''; setStatus(''); }
+    // Generate one on page load so the tool is immediately useful
+    generate();
+  </script>
+</body>
+</html>

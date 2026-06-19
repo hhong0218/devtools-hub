@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encode / Decode — Free Online Converter | DevTools Hub</title>
+  <meta name="description" content="Free online Base64 encoder and decoder. Convert text to Base64 or decode Base64 back to text instantly in your browser, with full UTF-8 support. Nothing is uploaded to a server.">
+  <meta name="keywords" content="base64 encode, base64 decode, base64 converter online, base64 to text, encode base64, decode base64">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Base64 Encode / Decode — Free Online Converter">
+  <meta property="og:description" content="Encode text to Base64 or decode Base64 back to text instantly in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Base64 Encode / Decode</p>
+    <h1>Base64 Encode / Decode</h1>
+    <p class="lead">Paste your text or Base64 string below to encode or decode it. Everything runs locally in your browser — your data is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="encode()">Encode</button>
+      <button onclick="decode()">Decode</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <textarea id="input" placeholder="Type text to encode, or paste a Base64 string to decode…"></textarea>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+
+    <section class="seo">
+      <h2>What is Base64?</h2>
+      <p>Base64 is an encoding scheme that represents binary or text data using 64 printable ASCII characters (A–Z, a–z, 0–9, plus <code>+</code> and <code>/</code>). It is widely used to safely embed images, attachments, and text inside formats that only support plain text, such as JSON, XML, data URLs, and email (MIME).</p>
+      <h2>How to use it</h2>
+      <p>1. Type or paste your content into the box above. 2. Click <strong>Encode</strong> to convert text into Base64, or <strong>Decode</strong> to turn a Base64 string back into readable text. 3. Click <strong>Copy</strong> to grab the result. This converter fully supports UTF-8, so accented letters, emoji, and non-Latin scripts are handled correctly.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. This converter runs entirely in your browser using the built-in <code>btoa</code> and <code>atob</code> functions. Nothing you type or paste is ever sent to a server.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    const inp = document.getElementById('input');
+    const out = document.getElementById('output');
+    const status = document.getElementById('status');
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function encode(){
+      const v = inp.value;
+      if(!v){ out.textContent=''; setStatus('Nothing to encode.', 'error'); return; }
+      try { out.textContent = btoa(unescape(encodeURIComponent(v))); setStatus('Encoded to Base64.', 'ok'); }
+      catch(e){ out.textContent=''; setStatus('Error: ' + e.message, 'error'); }
+    }
+    function decode(){
+      const v = inp.value.trim();
+      if(!v){ out.textContent=''; setStatus('Nothing to decode.', 'error'); return; }
+      try { out.textContent = decodeURIComponent(escape(atob(v))); setStatus('Decoded from Base64.', 'ok'); }
+      catch(e){ out.textContent=''; setStatus('Error: not a valid Base64 string.', 'error'); }
+    }
+    function copyOut(){
+      const t = out.textContent || inp.value;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(()=>setStatus('Copied to clipboard.', 'ok'));
+    }
+    function clearAll(){ inp.value=''; out.textContent=''; setStatus(''); inp.focus(); }
+    function loadSample(){ inp.value = 'Hello, DevTools Hub! 안녕하세요 😀'; encode(); }
+  </script>
+</body>
+</html>

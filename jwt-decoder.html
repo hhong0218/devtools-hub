@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Decoder — Free Online JSON Web Token Decoder | DevTools Hub</title>
+  <meta name="description" content="Free online JWT decoder. Paste a JSON Web Token to decode its header and payload, with human-readable exp/iat/nbf dates. Decode only (no signature verification) — everything runs in your browser.">
+  <meta name="keywords" content="jwt decoder, decode jwt online, json web token decoder, jwt parser">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="JWT Decoder — Free Online JSON Web Token Decoder">
+  <meta property="og:description" content="Decode a JWT's header and payload instantly in your browser. No signup, no uploads, signature-free.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .note{font-size:.82rem;color:var(--muted);margin:.5rem 0 1rem;padding:.6rem .8rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .output-wrap{position:relative}
+    .out-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:1rem 0 .35rem}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › JWT Decoder</p>
+    <h1>JWT Decoder</h1>
+    <p class="lead">Paste a JSON Web Token below to decode its header and payload. Everything runs locally in your browser — your token is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="decode()">Decode</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <textarea id="input" placeholder="Paste a JWT here, e.g. xxxxx.yyyyy.zzzzz"></textarea>
+    <p class="note">🔒 This tool only <strong>decodes</strong> a token — it does <strong>not</strong> verify the signature. Decoding happens entirely in your browser; nothing is sent to a server. Never paste a production token you would not want exposed.</p>
+    <p id="status" class="status"></p>
+    <div class="output-wrap">
+      <p class="out-label">Header</p>
+      <pre id="header"></pre>
+      <p class="out-label">Payload</p>
+      <pre id="payload"></pre>
+      <p class="out-label">Readable Claims</p>
+      <pre id="claims"></pre>
+    </div>
+
+    <section class="seo">
+      <h2>What is a JWT?</h2>
+      <p>A JSON Web Token (JWT) is a compact, URL-safe way to represent claims between two parties. It has three parts separated by dots: a <strong>header</strong>, a <strong>payload</strong>, and a <strong>signature</strong> — written as <code>xxxxx.yyyyy.zzzzz</code>. The header and payload are Base64URL-encoded JSON, so they can be read by anyone; the signature is used to confirm the token has not been tampered with. JWTs are commonly used for authentication and for passing information securely in APIs.</p>
+      <h2>How to use it</h2>
+      <p>1. Paste your JWT into the box above. 2. Click <strong>Decode</strong> to split the token and Base64URL-decode the header and payload into readable JSON. 3. Review the <strong>Header</strong> and <strong>Payload</strong> blocks; if the payload contains <code>exp</code>, <code>iat</code>, or <code>nbf</code> claims, their human-readable dates appear under <strong>Readable Claims</strong>.</p>
+      <h2>Does this verify the signature?</h2>
+      <p>No. This is a decoder only — it reads what is inside the header and payload but does <strong>not</strong> validate the signature, and it cannot tell you whether a token is authentic or has expired in a trusted way. Verifying a JWT requires the signing secret or public key on a server. Because the payload is only encoded (not encrypted), treat any decoded token as readable by anyone and avoid pasting sensitive production tokens.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    const inp = document.getElementById('input');
+    const headerOut = document.getElementById('header');
+    const payloadOut = document.getElementById('payload');
+    const claimsOut = document.getElementById('claims');
+    const status = document.getElementById('status');
+
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function clearOut(){ headerOut.textContent=''; payloadOut.textContent=''; claimsOut.textContent=''; }
+
+    function base64UrlDecode(str){
+      let s = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (s.length % 4) s += '=';
+      const binary = atob(s);
+      // Handle UTF-8 multi-byte characters.
+      const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+      return new TextDecoder('utf-8').decode(bytes);
+    }
+
+    function decodePart(part, label){
+      const json = base64UrlDecode(part);
+      try {
+        return JSON.parse(json);
+      } catch(e){
+        throw new Error('The ' + label + ' is not valid JSON after decoding.');
+      }
+    }
+
+    function fmtDate(secs){
+      const d = new Date(secs * 1000);
+      if (isNaN(d.getTime())) return String(secs);
+      return d.toUTCString() + '  (' + d.toString() + ')';
+    }
+
+    function decode(){
+      const token = inp.value.trim();
+      clearOut();
+      if (!token){ setStatus('Please paste a JWT first.', 'error'); return; }
+      const parts = token.split('.');
+      if (parts.length < 2 || parts.length > 3 || !parts[0] || !parts[1]){
+        setStatus('Error: a JWT must have the form xxxxx.yyyyy.zzzzz (header.payload.signature).', 'error');
+        return;
+      }
+      let header, payload;
+      try { header = decodePart(parts[0], 'header'); }
+      catch(e){ setStatus('Error decoding header: ' + e.message, 'error'); return; }
+      try { payload = decodePart(parts[1], 'payload'); }
+      catch(e){ setStatus('Error decoding payload: ' + e.message, 'error'); return; }
+
+      headerOut.textContent = JSON.stringify(header, null, 2);
+      payloadOut.textContent = JSON.stringify(payload, null, 2);
+
+      const lines = [];
+      if (payload && typeof payload === 'object'){
+        if ('iat' in payload) lines.push('iat (Issued At):    ' + fmtDate(payload.iat));
+        if ('nbf' in payload) lines.push('nbf (Not Before):   ' + fmtDate(payload.nbf));
+        if ('exp' in payload){
+          const expired = (payload.exp * 1000) < Date.now();
+          lines.push('exp (Expires At):   ' + fmtDate(payload.exp) + (expired ? '  — EXPIRED' : '  — not expired'));
+        }
+      }
+      if (lines.length){
+        claimsOut.textContent = lines.join('\n');
+        claimsOut.previousElementSibling.style.display = '';
+        claimsOut.style.display = '';
+      } else {
+        claimsOut.textContent = 'No exp / iat / nbf claims found.';
+      }
+
+      setStatus('Decoded ' + parts.length + ' part(s). Signature is NOT verified.', 'ok');
+    }
+
+    function clearAll(){ inp.value=''; clearOut(); setStatus(''); inp.focus(); }
+
+    function loadSample(){
+      // A standard example JWT (HS256). Signature is illustrative only and is not verified.
+      inp.value = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkRldlRvb2xzIEh1YiIsImFkbWluIjp0cnVlLCJpYXQiOjE1MTYyMzkwMjIsIm5iZiI6MTUxNjIzOTAyMiwiZXhwIjoxNzg5MzgwODAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+      decode();
+    }
+  </script>
+</body>
+</html>
