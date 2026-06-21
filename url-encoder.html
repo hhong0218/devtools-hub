@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoder / Decoder — Free Online Percent-Encoding Tool | DevTools Hub</title>
+  <meta name="description" content="Free online URL encoder and decoder. Percent-encode text for query strings with encodeURIComponent, or encode a full URL with encodeURI — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="url encode, url decode, percent encoding, encodeURIComponent online, url escape, url encoder, url decoder">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="URL Encoder / Decoder — Free Online Percent-Encoding Tool">
+  <meta property="og:description" content="Encode and decode text for URLs instantly in your browser. encodeURIComponent and encodeURI modes. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .controls{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:.75rem;color:var(--muted);font-size:.9rem}
+    .controls label{display:flex;align-items:center;gap:.4rem;cursor:pointer}
+    .controls input[type=radio]{accent-color:var(--accent);width:1rem;height:1rem}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:160px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.1rem .35rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem}
+    .seo table{width:100%;border-collapse:collapse;margin:.5rem 0 1rem;font-size:.85rem}
+    .seo th,.seo td{border:1px solid var(--border);padding:.4rem .6rem;text-align:left}
+    .seo th{background:var(--panel);color:var(--text)}
+    .seo td{color:var(--muted)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › URL Encoder / Decoder</p>
+    <h1>URL Encoder / Decoder</h1>
+    <p class="lead">Percent-encode text so it is safe to drop into a URL, or decode an encoded string back to plain text. Everything runs locally in your browser — your data is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="controls">
+      <span>Mode:</span>
+      <label><input type="radio" name="mode" value="component" checked> Component <code>(encodeURIComponent)</code></label>
+      <label><input type="radio" name="mode" value="uri"> Full URL <code>(encodeURI)</code></label>
+    </div>
+    <div class="toolbar">
+      <button class="primary" onclick="encode()">Encode</button>
+      <button onclick="decode()">Decode</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <textarea id="input" placeholder="Type or paste text here, e.g. name=John Doe &amp; city=São Paulo"></textarea>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+    <p class="note">All encoding and decoding happens on your device using the browser's built-in <code>encodeURIComponent</code>, <code>encodeURI</code>, <code>decodeURIComponent</code> and <code>decodeURI</code> functions. No network calls are made.</p>
+
+    <section class="seo">
+      <h2>What is URL encoding (percent-encoding)?</h2>
+      <p>URLs may only contain a limited set of characters. Letters, digits, and a handful of symbols are allowed directly, but spaces, accented letters, and reserved characters such as <code>?</code>, <code>&amp;</code>, <code>=</code>, <code>#</code> and <code>/</code> can change how a URL is parsed — or break it entirely. URL encoding, also called <strong>percent-encoding</strong>, replaces each unsafe byte with a percent sign followed by its two-digit hexadecimal value. For example, a space becomes <code>%20</code> and an ampersand becomes <code>%26</code>. Non-ASCII characters are first converted to their UTF-8 bytes, so <code>é</code> becomes <code>%C3%A9</code>. URL decoding reverses this, turning the <code>%xx</code> sequences back into the original text.</p>
+
+      <h2>How to use it</h2>
+      <p>1. Pick a <strong>mode</strong>: choose <strong>Component</strong> when you are encoding a single value such as a query-parameter value or a path segment, or <strong>Full URL</strong> when you are encoding an entire address. 2. Type or paste your text into the box above. 3. Click <strong>Encode</strong> to percent-encode it, or <strong>Decode</strong> to convert an encoded string back to plain text. 4. Click <strong>Copy</strong> to grab the result, or <strong>Sample</strong> to load an example.</p>
+
+      <h2>encodeURIComponent vs encodeURI — which mode?</h2>
+      <p><code>encodeURIComponent</code> (the <strong>Component</strong> mode, and the right default for most jobs) escapes every reserved character, including <code>&amp;</code>, <code>=</code>, <code>?</code>, <code>/</code> and <code>#</code>. Use it for individual pieces of a URL — a query-string value, a single path segment, or a fragment — so that special characters inside the value are not mistaken for URL structure.</p>
+      <p><code>encodeURI</code> (the <strong>Full URL</strong> mode) is meant for an entire URL that is already assembled. It leaves characters that have a structural meaning — such as <code>:</code>, <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> and <code>#</code> — untouched, while still escaping spaces and other clearly-unsafe characters. Reach for it only when you have a complete URL you want to clean up without disturbing its delimiters.</p>
+      <table>
+        <tr><th>Character</th><th>Component (encodeURIComponent)</th><th>Full URL (encodeURI)</th></tr>
+        <tr><td>space</td><td><code>%20</code></td><td><code>%20</code></td></tr>
+        <tr><td><code>&amp;</code></td><td><code>%26</code></td><td><code>&amp;</code> (kept)</td></tr>
+        <tr><td><code>=</code></td><td><code>%3D</code></td><td><code>=</code> (kept)</td></tr>
+        <tr><td><code>/</code></td><td><code>%2F</code></td><td><code>/</code> (kept)</td></tr>
+        <tr><td><code>?</code></td><td><code>%3F</code></td><td><code>?</code> (kept)</td></tr>
+      </table>
+
+      <h2>Why does decoding sometimes fail?</h2>
+      <p>Decoding throws an error when the input is not valid percent-encoding — for instance a lone <code>%</code>, or a <code>%</code> followed by characters that are not two hexadecimal digits (such as <code>%zz</code> or a truncated <code>%2</code>). When that happens this tool shows a clear message instead of returning broken text, so you can fix the malformed sequence and try again.</p>
+
+      <h2>Is my data safe?</h2>
+      <p>Yes. This encoder and decoder runs entirely in your browser using its built-in encoding functions. Nothing you type or paste is ever sent to a server, logged, or stored.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    const inp = document.getElementById('input');
+    const out = document.getElementById('output');
+    const status = document.getElementById('status');
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function currentMode(){
+      const checked = document.querySelector('input[name="mode"]:checked');
+      return checked ? checked.value : 'component';
+    }
+    function encode(){
+      const text = inp.value;
+      if(!text){ out.textContent=''; setStatus('Nothing to encode — enter some text first.', 'error'); return; }
+      try {
+        const mode = currentMode();
+        out.textContent = mode === 'uri' ? encodeURI(text) : encodeURIComponent(text);
+        setStatus('Encoded with ' + (mode === 'uri' ? 'encodeURI (full URL).' : 'encodeURIComponent (component).'), 'ok');
+      } catch(e){
+        out.textContent='';
+        setStatus('Error: ' + e.message, 'error');
+      }
+    }
+    function decode(){
+      const text = inp.value;
+      if(!text){ out.textContent=''; setStatus('Nothing to decode — enter some text first.', 'error'); return; }
+      try {
+        const mode = currentMode();
+        out.textContent = mode === 'uri' ? decodeURI(text) : decodeURIComponent(text);
+        setStatus('Decoded with ' + (mode === 'uri' ? 'decodeURI (full URL).' : 'decodeURIComponent (component).'), 'ok');
+      } catch(e){
+        out.textContent='';
+        setStatus('Could not decode: the input is not valid percent-encoding (check for a stray "%" or an incomplete "%xx" sequence).', 'error');
+      }
+    }
+    function copyOut(){
+      const t = out.textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(()=>setStatus('Copied to clipboard.', 'ok'));
+    }
+    function clearAll(){ inp.value=''; out.textContent=''; setStatus(''); inp.focus(); }
+    function loadSample(){
+      document.querySelector('input[name="mode"][value="component"]').checked = true;
+      inp.value = 'name=John Doe & city=São Paulo & q=100% free?';
+      encode();
+    }
+  </script>
+</body>
+</html>

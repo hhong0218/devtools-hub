@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash Generator — Free Online MD5, SHA-1, SHA-256 &amp; SHA-512 Checksum Tool | DevTools Hub</title>
+  <meta name="description" content="Free online hash generator. Compute MD5, SHA-1, SHA-256 and SHA-512 checksums of any text instantly in your browser. Live updates, one-click copy — nothing is uploaded to a server.">
+  <meta name="keywords" content="md5 generator, sha256 hash generator, sha512, hash generator online, checksum, sha-1, sha-256 calculator">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Hash Generator — MD5, SHA-1, SHA-256 &amp; SHA-512 Online">
+  <meta property="og:description" content="Generate MD5, SHA-1, SHA-256 and SHA-512 hashes instantly in your browser. Live updates, one-click copy. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:160px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .controls{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin:.75rem 0;color:var(--muted);font-size:.9rem}
+    .controls label{display:flex;align-items:center;gap:.4rem}
+    .controls input[type=checkbox]{accent-color:var(--accent);width:1rem;height:1rem}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .results{margin-top:1rem;display:flex;flex-direction:column;gap:.75rem}
+    .hash-row{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem}
+    .hash-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.45rem}
+    .hash-algo{font-weight:600;font-size:.95rem;letter-spacing:.02em}
+    .hash-algo small{color:var(--muted);font-weight:400;font-size:.78rem;margin-left:.4rem}
+    .hash-row button{padding:.3rem .7rem;font-size:.8rem}
+    .hash-val{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.88rem;color:var(--accent);word-break:break-all;line-height:1.5;user-select:all}
+    .note{margin-top:1rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.1rem .35rem;font-size:.85rem;word-break:break-all}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Hash Generator</p>
+    <h1>Hash Generator</h1>
+    <p class="lead">Type or paste any text to instantly compute its MD5, SHA-1, SHA-256 and SHA-512 hashes. Everything runs locally in your browser — nothing you enter is ever uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <textarea id="input" placeholder="Type or paste text here to hash it…"></textarea>
+    <div class="controls">
+      <label><input type="checkbox" id="live" checked> Live (hash as I type)</label>
+      <label><input type="checkbox" id="uppercase"> Uppercase output</label>
+    </div>
+    <div class="toolbar">
+      <button class="primary" onclick="generate()">Generate</button>
+      <button onclick="copyAll()">Copy all</button>
+      <button onclick="clearAll()">Clear</button>
+    </div>
+    <p id="status" class="status"></p>
+
+    <div class="results">
+      <div class="hash-row">
+        <div class="hash-head"><span class="hash-algo">MD5<small>128-bit</small></span><button onclick="copyOne('md5')">Copy</button></div>
+        <div class="hash-val" id="md5"></div>
+      </div>
+      <div class="hash-row">
+        <div class="hash-head"><span class="hash-algo">SHA-1<small>160-bit</small></span><button onclick="copyOne('sha1')">Copy</button></div>
+        <div class="hash-val" id="sha1"></div>
+      </div>
+      <div class="hash-row">
+        <div class="hash-head"><span class="hash-algo">SHA-256<small>256-bit</small></span><button onclick="copyOne('sha256')">Copy</button></div>
+        <div class="hash-val" id="sha256"></div>
+      </div>
+      <div class="hash-row">
+        <div class="hash-head"><span class="hash-algo">SHA-512<small>512-bit</small></span><button onclick="copyOne('sha512')">Copy</button></div>
+        <div class="hash-val" id="sha512"></div>
+      </div>
+    </div>
+
+    <p class="note">Hashes are computed entirely on your device. SHA-1, SHA-256 and SHA-512 use the browser's native <code>crypto.subtle.digest</code>; MD5 uses a bundled pure-JavaScript implementation. No network calls are made.</p>
+
+    <section class="seo">
+      <h2>What is a hash generator?</h2>
+      <p>A hash generator (also called a checksum calculator) takes any input — a password, a message, a file's contents — and runs it through a one-way cryptographic hash function to produce a short, fixed-length fingerprint. The same input always yields the same hash, but the original text cannot be recovered from the hash. Hashes are widely used to verify download integrity, store password digests, deduplicate data, and sign or compare content.</p>
+      <h2>MD5, SHA-1, SHA-256 and SHA-512 compared</h2>
+      <p><strong>MD5</strong> produces a 128-bit (32 hex character) digest. It is fast and still common for checksums and deduplication, but it is cryptographically broken — collisions can be engineered — so it should not be used for security. <strong>SHA-1</strong> produces a 160-bit digest and is also considered weak against collision attacks; it is being phased out. <strong>SHA-256</strong> and <strong>SHA-512</strong> belong to the SHA-2 family and produce 256-bit and 512-bit digests respectively; they are the current recommendation for integrity checks and digital signatures.</p>
+      <h2>How to use it</h2>
+      <p>1. Type or paste your text into the box above. 2. With <strong>Live</strong> enabled the four hashes update as you type; otherwise click <strong>Generate</strong>. 3. Tick <strong>Uppercase output</strong> if you need capital hex digits. 4. Click <strong>Copy</strong> next to any row, or <strong>Copy all</strong>, to grab the results.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. This tool is 100% client-side. The text you enter never leaves your browser — there is no server, no upload, and no logging. You can confirm this by opening your browser's network tab while you hash, or by saving the page and using it fully offline.</p>
+      <h2>How do I verify a file checksum?</h2>
+      <p>To check a download, hash the expected value the publisher provides and compare it to the hash of what you received — if they match character-for-character, the file is intact. This tool hashes text input; to checksum a binary file, paste its known good string or use your operating system's checksum command and compare the SHA-256 value here.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+
+    /* ---- MD5: compact public-domain implementation (Joseph Myers / blueimp style) ---- */
+    function md5(str){
+      function safeAdd(x, y){ var lsw = (x & 0xFFFF) + (y & 0xFFFF); var msw = (x >> 16) + (y >> 16) + (lsw >> 16); return (msw << 16) | (lsw & 0xFFFF); }
+      function rol(num, cnt){ return (num << cnt) | (num >>> (32 - cnt)); }
+      function cmn(q, a, b, x, s, t){ return safeAdd(rol(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b); }
+      function ff(a, b, c, d, x, s, t){ return cmn((b & c) | (~b & d), a, b, x, s, t); }
+      function gg(a, b, c, d, x, s, t){ return cmn((b & d) | (c & ~d), a, b, x, s, t); }
+      function hh(a, b, c, d, x, s, t){ return cmn(b ^ c ^ d, a, b, x, s, t); }
+      function ii(a, b, c, d, x, s, t){ return cmn(c ^ (b | ~d), a, b, x, s, t); }
+      function binl(bin){
+        var a = 1732584193, b = -271733879, c = -1732584194, d = 271733878;
+        for(var i = 0; i < bin.length; i += 16){
+          var olda = a, oldb = b, oldc = c, oldd = d;
+          a = ff(a, b, c, d, bin[i+0],  7,  -680876936); d = ff(d, a, b, c, bin[i+1], 12,  -389564586);
+          c = ff(c, d, a, b, bin[i+2], 17,   606105819); b = ff(b, c, d, a, bin[i+3], 22, -1044525330);
+          a = ff(a, b, c, d, bin[i+4],  7,  -176418897); d = ff(d, a, b, c, bin[i+5], 12,  1200080426);
+          c = ff(c, d, a, b, bin[i+6], 17, -1473231341); b = ff(b, c, d, a, bin[i+7], 22,   -45705983);
+          a = ff(a, b, c, d, bin[i+8],  7,  1770035416); d = ff(d, a, b, c, bin[i+9], 12, -1958414417);
+          c = ff(c, d, a, b, bin[i+10],17,     -42063); b = ff(b, c, d, a, bin[i+11],22, -1990404162);
+          a = ff(a, b, c, d, bin[i+12], 7,  1804603682); d = ff(d, a, b, c, bin[i+13],12,  -40341101);
+          c = ff(c, d, a, b, bin[i+14],17, -1502002290); b = ff(b, c, d, a, bin[i+15],22,  1236535329);
+
+          a = gg(a, b, c, d, bin[i+1],  5,  -165796510); d = gg(d, a, b, c, bin[i+6],  9, -1069501632);
+          c = gg(c, d, a, b, bin[i+11],14,   643717713); b = gg(b, c, d, a, bin[i+0], 20,  -373897302);
+          a = gg(a, b, c, d, bin[i+5],  5,  -701558691); d = gg(d, a, b, c, bin[i+10], 9,    38016083);
+          c = gg(c, d, a, b, bin[i+15],14,  -660478335); b = gg(b, c, d, a, bin[i+4], 20,  -405537848);
+          a = gg(a, b, c, d, bin[i+9],  5,   568446438); d = gg(d, a, b, c, bin[i+14], 9, -1019803690);
+          c = gg(c, d, a, b, bin[i+3], 14,  -187363961); b = gg(b, c, d, a, bin[i+8], 20,  1163531501);
+          a = gg(a, b, c, d, bin[i+13], 5, -1444681467); d = gg(d, a, b, c, bin[i+2],  9,   -51403784);
+          c = gg(c, d, a, b, bin[i+7], 14,  1735328473); b = gg(b, c, d, a, bin[i+12],20, -1926607734);
+
+          a = hh(a, b, c, d, bin[i+5],  4,     -378558); d = hh(d, a, b, c, bin[i+8], 11, -2022574463);
+          c = hh(c, d, a, b, bin[i+11],16,  1839030562); b = hh(b, c, d, a, bin[i+14],23,   -35309556);
+          a = hh(a, b, c, d, bin[i+1],  4, -1530992060); d = hh(d, a, b, c, bin[i+4], 11,  1272893353);
+          c = hh(c, d, a, b, bin[i+7], 16,  -155497632); b = hh(b, c, d, a, bin[i+10],23, -1094730640);
+          a = hh(a, b, c, d, bin[i+13], 4,   681279174); d = hh(d, a, b, c, bin[i+0], 11,  -358537222);
+          c = hh(c, d, a, b, bin[i+3], 16,  -722521979); b = hh(b, c, d, a, bin[i+6], 23,    76029189);
+          a = hh(a, b, c, d, bin[i+9],  4,  -640364487); d = hh(d, a, b, c, bin[i+12],11,  -421815835);
+          c = hh(c, d, a, b, bin[i+15],16,   530742520); b = hh(b, c, d, a, bin[i+2], 23,  -995338651);
+
+          a = ii(a, b, c, d, bin[i+0],  6,  -198630844); d = ii(d, a, b, c, bin[i+7], 10,  1126891415);
+          c = ii(c, d, a, b, bin[i+14],15, -1416354905); b = ii(b, c, d, a, bin[i+5], 21,   -57434055);
+          a = ii(a, b, c, d, bin[i+12], 6,  1700485571); d = ii(d, a, b, c, bin[i+3], 10, -1894986606);
+          c = ii(c, d, a, b, bin[i+10],15,    -1051523); b = ii(b, c, d, a, bin[i+1], 21, -2054922799);
+          a = ii(a, b, c, d, bin[i+8],  6,  1873313359); d = ii(d, a, b, c, bin[i+15],10,   -30611744);
+          c = ii(c, d, a, b, bin[i+6], 15, -1560198380); b = ii(b, c, d, a, bin[i+13],21,  1309151649);
+          a = ii(a, b, c, d, bin[i+4],  6,  -145523070); d = ii(d, a, b, c, bin[i+11],10, -1120210379);
+          c = ii(c, d, a, b, bin[i+2], 15,   718787259); b = ii(b, c, d, a, bin[i+9], 21,  -343485551);
+
+          a = safeAdd(a, olda); b = safeAdd(b, oldb); c = safeAdd(c, oldc); d = safeAdd(d, oldd);
+        }
+        return [a, b, c, d];
+      }
+      // Convert a UTF-8 byte array into an array of little-endian 32-bit words.
+      function bytesToBinl(bytes){
+        var bin = [], i;
+        for(i = 0; i < (bytes.length * 8); i += 8){
+          bin[i >> 5] |= (bytes[i / 8] & 0xFF) << (i % 32);
+        }
+        return bin;
+      }
+      function utf8Bytes(s){
+        // encodeURIComponent gives us the UTF-8 byte sequence reliably.
+        var enc = (typeof TextEncoder !== 'undefined') ? new TextEncoder().encode(s) : null;
+        if(enc) return enc;
+        var utf = unescape(encodeURIComponent(s)), out = [], i;
+        for(i = 0; i < utf.length; i++) out.push(utf.charCodeAt(i) & 0xFF);
+        return out;
+      }
+      function binlToHex(binarray){
+        var hexTab = '0123456789abcdef', str = '', i;
+        for(i = 0; i < binarray.length * 4; i++){
+          str += hexTab.charAt((binarray[i >> 2] >> ((i % 4) * 8 + 4)) & 0x0F) +
+                 hexTab.charAt((binarray[i >> 2] >> ((i % 4) * 8)) & 0x0F);
+        }
+        return str;
+      }
+      var bytes = utf8Bytes(str);
+      var len = bytes.length * 8;
+      var bin = bytesToBinl(bytes);
+      // Append padding: a single 1 bit, then zeros, then the 64-bit length.
+      bin[len >> 5] |= 0x80 << (len % 32);
+      bin[(((len + 64) >>> 9) << 4) + 14] = len;
+      return binlToHex(binl(bin));
+    }
+
+    /* ---- SHA family via SubtleCrypto ---- */
+    function bufToHex(buf){
+      var bytes = new Uint8Array(buf), hex = '', i;
+      for(i = 0; i < bytes.length; i++) hex += bytes[i].toString(16).padStart(2, '0');
+      return hex;
+    }
+    async function subtleHash(algo, text){
+      if(!(window.crypto && crypto.subtle)) return null; // requires secure context
+      var data = new TextEncoder().encode(text);
+      var digest = await crypto.subtle.digest(algo, data);
+      return bufToHex(digest);
+    }
+
+    var inp = document.getElementById('input');
+    var liveEl = document.getElementById('live');
+    var upperEl = document.getElementById('uppercase');
+    var status = document.getElementById('status');
+    var fields = {
+      md5: document.getElementById('md5'),
+      sha1: document.getElementById('sha1'),
+      sha256: document.getElementById('sha256'),
+      sha512: document.getElementById('sha512')
+    };
+
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function applyCase(s){ return upperEl.checked ? s.toUpperCase() : s; }
+
+    var lastText = null;
+    var rawHashes = { md5:'', sha1:'', sha256:'', sha512:'' };
+
+    async function generate(){
+      var text = inp.value;
+      try {
+        rawHashes.md5 = md5(text);
+        fields.md5.textContent = applyCase(rawHashes.md5);
+
+        var results = await Promise.all([
+          subtleHash('SHA-1', text),
+          subtleHash('SHA-256', text),
+          subtleHash('SHA-512', text)
+        ]);
+        rawHashes.sha1 = results[0] || '';
+        rawHashes.sha256 = results[1] || '';
+        rawHashes.sha512 = results[2] || '';
+
+        if(results[0] === null){
+          fields.sha1.textContent = fields.sha256.textContent = fields.sha512.textContent = '';
+          setStatus('SHA hashes need a secure context (https:// or localhost). MD5 is shown.', 'error');
+        } else {
+          fields.sha1.textContent = applyCase(rawHashes.sha1);
+          fields.sha256.textContent = applyCase(rawHashes.sha256);
+          fields.sha512.textContent = applyCase(rawHashes.sha512);
+          setStatus('Hashed ' + new Blob([text]).size + ' byte' + (new Blob([text]).size === 1 ? '' : 's') + ' of input.', 'ok');
+        }
+      } catch(e){
+        setStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    function refreshCase(){
+      fields.md5.textContent = applyCase(rawHashes.md5);
+      fields.sha1.textContent = applyCase(rawHashes.sha1);
+      fields.sha256.textContent = applyCase(rawHashes.sha256);
+      fields.sha512.textContent = applyCase(rawHashes.sha512);
+    }
+
+    function copyOne(key){
+      var t = fields[key].textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus(key.toUpperCase() + ' hash copied.', 'ok'); });
+    }
+    function copyAll(){
+      var lines = [
+        'MD5:     ' + fields.md5.textContent,
+        'SHA-1:   ' + fields.sha1.textContent,
+        'SHA-256: ' + fields.sha256.textContent,
+        'SHA-512: ' + fields.sha512.textContent
+      ].join('\n');
+      if(!fields.md5.textContent){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(lines).then(function(){ setStatus('All hashes copied.', 'ok'); });
+    }
+    function clearAll(){
+      inp.value = '';
+      rawHashes = { md5:'', sha1:'', sha256:'', sha512:'' };
+      fields.md5.textContent = fields.sha1.textContent = fields.sha256.textContent = fields.sha512.textContent = '';
+      setStatus('');
+      inp.focus();
+    }
+
+    inp.addEventListener('input', function(){ if(liveEl.checked) generate(); });
+    upperEl.addEventListener('change', refreshCase);
+    liveEl.addEventListener('change', function(){ if(liveEl.checked) generate(); });
+
+    // expose for inline onclick handlers
+    window.generate = generate;
+    window.copyOne = copyOne;
+    window.copyAll = copyAll;
+    window.clearAll = clearAll;
+
+    // Hash the empty string on load so the tool is immediately useful and self-verifying.
+    generate();
+  </script>
+</body>
+</html>

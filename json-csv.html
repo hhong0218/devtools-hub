@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to CSV Converter — Free Online JSON ⇄ CSV Tool | DevTools Hub</title>
+  <meta name="description" content="Free online JSON to CSV and CSV to JSON converter. Turn a JSON array of objects into a clean CSV, or parse CSV (including quoted fields) back into pretty JSON — all in your browser. Nothing is uploaded.">
+  <meta name="keywords" content="json to csv, csv to json, convert json to csv online, json csv converter, json to csv converter, csv to json online">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="JSON to CSV Converter — Free Online JSON ⇄ CSV Tool">
+  <meta property="og:description" content="Convert JSON to CSV and CSV to JSON instantly in your browser. Handles quoted fields, commas, and newlines. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .controls{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:.75rem;color:var(--muted);font-size:.9rem}
+    .controls label{display:flex;align-items:center;gap:.4rem}
+    .seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+    .seg button{background:var(--panel);border:none;border-radius:0;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;color:var(--text)}
+    .seg button.active{background:var(--accent);color:#0d1117;font-weight:600}
+    .seg button:hover:not(.active){background:#1f2630}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .io-label{font-size:.8rem;color:var(--muted);margin:.25rem 0}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.05rem .3rem;font-size:.85rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › JSON to CSV</p>
+    <h1>JSON to CSV Converter</h1>
+    <p class="lead">Convert a JSON array of objects into CSV, or turn CSV back into pretty-printed JSON. Quoted fields, commas, and newlines are handled correctly. Everything runs locally in your browser — nothing is uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="controls">
+      <span>Direction:</span>
+      <div class="seg" id="seg">
+        <button id="dir-j2c" class="active" onclick="setDirection('j2c')">JSON → CSV</button>
+        <button id="dir-c2j" onclick="setDirection('c2j')">CSV → JSON</button>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button class="primary" onclick="convert()">Convert</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <p class="io-label" id="inLabel">Input — JSON array of objects</p>
+    <textarea id="input" placeholder='[{"name":"Ada","role":"Engineer"},{"name":"Linus","role":"Maintainer"}]'></textarea>
+    <p id="status" class="status"></p>
+    <p class="io-label" id="outLabel">Output — CSV</p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+    <p class="note">All parsing and conversion happens on your device. No network calls are made and nothing you paste leaves your browser.</p>
+
+    <section class="seo">
+      <h2>What is a JSON to CSV converter?</h2>
+      <p>A JSON to CSV converter transforms a JSON array of objects — the format most APIs and databases return — into comma-separated values that open cleanly in Excel, Google Sheets, or any spreadsheet program. Each object becomes a row and each key becomes a column. This tool also works in reverse as a CSV to JSON converter, parsing a CSV file (including fields wrapped in quotes that contain commas or line breaks) back into a structured JSON array.</p>
+      <h2>How to use it</h2>
+      <p>1. Choose a direction with the toggle: <strong>JSON → CSV</strong> or <strong>CSV → JSON</strong>. 2. Paste your data into the input box (click <strong>Sample</strong> to see the expected shape). 3. Press <strong>Convert</strong>. 4. Click <strong>Copy</strong> to grab the result. When converting JSON to CSV, the header row is built from the union of all object keys in the order they first appear, so rows with missing keys still line up correctly.</p>
+      <h2>How are commas and quotes handled?</h2>
+      <p>This converter follows the common CSV escaping rules (RFC&nbsp;4180). When writing CSV, any value that contains a comma, a double quote, or a newline is wrapped in double quotes, and any double quotes inside the value are doubled (<code>"</code> becomes <code>""</code>). Nested objects and arrays are serialized with <code>JSON.stringify</code> so no structure is lost, and <code>null</code> values become empty cells. When reading CSV, the parser respects quoted fields, so a comma or newline inside quotes is treated as part of the value rather than a delimiter.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. The conversion runs entirely in your browser using plain JavaScript and the built-in <code>JSON.parse</code> engine. Nothing you paste is uploaded to a server, making it safe for sensitive exports and internal data.</p>
+      <h2>Frequently asked questions</h2>
+      <p><strong>Does the JSON have to be an array?</strong> For JSON → CSV the top level must be an array of objects, because CSV is a table of rows. If you paste a single object, wrap it in square brackets to make a one-row array.</p>
+      <p><strong>What happens to nested objects and arrays?</strong> They are kept as JSON text inside the cell (for example <code>{"city":"Oslo"}</code>), so you never lose data when round-tripping.</p>
+      <p><strong>Can it handle a CSV with newlines inside a field?</strong> Yes. As long as the field is wrapped in double quotes, line breaks inside it are preserved and the row is parsed correctly.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var inp = document.getElementById('input');
+    var out = document.getElementById('output');
+    var statusEl = document.getElementById('status');
+    var inLabel = document.getElementById('inLabel');
+    var outLabel = document.getElementById('outLabel');
+    var dirJ2c = document.getElementById('dir-j2c');
+    var dirC2j = document.getElementById('dir-c2j');
+    var direction = 'j2c';
+
+    function setStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status' + (type ? ' ' + type : ''); }
+
+    function setDirection(d){
+      direction = d;
+      var toCsv = (d === 'j2c');
+      dirJ2c.className = toCsv ? 'active' : '';
+      dirC2j.className = toCsv ? '' : 'active';
+      inLabel.textContent = toCsv ? 'Input — JSON array of objects' : 'Input — CSV';
+      outLabel.textContent = toCsv ? 'Output — CSV' : 'Output — JSON';
+      inp.placeholder = toCsv
+        ? '[{"name":"Ada","role":"Engineer"},{"name":"Linus","role":"Maintainer"}]'
+        : 'name,role\nAda,Engineer\nLinus,Maintainer';
+      out.textContent = '';
+      setStatus('');
+    }
+
+    // ---- JSON -> CSV ----
+    function escapeCsvField(value){
+      var s;
+      if(value === null || value === undefined){ s = ''; }
+      else if(typeof value === 'object'){ s = JSON.stringify(value); }
+      else { s = String(value); }
+      if(/[",\n\r]/.test(s)){
+        s = '"' + s.replace(/"/g, '""') + '"';
+      }
+      return s;
+    }
+
+    function jsonToCsv(text){
+      var data;
+      try { data = JSON.parse(text); }
+      catch(e){ throw new Error('Invalid JSON: ' + e.message); }
+      if(!Array.isArray(data)){
+        throw new Error('Input is not a JSON array of objects. Wrap a single object in [ ] to make a one-row array.');
+      }
+      if(data.length === 0){ return ''; }
+      // Build header from the union of all keys, in first-seen order.
+      var headers = [];
+      var seen = Object.create(null);
+      for(var i = 0; i < data.length; i++){
+        var row = data[i];
+        if(row === null || typeof row !== 'object' || Array.isArray(row)){
+          throw new Error('Item at index ' + i + ' is not an object. Every array item must be a JSON object.');
+        }
+        var keys = Object.keys(row);
+        for(var k = 0; k < keys.length; k++){
+          if(!seen[keys[k]]){ seen[keys[k]] = true; headers.push(keys[k]); }
+        }
+      }
+      var lines = [];
+      lines.push(headers.map(escapeCsvField).join(','));
+      for(var r = 0; r < data.length; r++){
+        var obj = data[r];
+        var cells = [];
+        for(var h = 0; h < headers.length; h++){
+          var key = headers[h];
+          cells.push(escapeCsvField(Object.prototype.hasOwnProperty.call(obj, key) ? obj[key] : ''));
+        }
+        lines.push(cells.join(','));
+      }
+      return lines.join('\r\n');
+    }
+
+    // ---- CSV -> JSON ----
+    // Correct CSV parser: handles quoted fields containing commas, newlines, and escaped ("") quotes.
+    function parseCsv(text){
+      var rows = [];
+      var field = '';
+      var record = [];
+      var inQuotes = false;
+      var i = 0;
+      var n = text.length;
+      var sawAny = false;
+      while(i < n){
+        var c = text[i];
+        if(inQuotes){
+          if(c === '"'){
+            if(text[i + 1] === '"'){ field += '"'; i += 2; continue; }
+            inQuotes = false; i++; continue;
+          }
+          field += c; i++; continue;
+        }
+        if(c === '"'){ inQuotes = true; sawAny = true; i++; continue; }
+        if(c === ','){ record.push(field); field = ''; sawAny = true; i++; continue; }
+        if(c === '\r'){
+          // Handle CRLF and lone CR as one line break.
+          record.push(field); field = '';
+          rows.push(record); record = []; sawAny = false;
+          if(text[i + 1] === '\n'){ i += 2; } else { i++; }
+          continue;
+        }
+        if(c === '\n'){
+          record.push(field); field = '';
+          rows.push(record); record = []; sawAny = false;
+          i++; continue;
+        }
+        field += c; sawAny = true; i++;
+      }
+      // Flush the final field/record if the file does not end with a newline,
+      // or if there was a trailing field after the last delimiter.
+      if(inQuotes){ throw new Error('Malformed CSV: an opening quote is missing its closing quote.'); }
+      if(sawAny || field !== '' || record.length > 0){
+        record.push(field);
+        rows.push(record);
+      }
+      return rows;
+    }
+
+    function csvToJson(text){
+      // Strip a UTF-8 BOM if present.
+      if(text.charCodeAt(0) === 0xFEFF){ text = text.slice(1); }
+      if(text.trim() === ''){ throw new Error('Input is empty. Paste some CSV to convert.'); }
+      var rows = parseCsv(text);
+      // Drop a trailing empty row that a final newline can produce.
+      while(rows.length && rows[rows.length - 1].length === 1 && rows[rows.length - 1][0] === ''){
+        rows.pop();
+      }
+      if(rows.length === 0){ throw new Error('No rows found in the CSV input.'); }
+      var headers = rows[0];
+      var result = [];
+      for(var r = 1; r < rows.length; r++){
+        var cols = rows[r];
+        var obj = {};
+        for(var h = 0; h < headers.length; h++){
+          obj[headers[h]] = (h < cols.length) ? cols[h] : '';
+        }
+        result.push(obj);
+      }
+      return JSON.stringify(result, null, 2);
+    }
+
+    function convert(){
+      var text = inp.value;
+      if(text.trim() === ''){ out.textContent = ''; setStatus('Nothing to convert — paste some input first.', 'error'); return; }
+      try {
+        if(direction === 'j2c'){
+          var csv = jsonToCsv(text);
+          out.textContent = csv;
+          setStatus(csv === '' ? 'Converted — the JSON array was empty, so the CSV is empty.' : '✓ Converted JSON to CSV.', 'ok');
+        } else {
+          var json = csvToJson(text);
+          out.textContent = json;
+          setStatus('✓ Converted CSV to JSON.', 'ok');
+        }
+      } catch(e){
+        out.textContent = '';
+        setStatus('✗ ' + e.message, 'error');
+      }
+    }
+
+    function copyOut(){
+      var t = out.textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); });
+    }
+
+    function clearAll(){ inp.value = ''; out.textContent = ''; setStatus(''); inp.focus(); }
+
+    function loadSample(){
+      if(direction === 'j2c'){
+        inp.value = '[\n  {"id":1,"name":"Ada Lovelace","note":"First, programmer"},\n  {"id":2,"name":"Linus Torvalds","note":"Says \\"git\\" a lot","tags":["kernel","git"]},\n  {"id":3,"name":"Grace Hopper"}\n]';
+      } else {
+        inp.value = 'id,name,note\r\n1,"Ada Lovelace","First, programmer"\r\n2,"Linus Torvalds","Says ""git"" a lot"\r\n3,"Grace Hopper","Line one\nLine two"';
+      }
+      convert();
+    }
+  </script>
+</body>
+</html>

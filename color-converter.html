@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Converter — HEX to RGB, RGB to HEX, HSL Online | DevTools Hub</title>
+  <meta name="description" content="Free online color converter and color picker. Convert HEX to RGB, RGB to HEX, and HSL instantly with a live preview — all formats at once. Runs in your browser, nothing is uploaded.">
+  <meta name="keywords" content="hex to rgb, rgb to hex, hsl, color converter, color picker online, rgba, hex color code">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Color Converter — HEX to RGB, RGB to HEX, HSL">
+  <meta property="og:description" content="Convert HEX, RGB, RGBA and HSL color codes instantly with a live swatch and color picker. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    .converter{display:grid;grid-template-columns:160px 1fr;gap:1.5rem;align-items:start}
+    @media(max-width:560px){.converter{grid-template-columns:1fr}}
+    .swatch-wrap{display:flex;flex-direction:column;gap:.75rem}
+    #swatch{width:100%;height:140px;border:1px solid var(--border);border-radius:8px;background:#58a6ff}
+    .picker-row{display:flex;align-items:center;gap:.6rem;color:var(--muted);font-size:.85rem}
+    input[type=color]{width:48px;height:38px;padding:0;background:var(--panel);border:1px solid var(--border);border-radius:6px;cursor:pointer}
+    input[type=color]:focus{outline:none;border-color:var(--accent)}
+    .input-block{margin-bottom:1.25rem}
+    .input-block label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.04em}
+    .text-input{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:1rem}
+    .text-input:focus{outline:none;border-color:var(--accent)}
+    .results{display:flex;flex-direction:column;gap:.6rem}
+    .result-row{display:flex;align-items:center;gap:.6rem;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:.55rem .75rem}
+    .result-row .tag{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;width:48px;flex:none}
+    .result-row .val{flex:1;font-family:'SFMono-Regular',Consolas,monospace;font-size:.95rem;color:var(--text);overflow:auto;white-space:nowrap}
+    .result-row button{padding:.35rem .7rem;font-size:.8rem;flex:none}
+    .status{margin:.9rem 0 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.05rem .35rem;font-size:.85rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Color Converter</p>
+    <h1>Color Converter</h1>
+    <p class="lead">Convert colors between HEX, RGB, RGBA and HSL — or pick a color with the swatch. Type any format and every other format updates live. Everything runs locally in your browser; nothing is uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="converter">
+      <div class="swatch-wrap">
+        <div id="swatch"></div>
+        <div class="picker-row">
+          <input type="color" id="picker" value="#58a6ff" oninput="fromPicker()" aria-label="Color picker">
+          <span>Pick a color</span>
+        </div>
+      </div>
+      <div>
+        <div class="input-block">
+          <label for="input">Enter a color (HEX, RGB or HSL)</label>
+          <input type="text" id="input" class="text-input" value="#58a6ff" placeholder="#58a6ff  •  rgb(88,166,255)  •  hsl(212,100%,67%)" oninput="fromText()" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="results">
+          <div class="result-row"><span class="tag">HEX</span><span class="val" id="outHex">#58a6ff</span><button onclick="copyVal('outHex')">Copy</button></div>
+          <div class="result-row"><span class="tag">RGB</span><span class="val" id="outRgb">rgb(88, 166, 255)</span><button onclick="copyVal('outRgb')">Copy</button></div>
+          <div class="result-row"><span class="tag">RGBA</span><span class="val" id="outRgba">rgba(88, 166, 255, 1)</span><button onclick="copyVal('outRgba')">Copy</button></div>
+          <div class="result-row"><span class="tag">HSL</span><span class="val" id="outHsl">hsl(212, 100%, 67%)</span><button onclick="copyVal('outHsl')">Copy</button></div>
+        </div>
+        <p id="status" class="status"></p>
+      </div>
+    </div>
+    <p class="note">Tip: 3-digit shorthand like <code>#abc</code> and an optional alpha in <code>rgba()</code> are both supported. All conversions are computed on your device — no network calls are made.</p>
+
+    <section class="seo">
+      <h2>What is a color converter?</h2>
+      <p>A color converter translates a single color between the formats used across the web and design tools: HEX (the <code>#rrggbb</code> codes in CSS), RGB / RGBA (red-green-blue channels with optional alpha transparency), and HSL (hue, saturation, lightness). Instead of converting by hand, you enter one value and read off the equivalents in every other notation, with a live swatch so you can confirm the color visually.</p>
+      <h2>How to use it</h2>
+      <p>1. Type a color into the box — for example <strong>#58a6ff</strong>, <strong>rgb(88, 166, 255)</strong>, or <strong>hsl(212, 100%, 67%)</strong>. Or click the color swatch to pick one. 2. The HEX, RGB, RGBA and HSL outputs update instantly. 3. Click <strong>Copy</strong> next to any format to put it on your clipboard.</p>
+      <h2>HEX to RGB and RGB to HEX</h2>
+      <p>A HEX color packs the red, green and blue channels into two hexadecimal digits each, so <code>#58a6ff</code> is red <code>0x58</code> = 88, green <code>0xa6</code> = 166, blue <code>0xff</code> = 255, giving <code>rgb(88, 166, 255)</code>. Going the other way, each 0–255 channel is converted back to a two-digit hex value and concatenated after the <code>#</code>. This tool also expands 3-digit shorthand such as <code>#abc</code> to its full <code>#aabbcc</code> form before converting.</p>
+      <h2>What is HSL?</h2>
+      <p>HSL describes a color as a hue angle from 0–360° around the color wheel, a saturation percentage (how vivid the color is) and a lightness percentage (how close to white or black it is). HSL is convenient for tweaking colors — nudging only the lightness gives you a tint or shade of the same hue. The converter computes HSL from the RGB channels using the standard formula, rounding hue to the nearest degree and saturation and lightness to the nearest percent.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. This color converter runs entirely in your browser with plain JavaScript — there is no server and nothing you type is ever uploaded. You can even save the page and use it offline.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var inp = document.getElementById('input');
+    var picker = document.getElementById('picker');
+    var swatch = document.getElementById('swatch');
+    var status = document.getElementById('status');
+    var outHex = document.getElementById('outHex');
+    var outRgb = document.getElementById('outRgb');
+    var outRgba = document.getElementById('outRgba');
+    var outHsl = document.getElementById('outHsl');
+
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function clamp(v, lo, hi){ return Math.min(hi, Math.max(lo, v)); }
+
+    // --- Conversions -------------------------------------------------------
+    function rgbToHex(r, g, b){
+      function h(n){ return clamp(Math.round(n), 0, 255).toString(16).padStart(2, '0'); }
+      return '#' + h(r) + h(g) + h(b);
+    }
+    function rgbToHsl(r, g, b){
+      r /= 255; g /= 255; b /= 255;
+      var max = Math.max(r, g, b), min = Math.min(r, g, b);
+      var h = 0, s = 0, l = (max + min) / 2;
+      var d = max - min;
+      if(d !== 0){
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+    }
+    function hslToRgb(h, s, l){
+      h = ((h % 360) + 360) % 360 / 360; s = clamp(s, 0, 100) / 100; l = clamp(l, 0, 100) / 100;
+      var r, g, b;
+      if(s === 0){ r = g = b = l; }
+      else {
+        function hue2rgb(p, q, t){
+          if(t < 0) t += 1; if(t > 1) t -= 1;
+          if(t < 1/6) return p + (q - p) * 6 * t;
+          if(t < 1/2) return q;
+          if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+          return p;
+        }
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+      }
+      return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+    }
+
+    // --- Parsing -----------------------------------------------------------
+    // Returns {r,g,b,a} or null. a is 0..1.
+    function parseColor(raw){
+      var str = raw.trim().toLowerCase();
+      if(str === '') return null;
+      var m;
+      // HEX (#rgb, #rgba, #rrggbb, #rrggbbaa) with or without leading #
+      m = str.match(/^#?([0-9a-f]{3,8})$/);
+      if(m){
+        var hex = m[1];
+        if(hex.length === 3){
+          return { r: parseInt(hex[0]+hex[0],16), g: parseInt(hex[1]+hex[1],16), b: parseInt(hex[2]+hex[2],16), a: 1 };
+        }
+        if(hex.length === 4){
+          return { r: parseInt(hex[0]+hex[0],16), g: parseInt(hex[1]+hex[1],16), b: parseInt(hex[2]+hex[2],16), a: +(parseInt(hex[3]+hex[3],16)/255).toFixed(3) };
+        }
+        if(hex.length === 6){
+          return { r: parseInt(hex.slice(0,2),16), g: parseInt(hex.slice(2,4),16), b: parseInt(hex.slice(4,6),16), a: 1 };
+        }
+        if(hex.length === 8){
+          return { r: parseInt(hex.slice(0,2),16), g: parseInt(hex.slice(2,4),16), b: parseInt(hex.slice(4,6),16), a: +(parseInt(hex.slice(6,8),16)/255).toFixed(3) };
+        }
+        return null;
+      }
+      // rgb()/rgba()
+      m = str.match(/^rgba?\(([^)]+)\)$/);
+      if(m){
+        var p = m[1].split(/[,\/\s]+/).filter(function(x){ return x !== ''; });
+        if(p.length < 3) return null;
+        var r = chan(p[0]), g = chan(p[1]), b = chan(p[2]);
+        if(r === null || g === null || b === null) return null;
+        var a = p.length >= 4 ? alpha(p[3]) : 1;
+        if(a === null) return null;
+        return { r: r, g: g, b: b, a: a };
+      }
+      // hsl()/hsla()
+      m = str.match(/^hsla?\(([^)]+)\)$/);
+      if(m){
+        var q = m[1].split(/[,\/\s]+/).filter(function(x){ return x !== ''; });
+        if(q.length < 3) return null;
+        var h = parseFloat(q[0]);
+        var sv = parseFloat(q[1]);
+        var lv = parseFloat(q[2]);
+        if(isNaN(h) || isNaN(sv) || isNaN(lv)) return null;
+        var av = q.length >= 4 ? alpha(q[3]) : 1;
+        if(av === null) return null;
+        var rgb = hslToRgb(h, sv, lv);
+        return { r: rgb.r, g: rgb.g, b: rgb.b, a: av };
+      }
+      return null;
+    }
+    function chan(tok){
+      if(tok.indexOf('%') !== -1){
+        var pv = parseFloat(tok);
+        if(isNaN(pv)) return null;
+        return Math.round(clamp(pv, 0, 100) / 100 * 255);
+      }
+      var v = parseFloat(tok);
+      if(isNaN(v)) return null;
+      return clamp(Math.round(v), 0, 255);
+    }
+    function alpha(tok){
+      var v;
+      if(tok.indexOf('%') !== -1){ v = parseFloat(tok) / 100; } else { v = parseFloat(tok); }
+      if(isNaN(v)) return null;
+      return +clamp(v, 0, 1).toFixed(3);
+    }
+
+    // --- Rendering ---------------------------------------------------------
+    function render(c){
+      var hex = rgbToHex(c.r, c.g, c.b);
+      var hsl = rgbToHsl(c.r, c.g, c.b);
+      outHex.textContent = hex;
+      outRgb.textContent = 'rgb(' + c.r + ', ' + c.g + ', ' + c.b + ')';
+      outRgba.textContent = 'rgba(' + c.r + ', ' + c.g + ', ' + c.b + ', ' + c.a + ')';
+      outHsl.textContent = 'hsl(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%)';
+      swatch.style.background = 'rgba(' + c.r + ', ' + c.g + ', ' + c.b + ', ' + c.a + ')';
+      picker.value = hex;
+    }
+
+    function fromText(){
+      var c = parseColor(inp.value);
+      if(!c){ setStatus('Unrecognized color. Try #58a6ff, rgb(88,166,255) or hsl(212,100%,67%).', 'error'); return; }
+      render(c);
+      setStatus('Converted.', 'ok');
+    }
+    function fromPicker(){
+      var hex = picker.value;
+      inp.value = hex;
+      var c = parseColor(hex);
+      if(c){ render(c); setStatus('Converted.', 'ok'); }
+    }
+    function copyVal(id){
+      var t = document.getElementById(id).textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied ' + t + ' to clipboard.', 'ok'); });
+    }
+
+    // Initialize from the default value on load
+    fromText();
+  </script>
+</body>
+</html>

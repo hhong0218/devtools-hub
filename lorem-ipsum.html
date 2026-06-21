@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorem Ipsum Generator — Free Online Placeholder &amp; Dummy Text | DevTools Hub</title>
+  <meta name="description" content="Free online lorem ipsum generator. Create classic placeholder text by paragraphs, sentences, or words — instantly in your browser. Copy the dummy text with one click. Nothing is uploaded to a server.">
+  <meta name="keywords" content="lorem ipsum generator, placeholder text generator, dummy text, filler text, generate lorem ipsum online">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Lorem Ipsum Generator — Free Online Placeholder &amp; Dummy Text">
+  <meta property="og:description" content="Generate classic lorem ipsum placeholder text by paragraphs, sentences, or words instantly in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    .controls{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-bottom:.75rem;color:var(--muted);font-size:.9rem}
+    .controls label{display:flex;align-items:center;gap:.4rem}
+    .controls input[type=number]{width:5rem;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.4rem .5rem;font-size:.9rem}
+    .controls input[type=number]:focus{outline:none;border-color:var(--accent)}
+    .controls select{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.4rem .5rem;font-size:.9rem}
+    .controls select:focus{outline:none;border-color:var(--accent)}
+    .controls input[type=checkbox]{accent-color:var(--accent);width:1rem;height:1rem}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Lorem Ipsum Generator</p>
+    <h1>Lorem Ipsum Generator</h1>
+    <p class="lead">Generate classic lorem ipsum placeholder text by paragraphs, sentences, or words. Everything runs locally in your browser — nothing is uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="controls">
+      <label>Count <input type="number" id="count" min="1" max="200" value="3"></label>
+      <label>Type
+        <select id="type">
+          <option value="paragraphs">Paragraphs</option>
+          <option value="sentences">Sentences</option>
+          <option value="words">Words</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="startLorem" checked> Start with "Lorem ipsum dolor sit amet…"</label>
+    </div>
+    <div class="toolbar">
+      <button class="primary" onclick="generate()">Generate</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+    </div>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+    <p class="note">All text is generated on your device in JavaScript. No network calls are made.</p>
+
+    <section class="seo">
+      <h2>What is lorem ipsum?</h2>
+      <p>Lorem ipsum is scrambled, Latin-looking placeholder text that designers and developers drop into a layout before the real copy is ready. Because the words carry no meaning, they let you judge typography, spacing, and visual balance without being distracted by what the text says. The passage is derived from a work by Cicero written more than two thousand years ago, with letters and words altered so it reads as nonsense.</p>
+      <h2>How to use it</h2>
+      <p>1. Set <strong>Count</strong> to how much text you need. 2. Choose a <strong>Type</strong> — paragraphs, sentences, or words. 3. Leave <strong>Start with "Lorem ipsum dolor sit amet…"</strong> ticked if you want the traditional opening, or untick it for fully random output. 4. Click <strong>Generate</strong>, then <strong>Copy</strong> to grab the result.</p>
+      <h2>Why use placeholder text?</h2>
+      <p>Filler text keeps a mock-up neutral. Real sentences pull the eye toward their content and tempt stakeholders to edit copy during a design review; meaningless dummy text keeps everyone focused on the layout itself. It is also handy for testing how a component, table, or paragraph block behaves with realistic-length content before the final words arrive.</p>
+      <h2>Frequently asked questions</h2>
+      <p><strong>Is the generated text really random?</strong> Each sentence is assembled from a classic lorem ipsum word bank with a randomly varied length, so no two runs are identical. With the start option enabled, the very first sentence always begins with the familiar "Lorem ipsum dolor sit amet" line.</p>
+      <p><strong>Can I generate just a few words or a whole article?</strong> Yes. Pick <strong>Words</strong> for a short snippet, <strong>Sentences</strong> for a mid-length block, or <strong>Paragraphs</strong> for long-form filler. The count accepts any value from 1 to 200.</p>
+      <p><strong>Is my data sent anywhere?</strong> No. This lorem ipsum generator runs entirely in your browser. Nothing you generate is ever uploaded to a server.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var WORDS = ["lorem","ipsum","dolor","sit","amet","consectetur","adipiscing","elit","sed","do","eiusmod","tempor","incididunt","ut","labore","et","dolore","magna","aliqua","enim","ad","minim","veniam","quis","nostrud","exercitation","ullamco","laboris","nisi","aliquip","ex","ea","commodo","consequat","duis","aute","irure","in","reprehenderit","voluptate","velit","esse","cillum","eu","fugiat","nulla","pariatur","excepteur","sint","occaecat","cupidatat","non","proident","sunt","culpa","qui","officia","deserunt","mollit","anim","id","est","laborum","perspiciatis","unde","omnis","iste","natus","error","voluptatem","accusantium","doloremque","laudantium","totam","rem","aperiam","eaque","ipsa","quae","ab","illo","inventore","veritatis","quasi","architecto","beatae","vitae","dicta","explicabo","aspernatur","odit","fugit","consequuntur","magni","dolores","eos","ratione","sequi","nesciunt","neque","porro","quisquam","dolorem","adipisci","numquam","modi","tempora","incidunt","magnam","quaerat","voluptatem"];
+    var LEAD = ["lorem","ipsum","dolor","sit","amet","consectetur","adipiscing","elit"];
+
+    var out = document.getElementById('output');
+    var status = document.getElementById('status');
+    var countEl = document.getElementById('count');
+    var typeEl = document.getElementById('type');
+    var startEl = document.getElementById('startLorem');
+
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+    function randInt(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
+    function pick(){ return WORDS[randInt(0, WORDS.length - 1)]; }
+    function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+    function makeWords(n, lead){
+      var w = [];
+      if(lead){ for(var i = 0; i < LEAD.length && w.length < n; i++) w.push(LEAD[i]); }
+      while(w.length < n) w.push(pick());
+      return w.slice(0, n);
+    }
+
+    function makeSentence(lead){
+      var len = randInt(6, 14);
+      var w = makeWords(len, lead);
+      var s = w.join(' ');
+      // insert a comma somewhere in the middle for natural rhythm
+      if(w.length > 6){
+        var c = randInt(2, w.length - 3);
+        w[c] = w[c] + ',';
+        s = w.join(' ');
+      }
+      return cap(s) + '.';
+    }
+
+    function makeParagraph(lead){
+      var count = randInt(4, 7);
+      var parts = [];
+      for(var i = 0; i < count; i++) parts.push(makeSentence(lead && i === 0));
+      return parts.join(' ');
+    }
+
+    function generate(){
+      var n = parseInt(countEl.value, 10);
+      if(isNaN(n) || n < 1){ n = 1; countEl.value = 1; }
+      if(n > 200){ n = 200; countEl.value = 200; }
+      var type = typeEl.value;
+      var lead = startEl.checked;
+      var result = '';
+
+      if(type === 'words'){
+        var w = makeWords(n, lead);
+        result = cap(w.join(' ')) + '.';
+      } else if(type === 'sentences'){
+        var arr = [];
+        for(var i = 0; i < n; i++) arr.push(makeSentence(lead && i === 0));
+        result = arr.join(' ');
+      } else {
+        var paras = [];
+        for(var p = 0; p < n; p++) paras.push(makeParagraph(lead && p === 0));
+        result = paras.join('\n\n');
+      }
+
+      out.textContent = result;
+      var label = type === 'words' ? 'word' : (type === 'sentences' ? 'sentence' : 'paragraph');
+      setStatus('Generated ' + n + ' ' + label + (n === 1 ? '' : 's') + '.', 'ok');
+    }
+
+    function copyOut(){
+      var t = out.textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); });
+    }
+
+    function clearAll(){ out.textContent = ''; setStatus(''); }
+
+    // Generate once on load so the tool is immediately useful
+    generate();
+  </script>
+</body>
+</html>

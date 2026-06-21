@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Converter — Free Online Text Case Tool (UPPERCASE, camelCase, snake_case) | DevTools Hub</title>
+  <meta name="description" content="Free online case converter. Instantly change text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case or CONSTANT_CASE — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="case converter, uppercase to lowercase, camelcase converter, snake case, text case converter, title case, pascalcase, kebab case, constant case">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Case Converter — Free Online Text Case Tool">
+  <meta property="og:description" content="Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case and more instantly in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .counts{display:flex;gap:1.25rem;margin:.5rem 0 .75rem;font-size:.85rem;color:var(--muted)}
+    .counts strong{color:var(--text);font-weight:600}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.1rem .35rem;font-size:.85em}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Case Converter</p>
+    <h1>Case Converter</h1>
+    <p class="lead">Type or paste text below, then pick a case. Convert to UPPERCASE, lowercase, Title Case, camelCase, snake_case and more — instantly and entirely in your browser. Nothing is uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="toolbar">
+      <button onclick="toUpper()">UPPERCASE</button>
+      <button onclick="toLower()">lowercase</button>
+      <button onclick="toTitle()">Title Case</button>
+      <button onclick="toSentence()">Sentence case</button>
+      <button onclick="toCamel()">camelCase</button>
+      <button onclick="toPascal()">PascalCase</button>
+      <button onclick="toSnake()">snake_case</button>
+      <button onclick="toKebab()">kebab-case</button>
+      <button onclick="toConstant()">CONSTANT_CASE</button>
+    </div>
+    <textarea id="input" oninput="updateCounts()" placeholder="Type or paste your text here, e.g. hello world"></textarea>
+    <div class="counts">
+      <span>Characters: <strong id="charCount">0</strong></span>
+      <span>Words: <strong id="wordCount">0</strong></span>
+    </div>
+    <div class="toolbar">
+      <button class="primary" onclick="copyText()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <p id="status" class="status"></p>
+    <p class="note">All conversions run on your device in plain JavaScript. No text you enter is ever sent to a server.</p>
+
+    <section class="seo">
+      <h2>What is a case converter?</h2>
+      <p>A case converter is a tool that changes the letter casing and word formatting of text. Whether you need to turn a sentence into a programming identifier or simply switch from uppercase to lowercase, this converter rewrites your text in the style you choose without retyping it by hand. It supports the nine cases developers and writers use most: UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case and CONSTANT_CASE.</p>
+
+      <h2>How to use it</h2>
+      <p>1. Type or paste your text into the box above — the character and word counts update as you go. 2. Click any case button, such as <strong>camelCase</strong> or <strong>snake_case</strong>, to rewrite the text in place. 3. Click <strong>Copy</strong> to copy the result to your clipboard, or keep clicking different buttons to try other styles.</p>
+
+      <h2>The case styles explained</h2>
+      <p><strong>UPPERCASE</strong> turns every letter capital (<code>HELLO WORLD</code>), while <strong>lowercase</strong> makes them all small (<code>hello world</code>). <strong>Title Case</strong> capitalizes the first letter of each word (<code>Hello World</code>), and <strong>Sentence case</strong> capitalizes only the first letter of each sentence (<code>Hello world</code>).</p>
+      <p>The programming cases strip spaces and punctuation and join the words: <strong>camelCase</strong> lowercases the first word and capitalizes the rest (<code>helloWorld</code>), <strong>PascalCase</strong> capitalizes every word (<code>HelloWorld</code>), <strong>snake_case</strong> joins lowercase words with underscores (<code>hello_world</code>), <strong>kebab-case</strong> joins them with hyphens (<code>hello-world</code>), and <strong>CONSTANT_CASE</strong> uses uppercase words joined by underscores (<code>HELLO_WORLD</code>).</p>
+
+      <h2>How are words detected?</h2>
+      <p>For the programming cases, the converter splits your text on spaces, underscores, hyphens and other separators, and also at the boundaries inside existing camelCase or PascalCase words. That means <code>helloWorld</code>, <code>hello world</code> and <code>hello-world</code> all break into the same two words before being rejoined in the case you pick, so you can convert reliably between any two styles.</p>
+
+      <h2>Is my data safe?</h2>
+      <p>Yes. This case converter runs entirely in your browser using plain JavaScript string functions. Nothing you type or paste is uploaded, logged, or sent to any server — it never leaves your device.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var inp = document.getElementById('input');
+    var status = document.getElementById('status');
+    var charCount = document.getElementById('charCount');
+    var wordCount = document.getElementById('wordCount');
+
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+
+    // Split arbitrary text into an array of "words" for programming-case output.
+    // Handles spaces, underscores, hyphens, punctuation, and camelCase/PascalCase boundaries.
+    function splitWords(str){
+      if(!str) return [];
+      return str
+        // insert a space between a lowercase/number and an uppercase letter (camelCase boundary)
+        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+        // insert a space between consecutive uppercase letters followed by a lowercase (e.g. JSONData -> JSON Data)
+        .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+        // any run of non-alphanumeric characters becomes a separator
+        .split(/[^A-Za-z0-9]+/)
+        .filter(function(w){ return w.length > 0; });
+    }
+
+    function cap(w){ return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }
+
+    function transform(fn){
+      var src = inp.value;
+      if(!src.trim()){ setStatus('Enter some text first.', 'error'); return; }
+      inp.value = fn(src);
+      updateCounts();
+      setStatus('Done.', 'ok');
+    }
+
+    function toUpper(){ transform(function(s){ return s.toUpperCase(); }); }
+    function toLower(){ transform(function(s){ return s.toLowerCase(); }); }
+    function toTitle(){
+      transform(function(s){
+        return s.replace(/\b\w[\w']*/g, function(w){ return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); });
+      });
+    }
+    function toSentence(){
+      transform(function(s){
+        var lower = s.toLowerCase();
+        // capitalize the first letter, and the first letter after . ! ? followed by whitespace
+        return lower.replace(/(^\s*\w)|([.!?]\s+\w)/g, function(m){ return m.toUpperCase(); });
+      });
+    }
+    function toCamel(){
+      transform(function(s){
+        var words = splitWords(s);
+        return words.map(function(w, i){ return i === 0 ? w.toLowerCase() : cap(w); }).join('');
+      });
+    }
+    function toPascal(){
+      transform(function(s){
+        return splitWords(s).map(cap).join('');
+      });
+    }
+    function toSnake(){
+      transform(function(s){
+        return splitWords(s).map(function(w){ return w.toLowerCase(); }).join('_');
+      });
+    }
+    function toKebab(){
+      transform(function(s){
+        return splitWords(s).map(function(w){ return w.toLowerCase(); }).join('-');
+      });
+    }
+    function toConstant(){
+      transform(function(s){
+        return splitWords(s).map(function(w){ return w.toUpperCase(); }).join('_');
+      });
+    }
+
+    function updateCounts(){
+      var text = inp.value;
+      charCount.textContent = text.length;
+      var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      wordCount.textContent = words;
+    }
+
+    function copyText(){
+      var t = inp.value;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); }, function(){ setStatus('Copy failed — select the text and copy manually.', 'error'); });
+    }
+    function clearAll(){ inp.value = ''; updateCounts(); setStatus(''); inp.focus(); }
+    function loadSample(){ inp.value = 'hello world example text'; updateCounts(); setStatus('Sample loaded — now pick a case.', 'ok'); }
+
+    updateCounts();
+  </script>
+</body>
+</html>

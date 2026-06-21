@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: absolute URLs use the current domain. Regenerate if the site moves to a .com. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://dev.quietools.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://dev.quietools.com/json-formatter</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/regex-tester</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/base64</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/jwt-decoder</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/timestamp</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/uuid</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/color-converter</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/url-encoder</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/hash-generator</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/case-converter</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/lorem-ipsum</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/cron-expression</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/json-csv</loc><priority>0.8</priority></url>
+</urlset>
