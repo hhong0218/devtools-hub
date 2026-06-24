@@ -287,7 +287,7 @@
         'SHA-512: ' + fields.sha512.textContent
       ].join('\n');
       if(!fields.md5.textContent){ setStatus('Nothing to copy.', 'error'); return; }
-      navigator.clipboard.writeText(lines).then(function(){ setStatus('All hashes copied.', 'ok'); });
+      navigator.clipboard.writeText(lines).then(function(){ setStatus('All hashes copied.', 'ok'); if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'hash-generator' }); } });
     }
     function clearAll(){
       inp.value = '';

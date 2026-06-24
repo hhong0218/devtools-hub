@@ -138,6 +138,7 @@
       inp.value = fn(src);
       updateCounts();
       setStatus('Done.', 'ok');
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'case-converter' }); }
     }
 
     function toUpper(){ transform(function(s){ return s.toUpperCase(); }); }

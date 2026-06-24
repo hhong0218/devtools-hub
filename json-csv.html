@@ -262,6 +262,7 @@
           out.textContent = json;
           setStatus('✓ Converted CSV to JSON.', 'ok');
         }
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'json-csv' }); }
       } catch(e){
         out.textContent = '';
         setStatus('✗ ' + e.message, 'error');

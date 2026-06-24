@@ -169,6 +169,7 @@
       out.textContent = result;
       var label = type === 'words' ? 'word' : (type === 'sentences' ? 'sentence' : 'paragraph');
       setStatus('Generated ' + n + ' ' + label + (n === 1 ? '' : 's') + '.', 'ok');
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'lorem-ipsum' }); }
     }
 
     function copyOut(){

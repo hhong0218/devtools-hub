@@ -90,7 +90,7 @@
     function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
     function parseInput(){ return JSON.parse(inp.value); }
     function format(){
-      try { const o = parseInput(); out.textContent = JSON.stringify(o, null, 2); setStatus('Valid JSON — beautified.', 'ok'); }
+      try { const o = parseInput(); out.textContent = JSON.stringify(o, null, 2); setStatus('Valid JSON — beautified.', 'ok'); if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'json-formatter' }); } }
       catch(e){ out.textContent=''; setStatus('Error: ' + e.message, 'error'); }
     }
     function minify(){

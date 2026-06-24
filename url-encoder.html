@@ -132,6 +132,7 @@
         const mode = currentMode();
         out.textContent = mode === 'uri' ? encodeURI(text) : encodeURIComponent(text);
         setStatus('Encoded with ' + (mode === 'uri' ? 'encodeURI (full URL).' : 'encodeURIComponent (component).'), 'ok');
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'url-encoder' }); }
       } catch(e){
         out.textContent='';
         setStatus('Error: ' + e.message, 'error');

@@ -115,6 +115,7 @@
       if(upperEl.checked) text = text.toUpperCase();
       out.textContent = text;
       setStatus('Generated ' + n + ' UUID' + (n === 1 ? '' : 's') + '.', 'ok');
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'uuid' }); }
     }
     function copyOut(){
       const t = out.textContent;

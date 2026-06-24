@@ -234,6 +234,7 @@
       document.getElementById('rRel').textContent = relativeFrom(ms);
       document.getElementById('tsResult').hidden = false;
       setStatus('tsStatus', 'Converted.', 'ok');
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'timestamp' }); }
     }
     function useNow(){
       document.getElementById('tsInput').value = Math.floor(Date.now() / 1000);

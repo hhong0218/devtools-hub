@@ -411,6 +411,9 @@
     });
     // Live update as the user types
     inp.addEventListener('input', explain);
+    // Track an intentional "Explain" click as a tool-use conversion (not per keystroke).
+    var explainBtn = document.querySelector('.toolbar button.primary');
+    if(explainBtn){ explainBtn.addEventListener('click', function(){ if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'cron-expression' }); } }); }
 
     // Explain the prefilled example on load so the tool is immediately useful
     explain();

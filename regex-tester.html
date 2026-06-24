@@ -257,6 +257,7 @@
       flagEls.s.checked = false;
       inputEl.value = 'Contact us at support@devtools.com or sales@example.org for help.\nInvalid: not-an-email @ nowhere.';
       run();
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'regex-tester' }); }
     }
 
     function clearAll(){

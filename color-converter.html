@@ -264,7 +264,7 @@
     function copyVal(id){
       var t = document.getElementById(id).textContent;
       if(!t){ setStatus('Nothing to copy.', 'error'); return; }
-      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied ' + t + ' to clipboard.', 'ok'); });
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied ' + t + ' to clipboard.', 'ok'); if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'color-converter' }); } });
     }
 
     // Initialize from the default value on load

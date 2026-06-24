@@ -160,6 +160,7 @@
       }
 
       setStatus('Decoded ' + parts.length + ' part(s). Signature is NOT verified.', 'ok');
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'jwt-decoder' }); }
     }
 
     function clearAll(){ inp.value=''; clearOut(); setStatus(''); inp.focus(); }

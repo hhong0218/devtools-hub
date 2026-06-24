@@ -90,7 +90,7 @@
     function encode(){
       const v = inp.value;
       if(!v){ out.textContent=''; setStatus('Nothing to encode.', 'error'); return; }
-      try { out.textContent = btoa(unescape(encodeURIComponent(v))); setStatus('Encoded to Base64.', 'ok'); }
+      try { out.textContent = btoa(unescape(encodeURIComponent(v))); setStatus('Encoded to Base64.', 'ok'); if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'base64' }); } }
       catch(e){ out.textContent=''; setStatus('Error: ' + e.message, 'error'); }
     }
     function decode(){
