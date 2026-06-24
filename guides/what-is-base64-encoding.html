@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is Base64 Encoding? (And When to Use It) | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/what-is-base64-encoding.html">
+  <meta name="description" content="What is Base64 encoding, how does it work, and when should you use it? A clear explanation of Base64, why it isn't encryption, and common real-world use cases.">
+  <meta name="keywords" content="what is base64, base64 encoding explained, when to use base64, base64 vs encryption">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="What Is Base64 Encoding? (And When to Use It)">
+  <meta property="og:description" content="How Base64 works, why it's not encryption, and when you should reach for it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/what-is-base64-encoding.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › What Is Base64 Encoding?</p>
+      <h1>What Is Base64 Encoding?</h1>
+      <p>Base64 is a way of representing binary data using only 64 printable ASCII characters. It shows up everywhere in software — in data URLs, email attachments, API tokens, and configuration files — yet it's frequently misunderstood. This guide explains what Base64 actually does, why it is <em>not</em> a security measure, and the situations where reaching for it is the right call.</p>
+
+      <h2>How Base64 works</h2>
+      <p>Computers store everything as bytes, but many systems — email, URLs, JSON, XML — were designed to carry text, not arbitrary binary. Base64 bridges that gap. It takes raw bytes and rewrites them using a fixed alphabet of 64 characters: <code>A–Z</code>, <code>a–z</code>, <code>0–9</code>, plus <code>+</code> and <code>/</code> (with <code>=</code> used as padding).</p>
+      <p>Mechanically, Base64 reads the input three bytes (24 bits) at a time and splits those 24 bits into four 6-bit groups. Each 6-bit group (a value from 0 to 63) maps to one character in the alphabet. So every 3 bytes of input become 4 characters of output, which is why Base64 data is roughly <strong>33% larger</strong> than the original.</p>
+      <p>For example, the text <code>Hi</code> encodes to <code>SGk=</code>. The trailing <code>=</code> is padding that signals the original input didn't fill a complete 3-byte group.</p>
+
+      <a class="cta" href="/base64">Open the Base64 Encoder / Decoder →</a>
+
+      <h2>Base64 is not encryption</h2>
+      <div class="note">⚠️ Base64 provides <strong>zero confidentiality</strong>. Anyone can decode it instantly — no key required. It's an <em>encoding</em> (a reversible format change), not <em>encryption</em> (which protects data with a secret). Never use Base64 to "hide" passwords, API keys, or any sensitive value.</div>
+      <p>It's an easy trap because Base64 output looks scrambled. But scrambled-looking is not the same as secret. If you need to protect data, use real encryption (such as AES) or transport security (TLS/HTTPS) instead.</p>
+
+      <h2>When to use Base64</h2>
+      <ul>
+        <li><strong>Embedding small files inline</strong> — data URLs like <code>data:image/png;base64,...</code> let you include a small icon or font directly in HTML or CSS without a separate request.</li>
+        <li><strong>Putting binary in text-only formats</strong> — storing an image or file blob inside JSON, XML, or a YAML config that can only hold text.</li>
+        <li><strong>Email attachments</strong> — the MIME standard uses Base64 to send binary files over text-based email protocols.</li>
+        <li><strong>Encoding token segments</strong> — the header and payload of a JWT are Base64URL-encoded (a URL-safe variant that swaps <code>+/</code> for <code>-_</code>).</li>
+      </ul>
+
+      <h2>When NOT to use Base64</h2>
+      <ul>
+        <li>For large files — the 33% size overhead and lost browser caching usually outweigh the convenience.</li>
+        <li>For security — see above; it protects nothing.</li>
+        <li>When a binary-safe channel already exists — if you can send raw bytes, encoding them is wasted effort.</li>
+      </ul>
+
+      <h2>Try it yourself</h2>
+      <p>Paste any text to see its Base64 form, or paste Base64 to decode it back. Everything runs in your browser with full UTF-8 support.</p>
+      <a class="cta" href="/base64">Encode or decode Base64 now →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cron Expression Examples — Common Schedules Explained | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/cron-expression-examples.html">
+  <meta name="description" content="A reference table of common cron expression examples with plain-English meanings, plus how the five crontab fields work. Build and check schedules quickly.">
+  <meta name="keywords" content="cron expression examples, crontab examples, cron schedule, cron every 5 minutes, cron daily">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Cron Expression Examples — Common Schedules Explained">
+  <meta property="og:description" content="A reference table of common crontab schedules with plain-English meanings.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/cron-expression-examples.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.9rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left;vertical-align:top}
+    th{background:var(--panel)}
+    td code{white-space:nowrap}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › Cron Expression Examples</p>
+      <h1>Cron Expression Examples</h1>
+      <p>Cron is the time-based scheduler behind countless automated jobs — backups, report emails, cache warmers, and cleanup scripts. Its syntax is terse, and it's easy to forget which field is which. This guide breaks down the five fields and gives you a copy-ready table of the most common schedules in plain English.</p>
+
+      <h2>The five cron fields</h2>
+      <p>A standard cron expression has five space-separated fields:</p>
+      <pre><code>┌── minute (0-59)
+│ ┌── hour (0-23)
+│ │ ┌── day of month (1-31)
+│ │ │ ┌── month (1-12)
+│ │ │ │ ┌── day of week (0-6, Sunday = 0)
+│ │ │ │ │
+* * * * *</code></pre>
+      <p>Each field accepts a few special characters: <code>*</code> means "every value", <code>,</code> lists multiple values (<code>1,15</code>), <code>-</code> defines a range (<code>9-17</code>), and <code>/</code> sets a step (<code>*/5</code> means "every 5").</p>
+
+      <h2>Common cron expression examples</h2>
+      <table>
+        <thead><tr><th>Expression</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>* * * * *</code></td><td>Every minute</td></tr>
+          <tr><td><code>*/5 * * * *</code></td><td>Every 5 minutes</td></tr>
+          <tr><td><code>*/15 * * * *</code></td><td>Every 15 minutes</td></tr>
+          <tr><td><code>0 * * * *</code></td><td>Every hour, on the hour</td></tr>
+          <tr><td><code>0 */2 * * *</code></td><td>Every 2 hours</td></tr>
+          <tr><td><code>0 0 * * *</code></td><td>Every day at midnight</td></tr>
+          <tr><td><code>0 9 * * *</code></td><td>Every day at 9:00 AM</td></tr>
+          <tr><td><code>30 8 * * 1-5</code></td><td>At 8:30 AM, Monday through Friday</td></tr>
+          <tr><td><code>0 0 * * 0</code></td><td>Every Sunday at midnight</td></tr>
+          <tr><td><code>0 0 1 * *</code></td><td>On the 1st of every month at midnight</td></tr>
+          <tr><td><code>0 0 1 1 *</code></td><td>Once a year, on January 1st at midnight</td></tr>
+          <tr><td><code>0 22 * * 1-5</code></td><td>At 10:00 PM on weekdays</td></tr>
+          <tr><td><code>15 2 * * 6</code></td><td>At 2:15 AM every Saturday</td></tr>
+          <tr><td><code>0 0,12 * * *</code></td><td>At midnight and noon every day</td></tr>
+        </tbody>
+      </table>
+
+      <a class="cta" href="/cron-expression">Open the Cron Expression Explainer →</a>
+
+      <h2>Tips to avoid common mistakes</h2>
+      <ul>
+        <li><strong>Day-of-month vs. day-of-week:</strong> if you set both fields (positions 3 and 5) to non-<code>*</code> values, most cron implementations run the job when <em>either</em> matches, not both.</li>
+        <li><strong>Time zone matters:</strong> a job at <code>0 9 * * *</code> fires at 9 AM in the server's time zone, which may not be yours. Confirm the host's zone.</li>
+        <li><strong>Steps need a base:</strong> <code>*/5</code> is fine, but ranges with steps like <code>0-30/10</code> only step within the stated range.</li>
+        <li><strong>Validate before you ship:</strong> a single misplaced field can turn "once a day" into "every minute".</li>
+      </ul>
+
+      <div class="note">Not sure what a line does? Paste it into the explainer to get a plain-English description and the next few run times before you commit it to a crontab.</div>
+
+      <h2>Check your expression</h2>
+      <a class="cta" href="/cron-expression">Explain a cron expression now →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>

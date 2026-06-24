@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JWT Decoder — Free Online JSON Web Token Decoder | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/jwt-decoder">
   <meta name="description" content="Free online JWT decoder. Paste a JSON Web Token to decode its header and payload, with human-readable exp/iat/nbf dates. Decode only (no signature verification) — everything runs in your browser.">
   <meta name="keywords" content="jwt decoder, decode jwt online, json web token decoder, jwt parser">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="JWT Decoder — Free Online JSON Web Token Decoder">
   <meta property="og:description" content="Decode a JWT's header and payload instantly in your browser. No signup, no uploads, signature-free.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/jwt-decoder">
   <meta name="twitter:card" content="summary">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
@@ -86,6 +88,7 @@
       <p>1. Paste your JWT into the box above. 2. Click <strong>Decode</strong> to split the token and Base64URL-decode the header and payload into readable JSON. 3. Review the <strong>Header</strong> and <strong>Payload</strong> blocks; if the payload contains <code>exp</code>, <code>iat</code>, or <code>nbf</code> claims, their human-readable dates appear under <strong>Readable Claims</strong>.</p>
       <h2>Does this verify the signature?</h2>
       <p>No. This is a decoder only — it reads what is inside the header and payload but does <strong>not</strong> validate the signature, and it cannot tell you whether a token is authentic or has expired in a trusted way. Verifying a JWT requires the signing secret or public key on a server. Because the payload is only encoded (not encrypted), treat any decoded token as readable by anyone and avoid pasting sensitive production tokens.</p>
+      <p style="margin-top:1rem">Want a deeper explanation? Read our guide: <a href="/guides/how-to-decode-a-jwt">How to Decode a JWT</a>.</p>
     </section>
   </main>
   <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>

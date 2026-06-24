@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevTools Hub — Free Online Developer Tools (JSON, Regex, Base64, JWT)</title>
+  <link rel="canonical" href="https://dev.quietools.com/">
   <meta name="description" content="Free online developer tools: JSON formatter & validator, regex tester, Base64 encoder/decoder, JWT decoder, timestamp converter, and UUID generator. No signup. Everything runs in your browser — your data never leaves your device.">
   <meta name="keywords" content="developer tools, json formatter, regex tester, base64 decode, jwt decoder, timestamp converter, uuid generator, online dev tools">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="DevTools Hub — Free Online Developer Tools">
   <meta property="og:description" content="JSON formatter, regex tester, Base64, JWT decoder & more. Free, no signup, runs entirely in your browser.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/">
   <meta name="twitter:card" content="summary">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
@@ -41,10 +43,11 @@
     .ad-slot{margin:2rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
     footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
   </style>
-<script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://dev.quietools.com"+location.pathname;document.head.appendChild(l);})();</script></head>
+</head>
 <body>
-  <header>
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:1rem">
     <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/" style="color:var(--accent);text-decoration:none;font-size:.95rem">Guides</a>
   </header>
   <main>
     <section class="hero">
@@ -70,7 +73,62 @@
       <a class="card" href="/cron-expression"><div class="icon">* *</div><h2>Cron Expression Explainer</h2><p>Translate a crontab line to plain English with next run times.</p></a>
       <a class="card" href="/json-csv"><div class="icon">⇄</div><h2>JSON ⇄ CSV</h2><p>Convert JSON arrays to CSV and back, with correct quoting.</p></a>
     </section>
+
+    <section style="margin-top:3rem">
+      <h2 style="font-size:1.5rem;margin-bottom:.4rem">Guides</h2>
+      <p style="color:var(--muted);margin-bottom:1.25rem">Practical, plain-English explainers for common developer tasks.</p>
+      <div class="grid">
+        <a class="card" href="/guides/how-to-decode-a-jwt"><div class="icon">JWT</div><h2>How to Decode a JWT</h2><p>What's inside a JSON Web Token, how to read it, and the security pitfalls to avoid.</p></a>
+        <a class="card" href="/guides/what-is-base64-encoding"><div class="icon">64</div><h2>What Is Base64 Encoding?</h2><p>How Base64 works, why it's not encryption, and when you should reach for it.</p></a>
+        <a class="card" href="/guides/cron-expression-examples"><div class="icon">* *</div><h2>Cron Expression Examples</h2><p>A reference table of common crontab schedules with plain-English meanings.</p></a>
+        <a class="card" href="/guides/regex-cheatsheet"><div class="icon">.*</div><h2>Regex Cheatsheet</h2><p>The regex syntax, anchors, classes, and patterns you actually use day to day.</p></a>
+      </div>
+    </section>
+
+    <section class="faq" style="margin-top:3rem">
+      <h2 style="font-size:1.5rem;margin-bottom:1.25rem">Frequently Asked Questions</h2>
+      <div style="display:grid;gap:1rem">
+        <div class="card" style="cursor:default">
+          <h2 style="font-size:1.05rem">Is DevTools Hub free?</h2>
+          <p>Yes. Every tool on DevTools Hub is completely free to use, with no usage limits, no trials, and no paywalls.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <h2 style="font-size:1.05rem">Do my inputs get sent anywhere?</h2>
+          <p>No. Every tool runs entirely in your browser using client-side JavaScript. The text you paste — JSON, tokens, URLs, anything — is processed on your own device and is never uploaded to a server.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <h2 style="font-size:1.05rem">Is it private and client-side?</h2>
+          <p>Yes. Because all processing happens locally in your browser, your data stays private. You can even disconnect from the internet after the page loads and the tools will still work.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <h2 style="font-size:1.05rem">Do I need an account?</h2>
+          <p>No. There is no signup, no login, and no account of any kind. Open a tool and start using it immediately.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <h2 style="font-size:1.05rem">Which tools are available?</h2>
+          <p>DevTools Hub includes a JSON formatter, regex tester, Base64 encoder/decoder, JWT decoder, timestamp converter, UUID generator, color converter, URL encoder/decoder, hash generator, case converter, Lorem Ipsum generator, cron expression explainer, and a JSON ⇄ CSV converter.</p>
+        </div>
+        <div class="card" style="cursor:default">
+          <h2 style="font-size:1.05rem">Does it use open-source libraries?</h2>
+          <p>The tools rely on standard, well-supported browser APIs (such as the Web Crypto API for hashing) and small amounts of vanilla JavaScript. There are no heavy third-party trackers, and nothing about your input is shared with external services.</p>
+        </div>
+      </div>
+    </section>
   </main>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Is DevTools Hub free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every tool on DevTools Hub is completely free to use, with no usage limits, no trials, and no paywalls."}},
+      {"@type": "Question", "name": "Do my inputs get sent anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every tool runs entirely in your browser using client-side JavaScript. The text you paste is processed on your own device and is never uploaded to a server."}},
+      {"@type": "Question", "name": "Is it private and client-side?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Because all processing happens locally in your browser, your data stays private. You can even disconnect from the internet after the page loads and the tools will still work."}},
+      {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. There is no signup, no login, and no account of any kind. Open a tool and start using it immediately."}},
+      {"@type": "Question", "name": "Which tools are available?", "acceptedAnswer": {"@type": "Answer", "text": "DevTools Hub includes a JSON formatter, regex tester, Base64 encoder/decoder, JWT decoder, timestamp converter, UUID generator, color converter, URL encoder/decoder, hash generator, case converter, Lorem Ipsum generator, cron expression explainer, and a JSON to CSV converter."}},
+      {"@type": "Question", "name": "Does it use open-source libraries?", "acceptedAnswer": {"@type": "Answer", "text": "The tools rely on standard, well-supported browser APIs such as the Web Crypto API for hashing, plus small amounts of vanilla JavaScript. There are no heavy third-party trackers, and nothing about your input is shared with external services."}}
+    ]
+  }
+  </script>
   <footer>
     <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
   </footer>

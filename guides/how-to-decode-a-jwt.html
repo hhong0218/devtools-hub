@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Decode a JWT (JSON Web Token) — Step by Step | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/how-to-decode-a-jwt.html">
+  <meta name="description" content="Learn how to decode a JWT, what's inside a JSON Web Token's header, payload and signature, and why you should never paste production secrets into online tools.">
+  <meta name="keywords" content="how to decode a jwt, decode json web token, jwt header payload, jwt structure">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="How to Decode a JWT (JSON Web Token) — Step by Step">
+  <meta property="og:description" content="What's inside a JWT, how to read the header and payload, and the security pitfalls to avoid.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/how-to-decode-a-jwt.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › How to Decode a JWT</p>
+      <h1>How to Decode a JWT (JSON Web Token)</h1>
+      <p>A JSON Web Token, or JWT (often pronounced "jot"), is a compact, URL-safe string used to carry claims between two parties — most commonly between an authentication server and a client app. If you have ever inspected a request and seen a long string of seemingly random characters with two dots in it, that's almost certainly a JWT. This guide explains how a JWT is structured, how to decode one to see what's inside, and the security rules you should never break.</p>
+
+      <h2>What a JWT looks like</h2>
+      <p>A JWT is three Base64URL-encoded segments joined by dots:</p>
+      <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkphbmUgRG9lIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
+      <p>The three parts are the <strong>header</strong>, the <strong>payload</strong>, and the <strong>signature</strong>, written as <code>header.payload.signature</code>.</p>
+
+      <h2>What's inside a JWT</h2>
+      <ul>
+        <li><strong>Header</strong> — JSON describing how the token is signed, e.g. <code>{"alg":"HS256","typ":"JWT"}</code>. The <code>alg</code> field names the signing algorithm.</li>
+        <li><strong>Payload</strong> — JSON containing the claims (the actual data). Standard claims include <code>sub</code> (subject), <code>iat</code> (issued-at), <code>exp</code> (expiry), and <code>iss</code> (issuer), alongside any custom fields your app adds.</li>
+        <li><strong>Signature</strong> — a cryptographic signature over the header and payload. It lets a server confirm the token hasn't been altered and was issued by someone holding the signing key.</li>
+      </ul>
+
+      <h2>How to decode a JWT, step by step</h2>
+      <ol>
+        <li>Split the token on the dot characters into its three parts.</li>
+        <li>Take the first part (the header) and Base64URL-decode it. You'll get readable JSON.</li>
+        <li>Do the same with the second part (the payload).</li>
+        <li>Read the claims. If you see <code>exp</code>, <code>iat</code>, or <code>nbf</code>, those are Unix timestamps — convert them to human-readable dates to check validity windows.</li>
+      </ol>
+      <p>The header and payload are only <em>encoded</em>, not encrypted, so anyone can read them. The signature is the only part that requires a key, and it cannot be reversed into readable text — it's there to be verified, not decoded.</p>
+
+      <a class="cta" href="/jwt-decoder">Open the JWT Decoder →</a>
+
+      <h2>Security note: never paste secrets</h2>
+      <div class="note">🔒 Decoding a JWT reveals everything in its payload. Because the payload is readable by anyone, you should <strong>never store sensitive data</strong> (passwords, API keys, personal secrets) inside a token. And when troubleshooting, <strong>never paste a live production token</strong> into a third-party online tool you don't trust — a valid, unexpired token can be replayed to impersonate the user.</div>
+      <p>Our <a href="/jwt-decoder">JWT Decoder</a> runs entirely in your browser: the token never leaves your device and is never sent to a server. Even so, prefer using expired or test tokens when you can, and rotate any token you suspect has been exposed.</p>
+
+      <h2>Decoding vs. verifying</h2>
+      <p>Decoding tells you <em>what a token says</em>. Verifying tells you <em>whether you can trust it</em>. Verification requires recomputing the signature with the signing secret (for <code>HS256</code>) or public key (for <code>RS256</code>) on a trusted server. A decoder alone cannot tell you whether a token is authentic — only what claims it carries and whether, on paper, it has expired.</p>
+
+      <h2>Try it yourself</h2>
+      <p>Paste a sample or test token into the decoder to see the header and payload split out, with <code>exp</code> and <code>iat</code> rendered as readable dates.</p>
+      <a class="cta" href="/jwt-decoder">Decode a JWT now →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>
