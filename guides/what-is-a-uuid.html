@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is a UUID and When to Use It | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/what-is-a-uuid.html">
+  <meta name="description" content="What is a UUID, how the versions (v1, v4, v7) differ, and when to use one instead of an auto-increment ID. A plain-English guide for developers.">
+  <meta name="keywords" content="what is a uuid, uuid vs auto increment, uuid v4 vs v7, guid explained">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="What Is a UUID and When to Use It">
+  <meta property="og:description" content="How UUIDs work, how the versions differ, and when to use one instead of an auto-increment ID.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/what-is-a-uuid.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is a UUID guaranteed to be unique?","acceptedAnswer":{"@type":"Answer","text":"Not literally guaranteed, but the probability of a collision with version 4 UUIDs is astronomically small. You would need to generate billions of UUIDs per second for decades before a duplicate became likely, so in practice they are treated as unique."}},
+      {"@type":"Question","name":"What is the difference between a UUID and a GUID?","acceptedAnswer":{"@type":"Answer","text":"They are the same thing. GUID (Globally Unique Identifier) is Microsoft's name for the format defined by the UUID standard. The two terms are interchangeable."}},
+      {"@type":"Question","name":"Should I use a UUID as a database primary key?","acceptedAnswer":{"@type":"Answer","text":"You can, and it is common in distributed systems. Random v4 UUIDs can fragment B-tree indexes, so for new designs a time-ordered version like UUIDv7 gives you uniqueness plus better insert locality."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › What Is a UUID</p>
+      <h1>What Is a UUID and When to Use It</h1>
+      <p>A UUID — Universally Unique Identifier — is a 128-bit value used to label something uniquely without a central authority handing out numbers. You will see them as database keys, request IDs in logs, file names, and identifiers in APIs. This guide explains how UUIDs are structured, how the versions differ, and when a UUID is a better choice than a plain incrementing number.</p>
+
+      <h2>What a UUID looks like</h2>
+      <p>A UUID is normally written as 32 hexadecimal digits split into five groups by hyphens, for a total of 36 characters:</p>
+      <pre><code>550e8400-e29b-41d4-a716-446655440000
+8-4-4-4-12  ← digit groups</code></pre>
+      <p>Those 128 bits give roughly 3.4 × 10<sup>38</sup> possible values. That enormous space is what lets independent machines mint identifiers at the same time without coordinating, and still avoid collisions.</p>
+
+      <a class="cta" href="/uuid">Open the UUID Generator →</a>
+
+      <h2>The common versions</h2>
+      <p>The standard defines several versions. The digit at the start of the third group tells you which one you are looking at.</p>
+      <table>
+        <tr><th>Version</th><th>Based on</th><th>Good for</th></tr>
+        <tr><td>v1</td><td>Timestamp + MAC address</td><td>Time-ordered IDs (leaks the host's MAC)</td></tr>
+        <tr><td>v4</td><td>Random bits</td><td>General-purpose, the most widely used</td></tr>
+        <tr><td>v7</td><td>Unix timestamp + random</td><td>Time-sortable database keys (newer)</td></tr>
+      </table>
+      <p><strong>Version 4</strong> is what most code generates by default: 122 random bits and 6 fixed bits that mark the version and variant. <strong>Version 7</strong> is the modern recommendation when you want uniqueness <em>and</em> rough sort order, because the leading bits encode the creation time.</p>
+
+      <h2>When to use a UUID</h2>
+      <ul>
+        <li><strong>Distributed systems</strong> — when multiple services or devices create records independently and you can't rely on a single auto-increment counter.</li>
+        <li><strong>Public-facing identifiers</strong> — a UUID in a URL doesn't reveal how many records you have, unlike <code>/orders/42</code> which leaks volume and invites enumeration.</li>
+        <li><strong>Merging data sets</strong> — combining tables from different databases is painless when keys can't clash.</li>
+        <li><strong>Idempotency keys</strong> — a client can generate a UUID up front so a retried request isn't processed twice.</li>
+      </ul>
+
+      <h2>When NOT to use a UUID</h2>
+      <ul>
+        <li>Small single-database apps where a simple <code>BIGINT</code> auto-increment key is shorter, faster, and easier to read.</li>
+        <li>As a security token — a v4 UUID is random but not designed as a secret; use a dedicated cryptographic token for that.</li>
+        <li>When index performance is critical and you can't use v7 — fully random v4 keys scatter inserts across a B-tree index.</li>
+      </ul>
+
+      <div class="note">💡 A UUID identifies; it does not authenticate. Knowing a resource's UUID should never be enough to access it — always enforce real authorization checks.</div>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>Is a UUID guaranteed to be unique?</strong> Not literally, but a v4 collision is so improbable it is treated as impossible in practice — you'd need billions per second for decades.</p>
+      <p><strong>What's the difference between a UUID and a GUID?</strong> Nothing. GUID is Microsoft's name for the same format.</p>
+      <p><strong>Can I use a UUID as a primary key?</strong> Yes. For new designs prefer UUIDv7 so the keys stay time-ordered and index-friendly.</p>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/how-to-decode-a-jwt">How to Decode a JWT</a> — another identifier format you'll meet in APIs.</li>
+        <li><a href="/guides/what-is-base64-encoding">What Is Base64 Encoding?</a> — how binary data gets packed into text.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+
+      <h2>Generate one now</h2>
+      <p>Need a UUID this second? Create v4 (and other) UUIDs instantly in your browser — nothing is sent to a server.</p>
+      <a class="cta" href="/uuid">Generate a UUID →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>

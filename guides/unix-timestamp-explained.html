@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is a Unix Timestamp? (Epoch Time) | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/unix-timestamp-explained.html">
+  <meta name="description" content="What a Unix timestamp is, why the epoch starts in 1970, the difference between seconds and milliseconds, and the Year 2038 problem. A clear developer guide.">
+  <meta name="keywords" content="unix timestamp explained, epoch time, what is epoch time, year 2038 problem">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="What Is a Unix Timestamp? (Epoch Time Explained)">
+  <meta property="og:description" content="Why the epoch starts in 1970, seconds vs milliseconds, and the Year 2038 problem.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/unix-timestamp-explained.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Why does Unix time start in 1970?","acceptedAnswer":{"@type":"Answer","text":"The early Unix developers needed a fixed reference point and chose midnight UTC on 1 January 1970 as a convenient round date. It became known as the epoch, and every Unix timestamp counts the seconds elapsed since then."}},
+      {"@type":"Question","name":"Is a Unix timestamp in seconds or milliseconds?","acceptedAnswer":{"@type":"Answer","text":"Traditionally seconds. A 10-digit number is seconds; a 13-digit number is milliseconds, which is what JavaScript's Date.now() returns. Always check the digit count before converting."}},
+      {"@type":"Question","name":"What is the Year 2038 problem?","acceptedAnswer":{"@type":"Answer","text":"Systems that store the timestamp in a signed 32-bit integer will overflow on 19 January 2038, wrapping to a negative number. The fix is to use a 64-bit integer, which most modern systems already do."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › Unix Timestamp Explained</p>
+      <h1>What Is a Unix Timestamp?</h1>
+      <p>A Unix timestamp — also called epoch time or POSIX time — is a single number that represents a moment in time: the count of seconds that have elapsed since midnight UTC on 1 January 1970. It's how databases, APIs, log files, and programming languages store time under the hood. This guide explains where it comes from, the seconds-vs-milliseconds trap, and the famous Year 2038 problem.</p>
+
+      <h2>One number, no timezone</h2>
+      <p>Instead of storing a date as "June 25, 2026 3:42 PM in Seoul," computers store a plain integer like <code>1782000000</code>. The beauty of this is that the number is timezone-independent — it refers to the same instant everywhere on Earth. You only apply a timezone when you <em>display</em> it to a human.</p>
+      <pre><code>0            → 1970-01-01 00:00:00 UTC (the epoch)
+1000000000   → 2001-09-09 01:46:40 UTC
+1782000000   → 2026-06-...  (a moment in 2026)</code></pre>
+
+      <a class="cta" href="/timestamp">Open the Timestamp Converter →</a>
+
+      <h2>Why 1970?</h2>
+      <p>When Unix was being built in the early 1970s, its authors needed a fixed zero point to count from. They picked midnight UTC on 1 January 1970 — a clean, recent round date. That instant became known as <strong>the epoch</strong>, and counting seconds from it turned out to be simple, compact, and easy to do arithmetic on.</p>
+
+      <h2>Seconds vs milliseconds — a common bug</h2>
+      <p>This trips up developers constantly. Classic Unix timestamps are in <strong>seconds</strong>, but many languages — JavaScript especially — work in <strong>milliseconds</strong>.</p>
+      <table>
+        <tr><th>Value</th><th>Digits</th><th>Unit</th></tr>
+        <tr><td><code>1782000000</code></td><td>10</td><td>seconds</td></tr>
+        <tr><td><code>1782000000000</code></td><td>13</td><td>milliseconds</td></tr>
+      </table>
+      <div class="note">💡 Quick check: a 10-digit number is seconds, a 13-digit number is milliseconds. Mixing them up sends a date to either 1970 or the year 50,000+. <code>Date.now()</code> in JavaScript returns milliseconds.</div>
+
+      <h2>The Year 2038 problem</h2>
+      <p>Many older systems store the timestamp in a <strong>signed 32-bit integer</strong>. The largest value that holds is 2,147,483,647 — which, counted as seconds from 1970, lands on <strong>19 January 2038</strong>. One second later the counter overflows and wraps to a large negative number, throwing dates back to 1901. The fix is to store the value in a 64-bit integer, which pushes the limit hundreds of billions of years out. Most modern operating systems and languages already use 64-bit time.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>Why does Unix time start in 1970?</strong> The Unix authors chose midnight UTC on 1 Jan 1970 as a convenient fixed reference, the epoch.</p>
+      <p><strong>Seconds or milliseconds?</strong> Traditionally seconds (10 digits); JavaScript uses milliseconds (13 digits).</p>
+      <p><strong>What's the Year 2038 problem?</strong> 32-bit timestamps overflow on 19 Jan 2038; the fix is 64-bit storage.</p>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/cron-expression-examples">Cron Expression Examples</a> — scheduling that also revolves around time.</li>
+        <li><a href="/guides/what-is-a-uuid">What Is a UUID?</a> — UUIDv7 even embeds a Unix timestamp.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+
+      <h2>Convert a timestamp now</h2>
+      <p>Turn a Unix timestamp into a readable date, or a date into a timestamp — instantly, in your browser.</p>
+      <a class="cta" href="/timestamp">Convert a timestamp →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>

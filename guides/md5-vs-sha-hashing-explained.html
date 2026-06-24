@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD5 vs SHA Hashing Explained | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/md5-vs-sha-hashing-explained.html">
+  <meta name="description" content="MD5 vs SHA-1 vs SHA-256 explained: what a hash function is, why MD5 is broken, and which algorithm to use for checksums and passwords. A practical guide.">
+  <meta name="keywords" content="md5 vs sha, sha256 vs md5, is md5 secure, hash function explained">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="MD5 vs SHA Hashing Explained">
+  <meta property="og:description" content="What a hash is, why MD5 is broken, and which algorithm to use for checksums and passwords.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/md5-vs-sha-hashing-explained.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is MD5 still safe to use?","acceptedAnswer":{"@type":"Answer","text":"Not for anything security-related. MD5 is broken because attackers can craft two different inputs with the same hash (a collision). It is fine only as a fast, non-security checksum for detecting accidental corruption."}},
+      {"@type":"Question","name":"What is the difference between MD5 and SHA-256?","acceptedAnswer":{"@type":"Answer","text":"MD5 produces a 128-bit hash and is cryptographically broken. SHA-256 is part of the SHA-2 family, produces a 256-bit hash, and is currently considered secure against collisions. Prefer SHA-256 whenever integrity matters."}},
+      {"@type":"Question","name":"Should I hash passwords with SHA-256?","acceptedAnswer":{"@type":"Answer","text":"No. General-purpose hashes are too fast for passwords. Use a slow, salted password hashing function such as bcrypt, scrypt, or Argon2, which are designed specifically to resist brute-force attacks."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › MD5 vs SHA Hashing</p>
+      <h1>MD5 vs SHA Hashing Explained</h1>
+      <p>Hash functions turn any input — a word, a file, a gigabyte of data — into a fixed-length fingerprint. MD5, SHA-1, and SHA-256 are the names you meet most often, and they are not interchangeable. This guide explains what a hash is, why MD5 and SHA-1 are considered broken, and which algorithm to reach for depending on the job.</p>
+
+      <h2>What a hash function does</h2>
+      <p>A cryptographic hash takes input of any size and returns a fixed-size string. The same input always yields the same output, but even a one-character change produces a completely different result:</p>
+      <pre><code>md5("hello")  = 5d41402abc4b2a76b9719d911017c592
+md5("hellp")  = d96b9c2d3c8f8a6e... (totally different)</code></pre>
+      <p>Three properties make a hash <em>cryptographic</em>: it's a one-way function (you can't reverse it to recover the input), it's deterministic, and it should be infeasible to find two inputs with the same output. That last property — collision resistance — is exactly where MD5 fails.</p>
+
+      <a class="cta" href="/hash-generator">Open the Hash Generator →</a>
+
+      <h2>The algorithms at a glance</h2>
+      <table>
+        <tr><th>Algorithm</th><th>Output size</th><th>Status</th></tr>
+        <tr><td>MD5</td><td>128-bit</td><td>Broken — collisions are easy</td></tr>
+        <tr><td>SHA-1</td><td>160-bit</td><td>Broken — collisions demonstrated (2017)</td></tr>
+        <tr><td>SHA-256</td><td>256-bit</td><td>Secure (SHA-2 family)</td></tr>
+        <tr><td>SHA-512</td><td>512-bit</td><td>Secure (SHA-2 family)</td></tr>
+      </table>
+
+      <h2>Why MD5 is broken</h2>
+      <p>MD5 was designed in 1991 and was the default checksum for years. The problem is collisions: researchers can deliberately construct two different files that produce the <em>same</em> MD5 hash. That destroys its value for integrity checks — a malicious file could be swapped in while matching the expected hash. SHA-1 fell to a practical collision attack (known as "SHAttered") in 2017, putting it in the same category.</p>
+      <div class="note">⚠️ Treat MD5 and SHA-1 as "checksum-only" tools. They can catch accidental corruption, but they cannot defend against a motivated attacker.</div>
+
+      <h2>Which one should you use?</h2>
+      <ul>
+        <li><strong>Integrity / digital signatures / anything security-sensitive</strong> — use <strong>SHA-256</strong> (or SHA-512). These are the current standard.</li>
+        <li><strong>Fast non-security checksums</strong> — detecting an accidentally corrupted download where no attacker is involved — MD5 is acceptable, though SHA-256 is barely slower on modern hardware.</li>
+        <li><strong>Passwords</strong> — do <em>not</em> use any of these directly. General hashes are too fast, which helps brute-force attacks. Use <strong>bcrypt, scrypt, or Argon2</strong>, which are deliberately slow and salted.</li>
+      </ul>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>Is MD5 still safe?</strong> Only as a non-security checksum. It's broken for anything where an attacker could tamper with data.</p>
+      <p><strong>MD5 vs SHA-256?</strong> SHA-256 produces a longer hash and is collision-resistant; prefer it whenever integrity matters.</p>
+      <p><strong>Hash passwords with SHA-256?</strong> No — use bcrypt, scrypt, or Argon2 instead.</p>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-is-base64-encoding">What Is Base64 Encoding?</a> — encoding (reversible) vs hashing (one-way).</li>
+        <li><a href="/guides/how-to-decode-a-jwt">How to Decode a JWT</a> — signatures rely on hashing too.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+
+      <h2>Hash something now</h2>
+      <p>Generate MD5, SHA-1, SHA-256, and more from any text — instantly, in your browser.</p>
+      <a class="cta" href="/hash-generator">Generate a hash →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>

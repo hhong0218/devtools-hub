@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoding Explained (Percent-Encoding) | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/url-encoding-explained.html">
+  <meta name="description" content="What URL encoding is, why spaces become %20, which characters must be escaped, and the difference between encodeURI and encodeURIComponent. A clear guide.">
+  <meta name="keywords" content="url encoding explained, percent encoding, what is %20, encodeuri vs encodeuricomponent">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="URL Encoding Explained (Percent-Encoding)">
+  <meta property="og:description" content="Why spaces become %20, which characters must be escaped, and encodeURI vs encodeURIComponent.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/url-encoding-explained.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Why does a space become %20?","acceptedAnswer":{"@type":"Answer","text":"Spaces are not allowed in a URL, so they are percent-encoded. The space character is byte 0x20 in ASCII, which is why it becomes %20. In the query string of a form submission it may instead appear as a plus sign."}},
+      {"@type":"Question","name":"What is the difference between encodeURI and encodeURIComponent?","acceptedAnswer":{"@type":"Answer","text":"encodeURI is for a whole URL and leaves structural characters like : / ? & untouched. encodeURIComponent is for a single value such as one query parameter and escapes those characters too. Use encodeURIComponent for individual values."}},
+      {"@type":"Question","name":"Is URL encoding the same as encryption?","acceptedAnswer":{"@type":"Answer","text":"No. URL encoding is a reversible formatting step that makes text safe to place in a URL. It provides no secrecy at all — anyone can decode it instantly."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › URL Encoding Explained</p>
+      <h1>URL Encoding Explained</h1>
+      <p>URL encoding — also called percent-encoding — is how text that contains reserved or unsafe characters gets safely placed inside a web address. It's the reason a space turns into <code>%20</code> and an ampersand inside a value becomes <code>%26</code>. This guide explains what gets encoded, why, and the difference between the two JavaScript functions developers reach for.</p>
+
+      <h2>Why URLs need encoding</h2>
+      <p>A URL has a strict grammar. Characters like <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code>, and <code>#</code> have structural meaning — they separate the path from the query string, one parameter from the next, and so on. If a value you want to send <em>contains</em> one of those characters, the browser or server would misread where the value ends.</p>
+      <p>URL encoding solves this by replacing any unsafe byte with a percent sign followed by its two-digit hexadecimal value. So a literal ampersand inside a search term becomes <code>%26</code>, and the parser no longer confuses it with a parameter separator.</p>
+      <pre><code>Input : name=Tom &amp; Jerry
+Encoded: name=Tom%20%26%20Jerry</code></pre>
+
+      <a class="cta" href="/url-encoder">Open the URL Encoder / Decoder →</a>
+
+      <h2>Which characters get encoded</h2>
+      <p>Characters fall into three buckets:</p>
+      <table>
+        <tr><th>Group</th><th>Examples</th><th>Encoded?</th></tr>
+        <tr><td>Unreserved</td><td><code>A–Z a–z 0–9 - _ . ~</code></td><td>Never</td></tr>
+        <tr><td>Reserved</td><td><code>: / ? # [ ] @ ! $ &amp; ' ( ) * + , ; =</code></td><td>When used as data, not structure</td></tr>
+        <tr><td>Other / non-ASCII</td><td>spaces, é, 中, emoji</td><td>Always (as UTF-8 bytes)</td></tr>
+      </table>
+      <p>Non-ASCII characters are first turned into their UTF-8 bytes, then each byte is percent-encoded. That's why a single emoji can expand into several <code>%XX</code> sequences.</p>
+
+      <h2>encodeURI vs encodeURIComponent</h2>
+      <p>JavaScript gives you two functions, and choosing the wrong one is a classic bug.</p>
+      <ul>
+        <li><strong><code>encodeURI()</code></strong> — for an entire URL. It leaves structural characters (<code>: / ? &amp; =</code>) alone so the URL stays valid.</li>
+        <li><strong><code>encodeURIComponent()</code></strong> — for a single piece of data, like one query-string value. It escapes <code>&amp;</code>, <code>=</code>, <code>/</code> and the rest so they can't break the URL's structure.</li>
+      </ul>
+      <div class="note">⚠️ Rule of thumb: building a value to drop into a parameter? Use <code>encodeURIComponent</code>. Encoding a full link you already assembled? Use <code>encodeURI</code>. When unsure, encode the individual values.</div>
+
+      <h2>Spaces: %20 vs +</h2>
+      <p>You'll see spaces encoded two ways. In the <em>path</em> and most contexts a space is <code>%20</code>. In <code>application/x-www-form-urlencoded</code> data — the classic HTML form submission — a space is often a <code>+</code>. Both are valid in their place; decoders that follow the form rules treat <code>+</code> as a space.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>Why does a space become %20?</strong> Space is byte <code>0x20</code> and isn't allowed raw in a URL, so it's percent-encoded to <code>%20</code>.</p>
+      <p><strong>encodeURI or encodeURIComponent?</strong> Use <code>encodeURIComponent</code> for individual values; <code>encodeURI</code> for a whole URL.</p>
+      <p><strong>Is encoding the same as encryption?</strong> No — it's reversible formatting with zero secrecy.</p>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-is-base64-encoding">What Is Base64 Encoding?</a> — another text-safe representation, for binary data.</li>
+        <li><a href="/guides/what-is-a-uuid">What Is a UUID?</a> — identifiers you'll often pass in URLs.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+
+      <h2>Encode a string now</h2>
+      <p>Paste any text to percent-encode it, or paste an encoded string to decode it back — all in your browser.</p>
+      <a class="cta" href="/url-encoder">Encode or decode a URL →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>
