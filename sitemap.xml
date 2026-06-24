@@ -15,6 +15,9 @@
   <url><loc>https://dev.quietools.com/lorem-ipsum</loc><priority>0.8</priority></url>
   <url><loc>https://dev.quietools.com/cron-expression</loc><priority>0.8</priority></url>
   <url><loc>https://dev.quietools.com/json-csv</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/about.html</loc><priority>0.5</priority></url>
+  <url><loc>https://dev.quietools.com/privacy.html</loc><priority>0.3</priority></url>
+  <url><loc>https://dev.quietools.com/terms.html</loc><priority>0.3</priority></url>
   <url><loc>https://dev.quietools.com/guides/</loc><priority>0.7</priority></url>
   <url><loc>https://dev.quietools.com/guides/how-to-decode-a-jwt.html</loc><priority>0.7</priority></url>
   <url><loc>https://dev.quietools.com/guides/what-is-base64-encoding.html</loc><priority>0.7</priority></url>

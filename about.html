@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About DevTools Hub | Free Privacy-First Developer Tools</title>
+  <link rel="canonical" href="https://dev.quietools.com/about.html">
+  <meta name="description" content="About DevTools Hub — a free, privacy-first developer toolbox. Every tool runs entirely in your browser, so your data is never uploaded. Learn how it works.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="About DevTools Hub">
+  <meta property="og:description" content="A free, privacy-first developer toolbox. Every tool runs in your browser — your data never leaves your device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/about.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+    footer a{margin:0 .5rem}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › About</p>
+      <h1>About DevTools Hub</h1>
+      <p>DevTools Hub is a free, privacy-first toolbox for developers. It brings together the small utilities you reach for every day — formatting JSON, decoding a JWT, testing a regular expression, converting a timestamp — into one fast, no-nonsense site with no signup and no clutter.</p>
+
+      <h2>Privacy First, by Design</h2>
+      <p>Every tool on DevTools Hub runs entirely in your browser. When you paste in JSON, a token, a URL, or any other input, that data is processed locally on your own device using client-side JavaScript. <strong>Nothing you enter is uploaded to or stored on a server.</strong> In fact, once a tool's page has loaded, you can disconnect from the internet and it will keep working. This means you can safely use the tools with sensitive data without it leaving your machine.</p>
+
+      <h2>How It Works</h2>
+      <p>The site is a collection of static pages. Each tool is a self-contained page that uses standard browser APIs — for example, the Web Crypto API for hashing — plus small amounts of vanilla JavaScript. There are no heavy frameworks and no third-party trackers embedded in the tools themselves. We use Google Analytics for anonymous, aggregated usage statistics and Google AdSense to display ads that keep the site free; both are described in our <a href="/privacy.html">Privacy Policy</a>.</p>
+
+      <h2>The Tools</h2>
+      <p>DevTools Hub currently includes:</p>
+      <ul>
+        <li><a href="/json-formatter">JSON Formatter</a> — format, validate, and minify JSON.</li>
+        <li><a href="/regex-tester">Regex Tester</a> — test regular expressions with live match highlighting.</li>
+        <li><a href="/base64">Base64 Encode / Decode</a> — convert text to and from Base64.</li>
+        <li><a href="/jwt-decoder">JWT Decoder</a> — inspect JSON Web Token headers and payloads.</li>
+        <li><a href="/timestamp">Timestamp Converter</a> — convert Unix timestamps to human dates and back.</li>
+        <li><a href="/uuid">UUID Generator</a> — generate v4 UUIDs individually or in bulk.</li>
+        <li><a href="/color-converter">Color Converter</a> — convert between HEX, RGB, and HSL.</li>
+        <li><a href="/url-encoder">URL Encoder / Decoder</a> — percent-encode and decode URLs.</li>
+        <li><a href="/hash-generator">Hash Generator</a> — MD5, SHA-1, SHA-256, and SHA-512 hashes.</li>
+        <li><a href="/case-converter">Case Converter</a> — camelCase, snake_case, Title Case, and more.</li>
+        <li><a href="/lorem-ipsum">Lorem Ipsum Generator</a> — generate placeholder text.</li>
+        <li><a href="/cron-expression">Cron Expression Explainer</a> — translate a crontab line to plain English.</li>
+        <li><a href="/json-csv">JSON ⇄ CSV</a> — convert between JSON arrays and CSV.</li>
+      </ul>
+
+      <h2>Guides</h2>
+      <p>Alongside the tools, we publish plain-English <a href="/guides/">developer guides</a> that explain the concepts behind them — what a UUID is, how Base64 encoding works, how to decode a JWT safely, and more.</p>
+
+      <a class="cta" href="/">Browse all tools →</a>
+
+      <h2>Contact</h2>
+      <p>Questions, feedback, or a tool you'd like to see? Reach us at <a href="mailto:infomatch@gmail.com">infomatch@gmail.com</a>.</p>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+    <p><a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/guides/">Guides</a></p>
+  </footer>
+</body>
+</html>
