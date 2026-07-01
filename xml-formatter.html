@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XML Formatter &amp; Validator — Free Online Beautifier &amp; Minifier | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/xml-formatter">
+  <meta name="description" content="Free online XML formatter, validator and minifier. Beautify messy XML with proper indentation, catch malformed markup instantly, and minify — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="xml formatter, xml validator online, beautify xml, xml beautifier, format xml online, xml pretty print, xml minify">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="XML Formatter &amp; Validator — Free Online Tool">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Beautify, validate, and minify XML instantly in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/xml-formatter">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.1rem .35rem;font-size:.85rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › XML Formatter</p>
+    <h1>XML Formatter &amp; Validator</h1>
+    <p class="lead">Paste your XML below to beautify, validate, or minify it. Everything runs locally in your browser — your data is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="format()">Beautify</button>
+      <button onclick="minify()">Minify</button>
+      <button onclick="validate()">Validate</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <textarea id="input" spellcheck="false" placeholder="Paste XML here, e.g. &lt;note&gt;&lt;to&gt;Ada&lt;/to&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/note&gt;"></textarea>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+
+    <section class="seo">
+      <h2>What is an XML formatter?</h2>
+      <p>An XML formatter takes minified or messy XML and re-indents it into a clean, readable tree so you can scan nested elements and attributes at a glance. This tool also validates your markup and reports the exact parser error when something is malformed, so you can find and fix the problem quickly.</p>
+      <h2>How to use it</h2>
+      <p>1. Paste your XML into the box above. 2. Click <strong>Beautify</strong> to indent it, <strong>Minify</strong> to strip whitespace between tags, or <strong>Validate</strong> to check for errors. 3. Click <strong>Copy</strong> to grab the result.</p>
+      <h2>What counts as valid XML?</h2>
+      <p>Valid XML must have exactly one root element, every opening tag needs a matching closing tag (or must be self-closed like <code>&lt;br/&gt;</code>), tags must be properly nested without overlapping, attribute values must be quoted, and special characters such as <code>&amp;</code> and <code>&lt;</code> inside text must be escaped as entities (<code>&amp;amp;</code>, <code>&amp;lt;</code>). This tool uses the browser's built-in XML parser, so it flags the same errors a real XML consumer would.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. This formatter runs entirely in your browser using the built-in <code>DOMParser</code> engine. Nothing you paste is ever sent to a server.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var inp = document.getElementById('input');
+    var out = document.getElementById('output');
+    var statusEl = document.getElementById('status');
+
+    function setStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status' + (type ? ' ' + type : ''); }
+
+    // Parse XML text with the browser's native DOMParser and throw a
+    // JS Error with a useful message if it failed. DOMParser does not
+    // throw on malformed XML by default — it returns a document whose
+    // root is a <parsererror> element, so we have to detect that ourselves.
+    function parseXml(text){
+      if(text.trim() === ''){ throw new Error('Input is empty. Paste some XML to format.'); }
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(text, 'application/xml');
+      var errEl = doc.getElementsByTagName('parsererror')[0];
+      if(errEl){
+        // Firefox/Chrome/Safari all put a human-readable message in the
+        // parsererror element's text content; strip excess whitespace.
+        var msg = errEl.textContent.replace(/\s+/g, ' ').trim();
+        throw new Error(msg || 'Malformed XML.');
+      }
+      if(!doc.documentElement){
+        throw new Error('No root element found.');
+      }
+      return doc;
+    }
+
+    // ---- Indent-based pretty printer ----
+    // Recursively walks the DOM tree and rebuilds it as indented text,
+    // handling elements, attributes, self-closing tags, text nodes, CDATA,
+    // and comments.
+    function serializeAttrs(el){
+      var attrs = el.attributes;
+      var s = '';
+      for(var i = 0; i < attrs.length; i++){
+        s += ' ' + attrs[i].name + '="' + attrs[i].value.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '"';
+      }
+      return s;
+    }
+
+    function escapeText(s){
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function prettyPrintNode(node, depth, lines){
+      var pad = '  '.repeat(depth);
+      if(node.nodeType === 1){ // Element
+        var tag = node.nodeName;
+        var attrStr = serializeAttrs(node);
+        var children = node.childNodes;
+
+        // Determine whether this element has only a single text child
+        // (or no children) so we can keep it on one line, GitHub/IDE style.
+        var elementChildren = [];
+        var onlyText = true;
+        var textContent = '';
+        for(var i = 0; i < children.length; i++){
+          var c = children[i];
+          if(c.nodeType === 1){ elementChildren.push(c); onlyText = false; }
+          else if(c.nodeType === 3){ textContent += c.nodeValue; } // text
+          else if(c.nodeType === 4){ onlyText = false; } // CDATA — keep on its own line
+          else if(c.nodeType === 8){ onlyText = false; } // comment
+        }
+
+        if(children.length === 0){
+          lines.push(pad + '<' + tag + attrStr + '/>');
+          return;
+        }
+
+        if(onlyText && elementChildren.length === 0){
+          var trimmed = textContent.trim();
+          if(trimmed === ''){
+            lines.push(pad + '<' + tag + attrStr + '/>');
+          } else {
+            lines.push(pad + '<' + tag + attrStr + '>' + escapeText(trimmed) + '</' + tag + '>');
+          }
+          return;
+        }
+
+        lines.push(pad + '<' + tag + attrStr + '>');
+        for(var j = 0; j < children.length; j++){
+          prettyPrintNode(children[j], depth + 1, lines);
+        }
+        lines.push(pad + '</' + tag + '>');
+        return;
+      }
+      if(node.nodeType === 3){ // Text node between elements
+        var text = node.nodeValue.trim();
+        if(text !== ''){ lines.push('  '.repeat(depth) + escapeText(text)); }
+        return;
+      }
+      if(node.nodeType === 4){ // CDATA
+        lines.push('  '.repeat(depth) + '<![CDATA[' + node.nodeValue + ']]>');
+        return;
+      }
+      if(node.nodeType === 8){ // Comment
+        lines.push('  '.repeat(depth) + '<!--' + node.nodeValue + '-->');
+        return;
+      }
+      // Processing instructions, etc. — ignore for pretty-printing purposes.
+    }
+
+    function prettyPrint(doc){
+      var lines = [];
+      // Preserve an XML declaration if the author included one.
+      var declMatch = inp.value.match(/^\s*<\?xml[^>]*\?>/i);
+      if(declMatch){ lines.push(declMatch[0].trim()); }
+      // Top-level comments/PIs before the root element, then the root itself.
+      var node = doc.firstChild;
+      while(node){
+        if(node.nodeType === 8){ lines.push('<!--' + node.nodeValue + '-->'); }
+        node = node.nextSibling;
+      }
+      prettyPrintNode(doc.documentElement, 0, lines);
+      return lines.join('\n');
+    }
+
+    // ---- Minifier: strip whitespace-only text nodes between tags ----
+    function minifyNode(node){
+      if(node.nodeType === 1){
+        var tag = node.nodeName;
+        var attrStr = serializeAttrs(node);
+        var children = node.childNodes;
+        if(children.length === 0){ return '<' + tag + attrStr + '/>'; }
+        var inner = '';
+        for(var i = 0; i < children.length; i++){ inner += minifyNode(children[i]); }
+        return '<' + tag + attrStr + '>' + inner + '</' + tag + '>';
+      }
+      if(node.nodeType === 3){
+        var t = node.nodeValue.trim();
+        return t === '' ? '' : escapeText(t);
+      }
+      if(node.nodeType === 4){ return '<![CDATA[' + node.nodeValue + ']]>'; }
+      if(node.nodeType === 8){ return '<!--' + node.nodeValue + '-->'; }
+      return '';
+    }
+
+    function format(){
+      try {
+        var doc = parseXml(inp.value);
+        out.textContent = prettyPrint(doc);
+        setStatus('Valid XML — beautified.', 'ok');
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'xml-formatter' }); }
+      } catch(e){
+        out.textContent = '';
+        setStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    function minify(){
+      try {
+        var doc = parseXml(inp.value);
+        var declMatch = inp.value.match(/^\s*<\?xml[^>]*\?>/i);
+        var result = (declMatch ? declMatch[0].trim() : '') + minifyNode(doc.documentElement);
+        out.textContent = result;
+        setStatus('Valid XML — minified.', 'ok');
+      } catch(e){
+        out.textContent = '';
+        setStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    function validate(){
+      try {
+        parseXml(inp.value);
+        setStatus('✓ Valid XML.', 'ok');
+      } catch(e){
+        setStatus('✗ Invalid XML: ' + e.message, 'error');
+      }
+    }
+
+    function copyOut(){
+      var t = out.textContent || inp.value;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); });
+    }
+
+    function clearAll(){ inp.value = ''; out.textContent = ''; setStatus(''); inp.focus(); }
+
+    function loadSample(){
+      inp.value = '<?xml version="1.0" encoding="UTF-8"?><catalog><book id="bk101"><author>Ada Lovelace</author><title>The Analytical Engine</title><price currency="USD">29.99</price><description>An introduction &amp; overview.</description></book><book id="bk102"><author>Grace Hopper</author><title>Compiling Ideas</title><price currency="USD">19.99</price></book></catalog>';
+      format();
+    }
+  </script>
+</body>
+</html>

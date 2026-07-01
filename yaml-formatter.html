@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAML Formatter &amp; Validator — Free Online YAML to JSON Tool | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/yaml-formatter">
+  <meta name="description" content="Free online YAML formatter, validator and YAML to JSON converter. Beautify YAML with consistent indentation, catch malformed indentation instantly, and convert to JSON — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="yaml formatter, yaml validator, yaml to json, yaml beautifier, format yaml online, validate yaml online, yaml parser">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="YAML Formatter &amp; Validator — Free Online YAML to JSON Tool">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Beautify, validate, and convert YAML to JSON instantly in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/yaml-formatter">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.1rem .35rem;font-size:.85rem}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › YAML Formatter</p>
+    <h1>YAML Formatter &amp; Validator</h1>
+    <p class="lead">Paste your YAML below to reformat it with consistent 2-space indentation, validate it, or convert it to JSON. Everything runs locally in your browser — your data is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="format()">Format</button>
+      <button onclick="toJson()">YAML → JSON</button>
+      <button onclick="validate()">Validate</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <textarea id="input" spellcheck="false" placeholder="Paste YAML here, e.g.&#10;name: DevTools Hub&#10;tools:&#10;  - json&#10;  - regex&#10;free: true"></textarea>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+    <p class="note">This parser covers the common YAML subset used in typical config files: nested mappings, sequences, quoted and plain strings, numbers, booleans, and null. It is not a full YAML 1.2 implementation (no anchors/aliases, multi-document streams, or flow-style block scalars).</p>
+
+    <section class="seo">
+      <h2>What is a YAML formatter?</h2>
+      <p>A YAML formatter takes YAML with inconsistent or messy indentation and rewrites it with clean, consistent 2-space indentation, the convention used by nearly every style guide and linter. Because YAML uses whitespace to express structure, a single misplaced space can silently change what a file means or break it outright — this tool parses your YAML into a real data structure first, so formatting only succeeds once the structure has been correctly understood.</p>
+      <h2>How to use it</h2>
+      <p>1. Paste your YAML into the box above. 2. Click <strong>Format</strong> to reformat it with consistent 2-space indentation, <strong>YAML → JSON</strong> to convert it into the equivalent JSON, or <strong>Validate</strong> to check it for structural errors. 3. Click <strong>Copy</strong> to grab the result. If your YAML has a malformed indentation level, the status line reports which line it happened on.</p>
+      <h2>What does this formatter support?</h2>
+      <p>This tool handles the YAML you'll find in most real-world config files: nested key-value mappings, sequences written with a leading <code>-</code>, single- and double-quoted strings, unquoted plain strings, integers and floats, booleans (<code>true</code>/<code>false</code>, <code>yes</code>/<code>no</code>), and <code>null</code>/<code>~</code>. It does not implement the full YAML 1.2 specification — anchors and aliases (<code>&amp;</code>/<code>*</code>), multi-document streams (<code>---</code>), flow collections (<code>{a: 1}</code>/<code>[1,2]</code> are supported as scalars-in-brackets but not deeply parsed), and block scalar indicators (<code>|</code>/<code>&gt;</code>) are outside its scope. For the common case of hand-written config YAML, it correctly reconstructs the nested structure.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. Parsing, formatting, and conversion all happen entirely in your browser using plain JavaScript. Nothing you paste — including secrets or config values — is ever sent to a server.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var inp = document.getElementById('input');
+    var out = document.getElementById('output');
+    var statusEl = document.getElementById('status');
+
+    function setStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status' + (type ? ' ' + type : ''); }
+
+    /* =========================================================================
+     * Minimal YAML parser for the common config-file subset.
+     * Strategy: tokenize into (indent, content, lineNo) records, skipping blank
+     * lines and full-line comments, then recursively parse blocks of lines that
+     * share an indent level into a JS mapping or sequence.
+     * ========================================================================= */
+
+    function YamlError(msg, lineNo){
+      this.message = lineNo ? (msg + ' (line ' + lineNo + ')') : msg;
+      this.lineNo = lineNo;
+    }
+    YamlError.prototype = Object.create(Error.prototype);
+
+    // Strip an unquoted trailing "# comment" from a scalar/value fragment,
+    // being careful not to eat a # that's inside a quoted string.
+    function stripInlineComment(s){
+      var inSingle = false, inDouble = false;
+      for(var i = 0; i < s.length; i++){
+        var c = s[i];
+        if(c === "'" && !inDouble) inSingle = !inSingle;
+        else if(c === '"' && !inSingle) inDouble = !inDouble;
+        else if(c === '#' && !inSingle && !inDouble){
+          // A comment must be preceded by whitespace or be at the start,
+          // per YAML rules, to avoid treating "http://x" or "a#b" as a comment.
+          if(i === 0 || /\s/.test(s[i - 1])){ return s.slice(0, i).replace(/\s+$/, ''); }
+        }
+      }
+      return s;
+    }
+
+    function tokenizeLines(text){
+      var rawLines = text.replace(/\r\n/g, '\n').split('\n');
+      var tokens = [];
+      for(var i = 0; i < rawLines.length; i++){
+        var raw = rawLines[i];
+        var lineNo = i + 1;
+        if(/^[ ]*$/.test(raw)) continue; // blank line
+        if(/^\t/.test(raw) || raw.indexOf('\t') !== -1){
+          throw new YamlError('Tabs are not allowed for indentation — use spaces', lineNo);
+        }
+        var indentMatch = raw.match(/^ */);
+        var indent = indentMatch[0].length;
+        var content = raw.slice(indent);
+        if(content.charAt(0) === '#') continue; // full-line comment
+        if(content === '---' || content === '...') continue; // document markers, ignored
+        content = stripInlineComment(content);
+        if(content.trim() === '') continue; // line was only a comment after all
+        tokens.push({ indent: indent, content: content, lineNo: lineNo });
+      }
+      return tokens;
+    }
+
+    // Parse a scalar value: quoted string, number, boolean, null, or plain string.
+    function parseScalar(raw){
+      var s = raw.trim();
+      if(s === '' ) return null; // key: (nothing) => null, same as YAML
+      if((s[0] === '"' && s[s.length - 1] === '"' && s.length >= 2)){
+        try { return JSON.parse(s); } // double-quoted strings use JSON/YAML-compatible escapes
+        catch(e){ return s.slice(1, -1); }
+      }
+      if(s[0] === "'" && s[s.length - 1] === "'" && s.length >= 2){
+        return s.slice(1, -1).replace(/''/g, "'"); // single-quote escapes by doubling
+      }
+      if(s === '~' || s.toLowerCase() === 'null') return null;
+      if(s.toLowerCase() === 'true' || s.toLowerCase() === 'yes') return true;
+      if(s.toLowerCase() === 'false' || s.toLowerCase() === 'no') return false;
+      // Flow-style collections: naive but functional for simple one-line cases.
+      // Bare object keys (e.g. {port: 8080}) aren't valid JSON, so quote any
+      // identifier-like key immediately before a colon before parsing.
+      if((s[0] === '[' && s[s.length - 1] === ']') || (s[0] === '{' && s[s.length - 1] === '}')){
+        var flowJson = s.replace(/'/g, '"').replace(/([{,]\s*)([A-Za-z_][A-Za-z0-9_-]*)(\s*:)/g, '$1"$2"$3');
+        try { return JSON.parse(flowJson); }
+        catch(e){ return s; } // fall back to raw text if it isn't valid JSON-ish flow syntax (e.g. unquoted string values)
+      }
+      if(/^-?\d+$/.test(s)) return parseInt(s, 10);
+      if(/^-?\d+\.\d+([eE][+-]?\d+)?$/.test(s) || /^-?\d+[eE][+-]?\d+$/.test(s)) return parseFloat(s);
+      return s; // plain unquoted string
+    }
+
+    // Split "key: value" respecting quotes, so a colon inside a quoted value
+    // (e.g. url: "http://x") doesn't get mistaken for the key/value separator.
+    function splitKeyValue(content, lineNo){
+      var inSingle = false, inDouble = false;
+      for(var i = 0; i < content.length; i++){
+        var c = content[i];
+        if(c === "'" && !inDouble) inSingle = !inSingle;
+        else if(c === '"' && !inSingle) inDouble = !inDouble;
+        else if(c === ':' && !inSingle && !inDouble){
+          // Must be followed by a space or end-of-line to count as the separator
+          // (so "http://x" isn't split on its colon).
+          if(i + 1 === content.length || content[i + 1] === ' '){
+            return { key: content.slice(0, i).trim(), value: content.slice(i + 1).trim() };
+          }
+        }
+      }
+      throw new YamlError('Expected "key: value" but found no valid colon separator', lineNo);
+    }
+
+    function unquoteKey(key){
+      if((key[0] === '"' && key[key.length - 1] === '"') || (key[0] === "'" && key[key.length - 1] === "'")){
+        return key.slice(1, -1);
+      }
+      return key;
+    }
+
+    // Parse a contiguous block of tokens that all share the same indent level
+    // (the first token's indent defines the block's indent). Returns the
+    // parsed value (object or array) and the index just past the block.
+    function parseBlock(tokens, start){
+      if(start >= tokens.length) return { value: null, next: start };
+      var blockIndent = tokens[start].indent;
+      var isSequence = tokens[start].content.charAt(0) === '-' &&
+        (tokens[start].content.length === 1 || tokens[start].content[1] === ' ');
+
+      if(isSequence) return parseSequence(tokens, start, blockIndent);
+      return parseMapping(tokens, start, blockIndent);
+    }
+
+    function parseSequence(tokens, start, blockIndent){
+      var arr = [];
+      var i = start;
+      while(i < tokens.length && tokens[i].indent === blockIndent){
+        var tok = tokens[i];
+        var isDash = tok.content.charAt(0) === '-' && (tok.content.length === 1 || tok.content[1] === ' ');
+        if(!isDash){
+          if(tok.indent < blockIndent) break; // end of this sequence, belongs to an ancestor
+          throw new YamlError('Inconsistent indentation — expected a "-" list item at indent ' + blockIndent, tok.lineNo);
+        }
+        var rest = tok.content.slice(1).trimStart(); // text after "- "
+        if(rest === ''){
+          // "-" alone on its line: the item is a nested block on following lines.
+          var nested = parseBlock(tokens, i + 1);
+          arr.push(nested.value);
+          i = nested.next;
+        } else if(looksLikeMapKey(rest)){
+          // Inline mapping start, e.g. "- name: Ada". Treat the rest of this
+          // line as the first key of a mapping whose indent is the column
+          // right after "- " on this line, so following sibling keys must
+          // align there.
+          var virtualIndent = tok.indent + (tok.content.length - rest.length);
+          var syntheticTokens = tokens.slice();
+          syntheticTokens[i] = { indent: virtualIndent, content: rest, lineNo: tok.lineNo };
+          var mapResult = parseMapping(syntheticTokens, i, virtualIndent);
+          arr.push(mapResult.value);
+          i = mapResult.next;
+        } else {
+          arr.push(parseScalar(rest));
+          i++;
+        }
+      }
+      return { value: arr, next: i };
+    }
+
+    // Heuristic: does this fragment look like the start of "key: value" (and
+    // thus an inline mapping under a "-"), as opposed to a plain scalar?
+    function looksLikeMapKey(rest){
+      try { splitKeyValue(rest, null); return true; }
+      catch(e){ return false; }
+    }
+
+    function parseMapping(tokens, start, blockIndent){
+      var obj = {};
+      var i = start;
+      while(i < tokens.length && tokens[i].indent === blockIndent){
+        var tok = tokens[i];
+        var isDash = tok.content.charAt(0) === '-' && (tok.content.length === 1 || tok.content[1] === ' ');
+        if(isDash){
+          if(tok.indent < blockIndent) break;
+          throw new YamlError('Inconsistent indentation — expected "key: value" but found a "-" list item at indent ' + blockIndent, tok.lineNo);
+        }
+        var kv = splitKeyValue(tok.content, tok.lineNo);
+        var key = unquoteKey(kv.key);
+        if(kv.value === ''){
+          // Value is on following, more-indented lines (nested map/sequence),
+          // unless there simply is no following indented block, in which case
+          // YAML treats the value as null.
+          var next = tokens[i + 1];
+          if(next && next.indent > blockIndent){
+            var nested = parseBlock(tokens, i + 1);
+            obj[key] = nested.value;
+            i = nested.next;
+          } else {
+            obj[key] = null;
+            i++;
+          }
+        } else {
+          obj[key] = parseScalar(kv.value);
+          i++;
+        }
+      }
+      if(i < tokens.length && tokens[i].indent > blockIndent){
+        throw new YamlError('Unexpected extra indentation', tokens[i].lineNo);
+      }
+      return { value: obj, next: i };
+    }
+
+    function parseYaml(text){
+      var tokens = tokenizeLines(text);
+      if(tokens.length === 0) return null;
+      var result = parseBlock(tokens, 0);
+      if(result.next !== tokens.length){
+        throw new YamlError('Inconsistent indentation — could not align line with any enclosing block', tokens[result.next].lineNo);
+      }
+      return result.value;
+    }
+
+    /* ---- Re-serialize a parsed JS value back to YAML with 2-space indent ---- */
+    function needsQuoting(s){
+      if(s === '') return true;
+      if(/^\s|\s$/.test(s)) return true;
+      if(/^(true|false|yes|no|null|~)$/i.test(s)) return true;
+      if(/^-?\d+$/.test(s) || /^-?\d+\.\d+$/.test(s)) return true;
+      if(/[:#\[\]{}&*!|>'"%@`,]/.test(s)) return true;
+      if(/^-\s|^-$/.test(s)) return true;
+      return false;
+    }
+    function quoteScalar(s){
+      return '"' + s.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
+    }
+    function scalarToYaml(v){
+      if(v === null || v === undefined) return 'null';
+      if(typeof v === 'boolean') return v ? 'true' : 'false';
+      if(typeof v === 'number') return String(v);
+      var s = String(v);
+      return needsQuoting(s) ? quoteScalar(s) : s;
+    }
+    function isPlainObject(v){ return v !== null && typeof v === 'object' && !Array.isArray(v); }
+
+    // Pushes a "key:" (or "- key:") line for `val`, followed — for nested
+    // objects/arrays — by their block content at `childIndent`. The scalar
+    // case appends " value" directly onto the same line instead.
+    // IMPORTANT: the prefix line is always pushed before recursing, so
+    // nested content never ends up ordered ahead of its own parent line.
+    function pushKeyLine(lines, prefix, val, childIndent){
+      if(isPlainObject(val) && Object.keys(val).length){
+        lines.push(prefix + ':');
+        toYamlLines(val, childIndent, lines);
+      } else if(Array.isArray(val) && val.length){
+        lines.push(prefix + ':');
+        toYamlLines(val, childIndent, lines);
+      } else if(isPlainObject(val)){
+        lines.push(prefix + ': {}');
+      } else if(Array.isArray(val)){
+        lines.push(prefix + ': []');
+      } else {
+        lines.push(prefix + ': ' + scalarToYaml(val));
+      }
+    }
+
+    function toYamlLines(value, indent, lines){
+      var pad = '  '.repeat(indent);
+      if(Array.isArray(value)){
+        if(value.length === 0){ lines.push(pad + '[]'); return; }
+        value.forEach(function(item){
+          if(isPlainObject(item) && Object.keys(item).length){
+            var keys = Object.keys(item);
+            pushKeyLine(lines, pad + '- ' + keys[0], item[keys[0]], indent + 1);
+            for(var k = 1; k < keys.length; k++){
+              pushKeyLine(lines, pad + '  ' + keys[k], item[keys[k]], indent + 1);
+            }
+          } else if(Array.isArray(item) && item.length){
+            lines.push(pad + '-');
+            toYamlLines(item, indent + 1, lines);
+          } else {
+            lines.push(pad + '- ' + scalarToYaml(item));
+          }
+        });
+        return;
+      }
+      if(isPlainObject(value)){
+        var objKeys = Object.keys(value);
+        if(objKeys.length === 0){ lines.push(pad + '{}'); return; }
+        objKeys.forEach(function(key){
+          var keyStr = /^[A-Za-z0-9_.-]+$/.test(key) ? key : quoteScalar(key);
+          pushKeyLine(lines, pad + keyStr, value[key], indent + 1);
+        });
+        return;
+      }
+      lines.push(pad + scalarToYaml(value));
+    }
+
+    function serializeYaml(value){
+      if(value === null || value === undefined) return 'null';
+      var lines = [];
+      toYamlLines(value, 0, lines);
+      return lines.join('\n');
+    }
+
+    function format(){
+      try {
+        var data = parseYaml(inp.value);
+        out.textContent = serializeYaml(data);
+        setStatus('Valid YAML — reformatted with 2-space indentation.', 'ok');
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'yaml-formatter' }); }
+      } catch(e){
+        out.textContent = '';
+        setStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    function toJson(){
+      try {
+        var data = parseYaml(inp.value);
+        out.textContent = JSON.stringify(data, null, 2);
+        setStatus('Valid YAML — converted to JSON.', 'ok');
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'yaml-formatter' }); }
+      } catch(e){
+        out.textContent = '';
+        setStatus('Error: ' + e.message, 'error');
+      }
+    }
+
+    function validate(){
+      try {
+        parseYaml(inp.value);
+        setStatus('✓ Valid YAML.', 'ok');
+      } catch(e){
+        setStatus('✗ Invalid YAML: ' + e.message, 'error');
+      }
+    }
+
+    function copyOut(){
+      var t = out.textContent || inp.value;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); });
+    }
+
+    function clearAll(){ inp.value = ''; out.textContent = ''; setStatus(''); inp.focus(); }
+
+    function loadSample(){
+      inp.value = 'name: DevTools Hub\nfree: true\nversion: 2\nrating: 4.8\ntools:\n  - json\n  - regex\n  - base64\nauthor:\n  handle: devtoolshub\n  active: yes\nservers:\n  - host: api.example.com\n    port: 443\n  - host: backup.example.com\n    port: 8443\nnote: null\n';
+      format();
+    }
+  </script>
+</body>
+</html>

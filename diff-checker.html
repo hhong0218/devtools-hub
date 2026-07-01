@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Diff Checker — Free Online Tool to Compare Two Texts | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/diff-checker">
+  <meta name="description" content="Free online text diff checker. Compare two texts or files and instantly see line-by-line and word-by-word additions, deletions, and changes highlighted side by side. Nothing is uploaded to a server.">
+  <meta name="keywords" content="text diff checker, compare two texts online, diff tool online, text comparison tool, file diff online, line diff checker">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Text Diff Checker — Free Online Tool to Compare Two Texts">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Compare two texts instantly in your browser. Line-by-line and word-by-word highlighting of additions, deletions, and changes. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/diff-checker">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+    /* tool-specific additions, themed to match */
+    .io-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media (max-width:720px){ .io-grid{grid-template-columns:1fr} }
+    .io-label{font-size:.8rem;color:var(--muted);margin-bottom:.35rem}
+    .io-col textarea{min-height:220px}
+    .options{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin:.75rem 0;color:var(--muted);font-size:.9rem}
+    .options label{display:flex;align-items:center;gap:.4rem}
+    .options input[type=checkbox]{accent-color:var(--accent);width:1rem;height:1rem}
+    .summary{display:flex;flex-wrap:wrap;gap:1rem;margin:.5rem 0 1rem;font-size:.85rem}
+    .summary span{display:inline-flex;align-items:center;gap:.35rem}
+    .swatch{display:inline-block;width:.75rem;height:.75rem;border-radius:2px}
+    .swatch.add{background:rgba(63,185,80,.35);border:1px solid var(--ok)}
+    .swatch.del{background:rgba(248,81,73,.35);border:1px solid var(--err)}
+    .diff-line{display:flex;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;white-space:pre-wrap;word-break:break-word;border-left:3px solid transparent;padding:.1rem .5rem}
+    .diff-line .gutter{flex:0 0 3.2rem;color:var(--muted);user-select:none}
+    .diff-line .content{flex:1}
+    .diff-line.add{background:rgba(63,185,80,.10);border-left-color:var(--ok)}
+    .diff-line.del{background:rgba(248,81,73,.10);border-left-color:var(--err)}
+    .diff-line.ctx{color:var(--muted)}
+    .wadd{background:rgba(63,185,80,.35);color:var(--text);border-radius:2px;padding:0 1px}
+    .wdel{background:rgba(248,81,73,.35);color:var(--text);border-radius:2px;padding:0 1px;text-decoration:line-through;text-decoration-color:var(--err)}
+    .empty-note{color:var(--muted);font-size:.9rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › Text Diff Checker</p>
+    <h1>Text Diff Checker</h1>
+    <p class="lead">Paste an original and a changed version of any text to see exactly what was added, removed, or changed — line by line and word by word. Everything runs locally in your browser — your data is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="io-grid">
+      <div class="io-col">
+        <p class="io-label">Original</p>
+        <textarea id="original" spellcheck="false" placeholder="Paste the original text here…"></textarea>
+      </div>
+      <div class="io-col">
+        <p class="io-label">Changed</p>
+        <textarea id="changed" spellcheck="false" placeholder="Paste the changed text here…"></textarea>
+      </div>
+    </div>
+
+    <div class="options">
+      <label><input type="checkbox" id="ignoreWhitespace"> Ignore whitespace</label>
+      <label><input type="checkbox" id="ignoreCase"> Ignore case</label>
+      <label><input type="checkbox" id="wordLevel" checked> Word-level highlighting</label>
+    </div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="compare()">Compare</button>
+      <button onclick="copyOut()">Copy result</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <p id="status" class="status"></p>
+    <div class="summary" id="summary"></div>
+
+    <div class="output-wrap"><div id="output"></div></div>
+
+    <section class="seo">
+      <h2>What is a text diff checker?</h2>
+      <p>A text diff checker (also called a text comparison tool) compares two blocks of text — an "Original" and a "Changed" version — and shows you exactly what changed between them. Instead of re-reading both versions line by line yourself, the tool aligns matching lines automatically and highlights the ones that were added, removed, or edited, so you can review a change in seconds. This is useful for comparing config files, articles, contracts, code snippets, log output, or any two versions of the same document.</p>
+      <h2>How to use it</h2>
+      <p>1. Paste the original text into the <strong>Original</strong> box and the new version into the <strong>Changed</strong> box. 2. Click <strong>Compare</strong>. 3. Lines that only exist in the original are shown in red as removed, lines that only exist in the changed version are shown in green as added, and unchanged lines are shown in gray for context. 4. With <strong>Word-level highlighting</strong> enabled, a changed line also shows exactly which words differ within it, not just that the whole line changed. Toggle <strong>Ignore whitespace</strong> or <strong>Ignore case</strong> if you want to compare content only, ignoring formatting differences. Click <strong>Copy result</strong> to grab a plain-text version of the diff, or <strong>Sample</strong> to see it in action.</p>
+      <h2>How does the comparison work?</h2>
+      <p>This tool splits both texts into lines and computes the longest common subsequence (LCS) of lines between them — the largest set of lines that appears in the same relative order in both versions. Everything outside that common sequence is a change: a line missing from the changed version is a deletion, and a line present only in the changed version is an addition. When a deleted line and an added line sit next to each other, the same LCS technique is applied again at the word level within that pair, so only the specific words that changed are underlined, not the entire line.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. The comparison runs entirely in your browser using plain JavaScript — there is no server component at all. Neither the original text nor the changed text is ever uploaded or transmitted anywhere, which makes this safe to use for private documents, internal code, or unpublished drafts.</p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script>
+    "use strict";
+    var origEl = document.getElementById('original');
+    var changedEl = document.getElementById('changed');
+    var statusEl = document.getElementById('status');
+    var summaryEl = document.getElementById('summary');
+    var outputEl = document.getElementById('output');
+    var ignoreWsEl = document.getElementById('ignoreWhitespace');
+    var ignoreCaseEl = document.getElementById('ignoreCase');
+    var wordLevelEl = document.getElementById('wordLevel');
+
+    function setStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status' + (type ? ' ' + type : ''); }
+    function escapeHtml(s){ return s.replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+
+    // ---- Generic LCS-based diff over an array of "tokens" (lines or words) ----
+    // keyFn maps a token to the comparison key (so we can ignore case/whitespace
+    // for matching purposes while still displaying the original token text).
+    function diffArrays(a, b, keyFn){
+      keyFn = keyFn || function(x){ return x; };
+      var ka = a.map(keyFn), kb = b.map(keyFn);
+      var n = a.length, m = b.length;
+      // Build LCS length table. n/m are line or word counts of pasted text,
+      // fine for typical browser-tool input sizes.
+      var lcs = new Array(n + 1);
+      for(var i = 0; i <= n; i++){ lcs[i] = new Array(m + 1).fill(0); }
+      for(i = n - 1; i >= 0; i--){
+        for(var j = m - 1; j >= 0; j--){
+          lcs[i][j] = (ka[i] === kb[j]) ? lcs[i + 1][j + 1] + 1 : Math.max(lcs[i + 1][j], lcs[i][j + 1]);
+        }
+      }
+      // Walk the table to emit a sequence of ops: 'ctx' (equal), 'del' (only in a), 'add' (only in b).
+      var ops = [];
+      i = 0; var j = 0;
+      while(i < n && j < m){
+        if(ka[i] === kb[j]){ ops.push({ type: 'ctx', a: a[i], b: b[j] }); i++; j++; }
+        else if(lcs[i + 1][j] >= lcs[i][j + 1]){ ops.push({ type: 'del', a: a[i] }); i++; }
+        else { ops.push({ type: 'add', b: b[j] }); j++; }
+      }
+      while(i < n){ ops.push({ type: 'del', a: a[i] }); i++; }
+      while(j < m){ ops.push({ type: 'add', b: b[j] }); j++; }
+      return ops;
+    }
+
+    function normalizeLine(line){
+      var s = line;
+      if(ignoreWsEl.checked){ s = s.replace(/\s+/g, ' ').trim(); }
+      if(ignoreCaseEl.checked){ s = s.toLowerCase(); }
+      return s;
+    }
+
+    // Split a line into words + whitespace runs, keeping both so we can
+    // reassemble the line exactly (word-level diff should not eat spacing).
+    function tokenizeWords(line){
+      var out = line.match(/\s+|[^\s]+/g);
+      return out || [];
+    }
+    function normalizeWord(w){
+      return ignoreCaseEl.checked ? w.toLowerCase() : w;
+    }
+
+    function wordDiffHtml(oldLine, newLine){
+      var a = tokenizeWords(oldLine);
+      var b = tokenizeWords(newLine);
+      var ops = diffArrays(a, b, normalizeWord);
+      var delHtml = '', addHtml = '';
+      ops.forEach(function(op){
+        if(op.type === 'ctx'){ delHtml += escapeHtml(op.a); addHtml += escapeHtml(op.b); }
+        else if(op.type === 'del'){ delHtml += '<span class="wdel">' + escapeHtml(op.a) + '</span>'; }
+        else { addHtml += '<span class="wadd">' + escapeHtml(op.b) + '</span>'; }
+      });
+      return { delHtml: delHtml, addHtml: addHtml };
+    }
+
+    function compare(){
+      var origText = origEl.value;
+      var changedText = changedEl.value;
+
+      if(origText === '' && changedText === ''){
+        outputEl.innerHTML = '';
+        summaryEl.innerHTML = '';
+        setStatus('Paste some text into both boxes to compare.', '');
+        return;
+      }
+
+      // Split into lines. A trailing newline would otherwise produce a
+      // phantom empty final line, so drop exactly one if present.
+      var origLines = origText === '' ? [] : origText.replace(/\r\n/g, '\n').split('\n');
+      var changedLines = changedText === '' ? [] : changedText.replace(/\r\n/g, '\n').split('\n');
+
+      var ops = diffArrays(origLines, changedLines, normalizeLine);
+
+      // Pair up adjacent del+add runs so we can offer word-level highlighting
+      // for lines that were "changed" rather than purely added/removed.
+      var html = '';
+      var addCount = 0, delCount = 0, changeCount = 0;
+      var lineNoA = 1, lineNoB = 1;
+      var i = 0;
+      while(i < ops.length){
+        var op = ops[i];
+        if(op.type === 'ctx'){
+          html += '<div class="diff-line ctx"><span class="gutter">' + lineNoA + '</span><span class="content">' + escapeHtml(op.a) + '</span></div>';
+          lineNoA++; lineNoB++; i++;
+          continue;
+        }
+        // Collect a contiguous run of del/add ops (a "hunk") starting here.
+        var dels = [], adds = [];
+        var j = i;
+        while(j < ops.length && ops[j].type === 'del'){ dels.push(ops[j]); j++; }
+        while(j < ops.length && ops[j].type === 'add'){ adds.push(ops[j]); j++; }
+
+        if(dels.length === 0 && adds.length === 0){ i = j; continue; }
+
+        var pairCount = Math.min(dels.length, adds.length);
+        // Paired lines: treat as "changed" — word-level diff if enabled.
+        for(var p = 0; p < pairCount; p++){
+          changeCount++;
+          if(wordLevelEl.checked){
+            var wd = wordDiffHtml(dels[p].a, adds[p].b);
+            html += '<div class="diff-line del"><span class="gutter">' + lineNoA + '</span><span class="content">' + wd.delHtml + '</span></div>';
+            html += '<div class="diff-line add"><span class="gutter">' + lineNoB + '</span><span class="content">' + wd.addHtml + '</span></div>';
+          } else {
+            html += '<div class="diff-line del"><span class="gutter">' + lineNoA + '</span><span class="content">' + escapeHtml(dels[p].a) + '</span></div>';
+            html += '<div class="diff-line add"><span class="gutter">' + lineNoB + '</span><span class="content">' + escapeHtml(adds[p].b) + '</span></div>';
+          }
+          lineNoA++; lineNoB++;
+        }
+        // Leftover pure deletions.
+        for(var d = pairCount; d < dels.length; d++){
+          delCount++;
+          html += '<div class="diff-line del"><span class="gutter">' + lineNoA + '</span><span class="content">' + escapeHtml(dels[d].a) + '</span></div>';
+          lineNoA++;
+        }
+        // Leftover pure additions.
+        for(var a2 = pairCount; a2 < adds.length; a2++){
+          addCount++;
+          html += '<div class="diff-line add"><span class="gutter">' + lineNoB + '</span><span class="content">' + escapeHtml(adds[a2].b) + '</span></div>';
+          lineNoB++;
+        }
+        i = j;
+      }
+
+      outputEl.innerHTML = html || '<p class="empty-note">Both inputs are empty.</p>';
+
+      if(addCount === 0 && delCount === 0 && changeCount === 0){
+        summaryEl.innerHTML = '';
+        setStatus('No differences — the two texts are identical.', 'ok');
+      } else {
+        summaryEl.innerHTML =
+          '<span><span class="swatch add"></span>' + (addCount + changeCount) + ' line' + ((addCount + changeCount) === 1 ? '' : 's') + ' added/changed</span>' +
+          '<span><span class="swatch del"></span>' + (delCount + changeCount) + ' line' + ((delCount + changeCount) === 1 ? '' : 's') + ' removed/changed</span>';
+        setStatus('Compared ' + origLines.length + ' vs ' + changedLines.length + ' lines — ' + changeCount + ' changed, ' + addCount + ' added, ' + delCount + ' removed.', 'ok');
+      }
+
+      if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'diff-checker' }); }
+    }
+
+    function copyOut(){
+      var text = outputEl.textContent;
+      if(!text){ setStatus('Nothing to copy yet — click Compare first.', 'error'); return; }
+      navigator.clipboard.writeText(text).then(function(){ setStatus('Diff copied to clipboard.', 'ok'); });
+    }
+
+    function clearAll(){
+      origEl.value = ''; changedEl.value = '';
+      outputEl.innerHTML = ''; summaryEl.innerHTML = '';
+      setStatus('');
+      origEl.focus();
+    }
+
+    function loadSample(){
+      origEl.value = 'Welcome to DevTools Hub.\nWe offer free browser-based utilities for developers.\nAll tools run entirely client-side.\nNo signup is required.\nContact us at hello@example.com.';
+      changedEl.value = 'Welcome to DevTools Hub!\nWe offer free, privacy-friendly utilities for developers.\nAll tools run entirely client-side.\nNo signup or account is required.\nContact support at support@example.com.\nThanks for stopping by.';
+      compare();
+    }
+  </script>
+</body>
+</html>
