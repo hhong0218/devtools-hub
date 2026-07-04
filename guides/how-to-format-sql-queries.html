@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Format SQL Queries (and Why Readable SQL Matters) | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/how-to-format-sql-queries.html">
+  <meta name="description" content="Learn how to format SQL queries for readability: indentation, keyword casing, and clause layout, with before/after examples, dialect notes, and an FAQ. Includes a free browser-based SQL formatter.">
+  <meta name="keywords" content="how to format sql, format sql query, sql style guide, readable sql, sql keyword case, sql indentation">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="How to Format SQL Queries (and Why Readable SQL Matters)">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Indentation, keyword casing, and clause layout — with before/after examples and dialect notes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/how-to-format-sql-queries.html">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › How to Format SQL Queries</p>
+      <h1>How to Format SQL Queries (and Why Readable SQL Matters)</h1>
+      <p>SQL has a habit of growing into dense, one-line monsters — a <code>SELECT</code> with six joins, a stack of conditions, and a <code>GROUP BY</code> all crammed onto a single line that scrolls off the screen. It runs fine, but nobody can read it. Formatting your SQL — giving each clause its own line, indenting consistently, and casing keywords predictably — turns that wall of text into something a teammate (or future you) can scan in seconds. This guide covers what "formatted SQL" means, why it matters, and how to do it in one click.</p>
+
+      <h2>Why readable SQL matters</h2>
+      <p>Queries are read far more often than they are written. A well-formatted query pays off every time someone opens it:</p>
+      <ul>
+        <li><strong>Faster review and debugging.</strong> When clauses line up, you can spot a missing join condition or a stray <code>AND</code> at a glance instead of parsing a paragraph.</li>
+        <li><strong>Cleaner diffs.</strong> If each column and condition sits on its own line, a code review shows exactly which line changed — not one giant modified line where you have to hunt for the edit.</li>
+        <li><strong>Fewer bugs.</strong> Consistent layout makes logic errors visible: an accidentally commented-out filter or a condition attached to the wrong clause stands out.</li>
+        <li><strong>Shared style.</strong> A team that formats SQL the same way spends zero energy arguing about whitespace and reads each other's queries effortlessly.</li>
+      </ul>
+
+      <h2>Before and after</h2>
+      <p>Here's a typical query as it often arrives — everything on one line:</p>
+      <pre><code>select u.id, u.name, count(o.id) as orders from users u left join orders o on o.user_id=u.id where u.active=true and o.created_at > '2024-01-01' group by u.id, u.name having count(o.id) > 3 order by orders desc limit 10;</code></pre>
+      <p>And the same query after formatting — clauses broken out, columns indented, keywords uppercased:</p>
+      <pre><code>SELECT
+  u.id,
+  u.name,
+  count(o.id) AS orders
+FROM
+  users u
+  LEFT JOIN orders o ON o.user_id = u.id
+WHERE
+  u.active = true
+  AND o.created_at > '2024-01-01'
+GROUP BY
+  u.id,
+  u.name
+HAVING
+  count(o.id) > 3
+ORDER BY
+  orders DESC
+LIMIT
+  10;</code></pre>
+      <p>Same result set, same performance — but now the join, the two filters, and the <code>HAVING</code> threshold are each on their own line, so the shape of the query is obvious.</p>
+
+      <a class="cta" href="/sql-formatter">Open the SQL Formatter →</a>
+
+      <h2>The three choices that define SQL style</h2>
+      <p>Almost every SQL style decision comes down to three knobs, all of which the formatter exposes:</p>
+      <h3 style="font-size:1.1rem;margin:1.25rem 0 .4rem">1. Indentation</h3>
+      <p>Two spaces is the common default; some teams prefer four, and some use tabs. Consistency matters more than the exact width — pick one and apply it everywhere. Indentation is what visually nests columns under <code>SELECT</code> and conditions under <code>WHERE</code>.</p>
+      <h3 style="font-size:1.1rem;margin:1.25rem 0 .4rem">2. Keyword case</h3>
+      <p>The long-standing convention is UPPERCASE keywords (<code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>) against lowercase identifiers, because it separates the language from your table and column names at a glance. Lowercase-everything is also popular in modern codebases. The formatter lets you choose <code>UPPER</code>, <code>lower</code>, or <code>preserve</code> — again, the win is picking one and being consistent.</p>
+      <h3 style="font-size:1.1rem;margin:1.25rem 0 .4rem">3. Clause layout</h3>
+      <p>Each major clause (<code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>ORDER BY</code>) starts a new line, and the items under it — columns, joins, conditions — are indented one level. This "one thing per line" layout is what makes diffs clean and errors visible.</p>
+
+      <h2>Dialect notes</h2>
+      <p>SQL is a family of related dialects, not one language. Keywords and syntax differ between databases, so telling the formatter which dialect you're using produces better results:</p>
+      <table>
+        <thead><tr><th>Dialect</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>PostgreSQL</td><td>Rich type system, <code>RETURNING</code>, <code>::</code> casts, and <code>ILIKE</code>.</td></tr>
+          <tr><td>MySQL / MariaDB</td><td>Backtick-quoted identifiers and <code>LIMIT</code> offset syntax.</td></tr>
+          <tr><td>T-SQL (SQL Server)</td><td>Uses <code>TOP</code> instead of <code>LIMIT</code> and square-bracket identifiers.</td></tr>
+          <tr><td>BigQuery</td><td>Standard SQL with arrays, structs, and backtick-quoted table paths.</td></tr>
+          <tr><td>SQLite</td><td>Lightweight subset; flexible typing.</td></tr>
+        </tbody>
+      </table>
+      <p>If you're not sure, <strong>Standard SQL</strong> is a safe default that handles the common ANSI syntax well.</p>
+
+      <div class="note">Formatting is purely cosmetic — it never changes what your query returns or how the database plans it. It only changes whitespace, line breaks, and keyword case, so it's completely safe to run on any query.</div>
+
+      <h2>Frequently asked questions</h2>
+      <h3 style="font-size:1.1rem;margin:1.25rem 0 .4rem">Does formatting SQL change how the query runs?</h3>
+      <p>No. SQL ignores extra whitespace and newlines, and keyword case is not significant. Formatting only affects how the query looks to humans — the parser, planner, and results are identical.</p>
+      <h3 style="font-size:1.1rem;margin:1.25rem 0 .4rem">Should SQL keywords be uppercase or lowercase?</h3>
+      <p>Either works; consistency is what counts. Uppercase keywords are the traditional choice because they stand out from lowercase table and column names, but many modern teams write everything lowercase. Pick one convention and apply it across your codebase.</p>
+      <h3 style="font-size:1.1rem;margin:1.25rem 0 .4rem">Is it safe to paste production SQL into this formatter?</h3>
+      <p>Yes. The formatter runs entirely in your browser using a self-hosted, open-source library. Your query is never uploaded to a server, so no query text or table names leave your device.</p>
+
+      <h2>Try it yourself</h2>
+      <p>Paste any query, pick your dialect, and get clean, consistent SQL in one click — all in your browser.</p>
+      <a class="cta" href="/sql-formatter">Format your SQL now →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Does formatting SQL change how the query runs?", "acceptedAnswer": {"@type": "Answer", "text": "No. SQL ignores extra whitespace and newlines, and keyword case is not significant. Formatting only affects how the query looks to humans — the parser, planner, and results are identical."}},
+      {"@type": "Question", "name": "Should SQL keywords be uppercase or lowercase?", "acceptedAnswer": {"@type": "Answer", "text": "Either works; consistency is what counts. Uppercase keywords are the traditional choice because they stand out from lowercase table and column names, but many modern teams write everything lowercase. Pick one convention and apply it across your codebase."}},
+      {"@type": "Question", "name": "Is it safe to paste production SQL into this formatter?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The formatter runs entirely in your browser using a self-hosted, open-source library. Your query is never uploaded to a server, so no query text or table names leave your device."}}
+    ]
+  }
+  </script>
+</body>
+</html>

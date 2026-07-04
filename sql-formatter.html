@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Formatter &amp; Beautifier — Free Online, Multi-Dialect | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/sql-formatter">
+  <meta name="description" content="Free online SQL formatter and beautifier. Pretty-print messy queries for PostgreSQL, MySQL, T-SQL, BigQuery, SQLite and more — pick indent size and keyword case. Runs in your browser; nothing is uploaded.">
+  <meta name="keywords" content="sql formatter, sql beautifier, format sql online, sql pretty print, postgresql formatter, mysql formatter, tsql formatter, sql indent">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="SQL Formatter &amp; Beautifier — Free Online, Multi-Dialect">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Beautify SQL for PostgreSQL, MySQL, T-SQL, BigQuery and more, right in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/sql-formatter">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .controls{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.75rem;align-items:flex-end}
+    .field{display:flex;flex-direction:column;gap:.25rem}
+    .field label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+    select{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem .6rem;font-size:.9rem;cursor:pointer}
+    select:focus{outline:none;border-color:var(--accent)}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › SQL Formatter</p>
+    <h1>SQL Formatter &amp; Beautifier</h1>
+    <p class="lead">Paste a messy SQL query below and beautify it with consistent indentation and keyword casing. Supports PostgreSQL, MySQL, T-SQL, BigQuery, SQLite and more. Everything runs locally in your browser — your query is never uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="dialect">Dialect</label>
+        <select id="dialect">
+          <option value="sql">Standard SQL</option>
+          <option value="postgresql" selected>PostgreSQL</option>
+          <option value="mysql">MySQL</option>
+          <option value="mariadb">MariaDB</option>
+          <option value="sqlite">SQLite</option>
+          <option value="transactsql">T-SQL (SQL Server)</option>
+          <option value="plsql">PL/SQL (Oracle)</option>
+          <option value="bigquery">BigQuery</option>
+          <option value="redshift">Redshift</option>
+          <option value="snowflake">Snowflake</option>
+          <option value="spark">Spark SQL</option>
+          <option value="db2">Db2</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="indent">Indent</label>
+        <select id="indent">
+          <option value="2" selected>2 spaces</option>
+          <option value="4">4 spaces</option>
+          <option value="tab">Tab</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="keywordCase">Keyword case</label>
+        <select id="keywordCase">
+          <option value="upper" selected>UPPERCASE</option>
+          <option value="lower">lowercase</option>
+          <option value="preserve">Preserve</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="formatSql()">Format</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <textarea id="input" placeholder="Paste SQL here, e.g. select a,b from t where x=1 order by b"></textarea>
+    <p id="status" class="status"></p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+
+    <section class="seo">
+      <h2>What is a SQL formatter?</h2>
+      <p>A SQL formatter takes a cramped, one-line, or inconsistently indented query and rewrites it into a clean, readable layout — clauses on their own lines, columns aligned, and keywords cased consistently. Readable SQL is easier to review, diff, and debug. This tool never changes what your query does; it only changes how it looks.</p>
+      <h2>How to use it</h2>
+      <p>1. Paste your SQL into the box above. 2. Pick your database dialect, indent size, and keyword case. 3. Click <strong>Format</strong> to beautify it, then <strong>Copy</strong> to grab the result.</p>
+      <h2>Which dialects are supported?</h2>
+      <p>Standard SQL, PostgreSQL, MySQL, MariaDB, SQLite, T-SQL (SQL Server), PL/SQL (Oracle), BigQuery, Redshift, Snowflake, Spark SQL, and Db2. Choosing the right dialect helps the formatter handle dialect-specific keywords and syntax correctly.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. This formatter runs entirely in your browser using a self-hosted copy of the open-source <a href="https://github.com/sql-formatter-org/sql-formatter" rel="noopener">sql-formatter</a> library (MIT licensed). Nothing you paste is ever sent to a server.</p>
+      <p style="margin-top:1rem">New to formatting queries? Read our guide: <a href="/guides/how-to-format-sql-queries">How to Format SQL Queries (and Why Readable SQL Matters) →</a></p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+
+  <script src="/assets/sql-formatter.min.js" defer></script>
+  <script>
+    const inp = document.getElementById('input');
+    const out = document.getElementById('output');
+    const status = document.getElementById('status');
+    function setStatus(msg, type){ status.textContent = msg; status.className = 'status' + (type ? ' ' + type : ''); }
+
+    function currentOptions(){
+      const indentVal = document.getElementById('indent').value;
+      const opts = {
+        language: document.getElementById('dialect').value,
+        keywordCase: document.getElementById('keywordCase').value
+      };
+      if (indentVal === 'tab') { opts.useTabs = true; opts.tabWidth = 4; }
+      else { opts.tabWidth = parseInt(indentVal, 10); }
+      return opts;
+    }
+
+    function formatSql(){
+      const src = inp.value.trim();
+      if (!src) { out.textContent = ''; setStatus('Paste some SQL first.', 'error'); return; }
+      if (typeof window.sqlFormatter === 'undefined' || typeof window.sqlFormatter.format !== 'function') {
+        setStatus('Formatter is still loading — try again in a moment.', 'error'); return;
+      }
+      try {
+        const result = window.sqlFormatter.format(src, currentOptions());
+        out.textContent = result;
+        setStatus('Formatted.', 'ok');
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'sql-formatter' }); }
+      } catch (e) {
+        out.textContent = '';
+        setStatus("Couldn't format that SQL: " + (e && e.message ? e.message : 'unexpected input') + '. Check for a typo or an unsupported statement.', 'error');
+      }
+    }
+
+    function copyOut(){
+      const t = out.textContent || inp.value;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(()=>{ setStatus('Copied to clipboard.', 'ok'); if(window.qtEvent) qtEvent('copy_result', { tool: 'sql-formatter' }); });
+    }
+    function clearAll(){ inp.value=''; out.textContent=''; setStatus(''); inp.focus(); }
+    function loadSample(){
+      inp.value = "select u.id, u.name, count(o.id) as orders from users u left join orders o on o.user_id=u.id where u.active=true and o.created_at > '2024-01-01' group by u.id, u.name having count(o.id) > 3 order by orders desc limit 10;";
+      formatSql();
+    }
+  </script>
+  <script src="/assets/analytics.js" defer></script>
+</body>
+</html>
