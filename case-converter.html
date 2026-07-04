@@ -25,7 +25,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
   <style>
     :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
@@ -199,12 +199,13 @@
     function copyText(){
       var t = inp.value;
       if(!t){ setStatus('Nothing to copy.', 'error'); return; }
-      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); }, function(){ setStatus('Copy failed — select the text and copy manually.', 'error'); });
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); if(window.qtEvent) qtEvent('copy_result', { tool: 'case-converter' }); }, function(){ setStatus('Copy failed — select the text and copy manually.', 'error'); });
     }
     function clearAll(){ inp.value = ''; updateCounts(); setStatus(''); inp.focus(); }
     function loadSample(){ inp.value = 'hello world example text'; updateCounts(); setStatus('Sample loaded — now pick a case.', 'ok'); }
 
     updateCounts();
   </script>
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>

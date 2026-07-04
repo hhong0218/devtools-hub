@@ -24,7 +24,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
   <style>
     :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
@@ -160,5 +160,6 @@
     <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
     <p style="margin-top:.75rem"><a href="/about.html" style="color:var(--accent);margin:0 .5rem">About</a>·<a href="/privacy.html" style="color:var(--accent);margin:0 .5rem">Privacy</a>·<a href="/terms.html" style="color:var(--accent);margin:0 .5rem">Terms</a>·<a href="/guides/" style="color:var(--accent);margin:0 .5rem">Guides</a></p>
   </footer>
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>

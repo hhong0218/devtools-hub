@@ -24,7 +24,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
   <style>
     :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
@@ -289,7 +289,7 @@
     function copyOut(){
       var text = outputEl.textContent;
       if(!text){ setStatus('Nothing to copy yet — click Compare first.', 'error'); return; }
-      navigator.clipboard.writeText(text).then(function(){ setStatus('Diff copied to clipboard.', 'ok'); });
+      navigator.clipboard.writeText(text).then(function(){ setStatus('Diff copied to clipboard.', 'ok'); if(window.qtEvent) qtEvent('copy_result', { tool: 'diff-checker' }); });
     }
 
     function clearAll(){
@@ -305,5 +305,6 @@
       compare();
     }
   </script>
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>

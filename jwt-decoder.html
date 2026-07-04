@@ -24,7 +24,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
   <style>
     :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
@@ -51,6 +51,8 @@
     .note{font-size:.82rem;color:var(--muted);margin:.5rem 0 1rem;padding:.6rem .8rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
     .output-wrap{position:relative}
     .out-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:1rem 0 .35rem}
+    .out-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+    .copy-mini{padding:.25rem .7rem;font-size:.8rem}
     pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
     .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
     .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
@@ -78,9 +80,9 @@
     <p class="note">🔒 This tool only <strong>decodes</strong> a token — it does <strong>not</strong> verify the signature. Decoding happens entirely in your browser; nothing is sent to a server. Never paste a production token you would not want exposed.</p>
     <p id="status" class="status"></p>
     <div class="output-wrap">
-      <p class="out-label">Header</p>
+      <div class="out-head"><p class="out-label">Header</p><button type="button" class="copy-mini" onclick="copyJwt('header')">Copy</button></div>
       <pre id="header"></pre>
-      <p class="out-label">Payload</p>
+      <div class="out-head"><p class="out-label">Payload</p><button type="button" class="copy-mini" onclick="copyJwt('payload')">Copy</button></div>
       <pre id="payload"></pre>
       <p class="out-label">Readable Claims</p>
       <pre id="claims"></pre>
@@ -171,6 +173,13 @@
       if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'jwt-decoder' }); }
     }
 
+    function copyJwt(which){
+      var el = which === 'header' ? headerOut : payloadOut;
+      var t = el.textContent;
+      if(!t){ setStatus('Nothing to copy yet — decode a token first.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus(which.charAt(0).toUpperCase() + which.slice(1) + ' copied to clipboard.', 'ok'); if(window.qtEvent) qtEvent('copy_result', { tool: 'jwt-decoder' }); });
+    }
+
     function clearAll(){ inp.value=''; clearOut(); setStatus(''); inp.focus(); }
 
     function loadSample(){
@@ -179,5 +188,6 @@
       decode();
     }
   </script>
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>
