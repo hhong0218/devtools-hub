@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to TypeScript — Free Online Interface &amp; Type Generator | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/json-to-typescript">
+  <meta name="description" content="Free online JSON to TypeScript converter. Paste a JSON object or API response and generate clean TypeScript interfaces (or types) with nested objects, arrays, unions and optional keys. Runs in your browser; nothing is uploaded.">
+  <meta name="keywords" content="json to typescript, json to interface, generate typescript from json, json to ts, typescript interface generator, json to type, api response to typescript">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="JSON to TypeScript — Free Online Interface &amp; Type Generator">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Turn any JSON object or API response into clean TypeScript interfaces, right in your browser. No signup, no uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev.quietools.com/json-to-typescript">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;--err:#f85149;--ok:#3fb950}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:1000px;margin:0 auto;padding:1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    h1{font-size:1.7rem;margin-bottom:.5rem}
+    .lead{color:var(--muted);margin-bottom:1.5rem}
+    .ad-slot{margin:1.5rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px}
+    .controls{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.75rem;align-items:flex-end}
+    .field{display:flex;flex-direction:column;gap:.25rem}
+    .field label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+    .field.check{flex-direction:row;align-items:center;gap:.4rem}
+    .field.check label{text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--text)}
+    input[type=text]{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem .6rem;font-size:.9rem;min-width:180px}
+    input[type=text]:focus{outline:none;border-color:var(--accent)}
+    select{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem .6rem;font-size:.9rem;cursor:pointer}
+    select:focus{outline:none;border-color:var(--accent)}
+    .toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+    button{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:.5rem 1rem;font-size:.9rem;cursor:pointer;transition:.15s}
+    button:hover{border-color:var(--accent)}
+    button.primary{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:600}
+    textarea{width:100%;min-height:200px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:.9rem;resize:vertical;line-height:1.5}
+    textarea:focus{outline:none;border-color:var(--accent)}
+    .io-label{font-size:.8rem;color:var(--muted);margin:.25rem 0}
+    .status{margin:.75rem 0;font-size:.9rem;min-height:1.4em}
+    .status.error{color:var(--err)}
+    .status.ok{color:var(--ok)}
+    .output-wrap{position:relative}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.9rem;max-height:400px;white-space:pre-wrap;word-break:break-word}
+    .note{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .seo h2{font-size:1.2rem;margin:1.25rem 0 .5rem}
+    .seo p{color:var(--muted);margin-bottom:.5rem}
+    .seo code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.1rem .35rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85em}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › JSON to TypeScript</p>
+    <h1>JSON to TypeScript</h1>
+    <p class="lead">Paste a JSON object or API response and instantly generate clean TypeScript interfaces — with nested objects, arrays, unions, and optional keys inferred for you. Everything runs locally in your browser; nothing is uploaded.</p>
+
+    <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="controls">
+      <div class="field">
+        <label for="rootName">Root name</label>
+        <input type="text" id="rootName" value="Root" spellcheck="false" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="kind">Output</label>
+        <select id="kind">
+          <option value="interface" selected>interface</option>
+          <option value="type">type</option>
+        </select>
+      </div>
+      <div class="field check">
+        <input type="checkbox" id="optNull" checked>
+        <label for="optNull">null → optional (<code>?:</code>)</label>
+      </div>
+      <div class="field check">
+        <input type="checkbox" id="optExport" checked>
+        <label for="optExport">export</label>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button class="primary" onclick="convert()">Generate</button>
+      <button onclick="copyOut()">Copy</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="loadSample()">Sample</button>
+    </div>
+    <p class="io-label">Input — JSON</p>
+    <textarea id="input" placeholder='{"id":1,"name":"Ada","active":true,"roles":["admin","user"]}'></textarea>
+    <p id="status" class="status"></p>
+    <p class="io-label">Output — TypeScript</p>
+    <div class="output-wrap"><pre id="output"></pre></div>
+    <p class="note">All parsing and type inference happens on your device. No network calls are made and nothing you paste leaves your browser.</p>
+
+    <section class="seo">
+      <h2>What is a JSON to TypeScript converter?</h2>
+      <p>A JSON to TypeScript converter reads a sample of JSON — typically an API response or a config file — and generates the matching TypeScript <code>interface</code> (or <code>type</code>) declarations. Instead of hand-typing every property and guessing its type, you paste the JSON and get a ready-to-use static type: nested objects become their own interfaces, arrays are inferred to an element type, and mixed values collapse into unions. It is the fastest way to give an untyped API a typed shape.</p>
+      <h2>How to use it</h2>
+      <p>1. Paste a JSON object or array into the input box (click <strong>Sample</strong> to see the expected shape). 2. Optionally set the <strong>Root name</strong> for the top-level type and pick <strong>interface</strong> or <strong>type</strong> output. 3. Press <strong>Generate</strong>, then <strong>Copy</strong> the result into your project. Toggle <strong>null → optional</strong> to turn <code>null</code> values into optional properties, or leave it off to keep an explicit <code>null</code> in the type.</p>
+      <h2>How are nested objects and arrays handled?</h2>
+      <p>Nested objects are extracted into their own named interfaces, so a <code>user.address</code> object becomes an <code>Address</code> interface referenced from the parent. Arrays are inferred by merging the types of their elements: an array of objects produces one interface describing the union of all keys seen (keys missing from some elements become optional), and an array of primitives becomes a typed array such as <code>string[]</code> or <code>(string | number)[]</code>. Empty arrays fall back to <code>unknown[]</code>, and empty objects become <code>Record&lt;string, unknown&gt;</code> so nothing is silently dropped.</p>
+      <h2>Is my data safe?</h2>
+      <p>Yes. The conversion runs entirely in your browser using plain JavaScript and the built-in <code>JSON.parse</code> engine. Nothing you paste is uploaded to a server, making it safe for internal API responses and private schemas.</p>
+      <h2>Frequently asked questions</h2>
+      <p><strong>Should I paste a single object or an array?</strong> Either works. A single object generates one root interface; an array generates a root interface for its elements plus a root type alias like <code>type Root = RootItem[]</code>.</p>
+      <p><strong>What happens to <code>null</code> values?</strong> With <strong>null → optional</strong> on, a property that is <code>null</code> in the sample becomes optional (<code>name?: string</code> if seen as a string elsewhere, or <code>name?: null</code> if only ever null). Turn the toggle off to emit an explicit <code>null</code> in the type instead.</p>
+      <p><strong>Can it produce <code>type</code> aliases instead of interfaces?</strong> Yes — switch the <strong>Output</strong> selector to <code>type</code> and every generated declaration uses <code>type X = {&nbsp;…&nbsp;}</code> syntax.</p>
+      <p style="margin-top:1rem">Want the full picture? Read our guide: <a href="/guides/json-to-typescript-guide">How to Convert JSON to TypeScript Interfaces →</a></p>
+    </section>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p><p><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/about">About</a> · <a href="/contact">Contact</a></p></footer>
+
+  <script>
+    "use strict";
+    var inp = document.getElementById('input');
+    var out = document.getElementById('output');
+    var statusEl = document.getElementById('status');
+
+    function setStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status' + (type ? ' ' + type : ''); }
+
+    // ---- Type inference engine ----
+    // We walk the JSON value and build a registry of named interfaces.
+    // interfaces: array of { name, fields } where fields is { key: { types:Set, optional:bool } }
+    // The same structural object shape is de-duplicated by a signature so we don't emit twins.
+
+    function isPlainObject(v){ return v !== null && typeof v === 'object' && !Array.isArray(v); }
+
+    function pascalCase(name){
+      var parts = String(name).replace(/[^A-Za-z0-9]+/g, ' ').trim().split(/\s+/);
+      if(parts.length === 0 || parts[0] === '') return 'Item';
+      var s = parts.map(function(p){ return p.charAt(0).toUpperCase() + p.slice(1); }).join('');
+      if(/^[0-9]/.test(s)) s = '_' + s;
+      return s || 'Item';
+    }
+
+    function isSafeKey(k){ return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(k); }
+    function quoteKey(k){ return isSafeKey(k) ? k : JSON.stringify(k); }
+
+    function Registry(){
+      this.list = [];      // ordered interfaces
+      this.bySig = {};     // signature -> name
+      this.used = {};      // taken names
+    }
+    Registry.prototype.uniqueName = function(base){
+      var name = base; var i = 2;
+      while(this.used[name]){ name = base + i; i++; }
+      this.used[name] = true;
+      return name;
+    };
+
+    // Returns a TS type string for a value, registering interfaces as needed.
+    // hint = suggested name for an object/array element.
+    function inferType(value, hint, reg){
+      if(value === null) return 'null';
+      var t = typeof value;
+      if(t === 'string') return 'string';
+      if(t === 'number') return 'number';
+      if(t === 'boolean') return 'boolean';
+      if(Array.isArray(value)) return inferArray(value, hint, reg);
+      if(isPlainObject(value)) return inferObject(value, hint, reg);
+      return 'unknown';
+    }
+
+    // Merge a list of TS type strings into a union, de-duped, null last.
+    function unionOf(types){
+      var seen = Object.create(null);
+      var ordered = [];
+      types.forEach(function(t){ if(!seen[t]){ seen[t] = true; ordered.push(t); } });
+      // Put null at the end for readability.
+      ordered.sort(function(a, b){ return (a === 'null') - (b === 'null'); });
+      if(ordered.length === 0) return 'unknown';
+      return ordered.join(' | ');
+    }
+
+    function inferArray(arr, hint, reg){
+      if(arr.length === 0) return 'unknown[]';
+      // If every element is a plain object, merge them into one interface.
+      var allObjects = arr.every(isPlainObject);
+      if(allObjects){
+        var merged = mergeObjects(arr);
+        var name = inferObject(merged.sample, singular(hint), reg, merged.optionalKeys);
+        return name + '[]';
+      }
+      var parts = arr.map(function(el){ return inferType(el, singular(hint), reg); });
+      var u = unionOf(parts);
+      return /[| ]/.test(u) ? '(' + u + ')[]' : u + '[]';
+    }
+
+    // Build a representative object from an array of objects, tracking which keys are optional.
+    function mergeObjects(arr){
+      var keyPresence = {};   // key -> count
+      var sample = {};        // key -> array of values (to union later via inferObject path)
+      var valuesByKey = {};
+      arr.forEach(function(obj){
+        Object.keys(obj).forEach(function(k){
+          keyPresence[k] = (keyPresence[k] || 0) + 1;
+          if(!valuesByKey[k]) valuesByKey[k] = [];
+          valuesByKey[k].push(obj[k]);
+        });
+      });
+      var optionalKeys = {};
+      Object.keys(keyPresence).forEach(function(k){
+        if(keyPresence[k] < arr.length) optionalKeys[k] = true;
+        // Represent the merged value as a multi-value marker so inferObject unions them.
+        sample[k] = { __multi: valuesByKey[k] };
+      });
+      return { sample: sample, optionalKeys: optionalKeys };
+    }
+
+    // Infer (and register) an interface for an object. Returns its type name.
+    // optionalKeys: map of keys that should be optional (from array merging).
+    function inferObject(obj, hint, reg, optionalKeys){
+      optionalKeys = optionalKeys || {};
+      var keys = Object.keys(obj);
+      if(keys.length === 0) return 'Record<string, unknown>';
+      var nullToOptional = document.getElementById('optNull').checked;
+
+      var fields = [];   // { key, type, optional }
+      var sigParts = [];
+      keys.forEach(function(k){
+        var raw = obj[k];
+        var childHint = pascalCase(k);
+        var typeStr, optional = !!optionalKeys[k];
+        if(raw && raw.__multi){
+          // Union of all observed values for this key across an array of objects.
+          var parts = raw.__multi.map(function(v){ return inferType(v, childHint, reg); });
+          // If any value was null and null->optional is on, drop null and mark optional.
+          if(nullToOptional && parts.indexOf('null') > -1){
+            optional = true;
+            parts = parts.filter(function(p){ return p !== 'null'; });
+            if(parts.length === 0) parts = ['null'];
+          }
+          typeStr = unionOf(parts);
+        } else {
+          typeStr = inferType(raw, childHint, reg);
+          if(nullToOptional && typeStr === 'null'){ optional = true; }
+        }
+        fields.push({ key: k, type: typeStr, optional: optional });
+        sigParts.push(k + ':' + typeStr + (optional ? '?' : ''));
+      });
+
+      // De-duplicate structurally identical interfaces.
+      var sig = sigParts.join(';');
+      if(reg.bySig[sig]) return reg.bySig[sig];
+
+      var name = reg.uniqueName(pascalCase(hint || 'Item'));
+      reg.bySig[sig] = name;
+      reg.list.push({ name: name, fields: fields });
+      return name;
+    }
+
+    function singular(name){
+      if(!name) return 'Item';
+      var n = String(name);
+      if(/ies$/i.test(n)) return n.replace(/ies$/i, 'y');
+      if(/(ses|xes|zes|ches|shes)$/i.test(n)) return n.replace(/es$/i, '');
+      if(/s$/i.test(n) && !/ss$/i.test(n)) return n.replace(/s$/i, '');
+      return n;
+    }
+
+    function render(reg){
+      var kind = document.getElementById('kind').value;         // interface | type
+      var doExport = document.getElementById('optExport').checked;
+      var prefix = doExport ? 'export ' : '';
+      // Emit in reverse registration order so the root (registered last for objects) is defined
+      // after its dependencies — but readers prefer root first, so we emit as registered then
+      // reverse to keep leaves last. We simply emit in registration order (children first, root last),
+      // which compiles fine and reads dependencies-first.
+      var blocks = reg.list.map(function(it){
+        var lines = it.fields.map(function(f){
+          return '  ' + quoteKey(f.key) + (f.optional ? '?' : '') + ': ' + f.type + ';';
+        });
+        if(kind === 'type'){
+          return prefix + 'type ' + it.name + ' = {\n' + lines.join('\n') + '\n};';
+        }
+        return prefix + 'interface ' + it.name + ' {\n' + lines.join('\n') + '\n}';
+      });
+      return blocks.join('\n\n');
+    }
+
+    function generate(text){
+      var data;
+      try { data = JSON.parse(text); }
+      catch(e){ throw new Error('Invalid JSON: ' + e.message); }
+
+      var rootName = pascalCase(document.getElementById('rootName').value || 'Root');
+      var kind = document.getElementById('kind').value;
+      var doExport = document.getElementById('optExport').checked;
+      var prefix = doExport ? 'export ' : '';
+      var reg = new Registry();
+
+      if(isPlainObject(data)){
+        reg.used[rootName] = true;                 // reserve the root name first
+        var rootTypeName = inferObject(data, rootName, reg);
+        // If the object was empty, inferObject returned a Record type, not a named interface.
+        if(rootTypeName.indexOf('Record<') === 0){
+          return prefix + (kind === 'type' ? 'type ' + rootName + ' = ' + rootTypeName + ';' : 'interface ' + rootName + ' {\n  [key: string]: unknown;\n}');
+        }
+        // Rename the root interface to the requested root name if it differs.
+        return renameRoot(reg, rootTypeName, rootName, render(reg), rootTypeName);
+      }
+
+      if(Array.isArray(data)){
+        // Reserve the root name so the element interface can't collide with the array alias.
+        reg.used[rootName] = true;
+        // Hint the element interface toward "<Root>Item" (singular-ized inside inferArray).
+        var arrType = inferType(data, rootName + 'Item', reg);  // e.g. "RootItem[]" or "string[]"
+        var body = render(reg);
+        var alias = prefix + 'type ' + rootName + ' = ' + arrType + ';';
+        return body ? body + '\n\n' + alias : alias;
+      }
+
+      // Primitive root.
+      return prefix + 'type ' + rootName + ' = ' + inferType(data, rootName, reg) + ';';
+    }
+
+    // The root object interface may have been auto-named (e.g. "Root") already because we
+    // reserved the name; but if de-dup pointed it elsewhere, patch the rendered output.
+    function renameRoot(reg, currentName, desiredName, rendered, actualRootName){
+      if(actualRootName === desiredName) return rendered;
+      // Replace the declaration name and references. Word-boundary-safe replace.
+      var re = new RegExp('\\b' + actualRootName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
+      return rendered.replace(re, desiredName);
+    }
+
+    function convert(){
+      var text = inp.value;
+      if(text.trim() === ''){ out.textContent = ''; setStatus('Nothing to convert — paste some JSON first.', 'error'); return; }
+      try {
+        var ts = generate(text);
+        out.textContent = ts;
+        setStatus('✓ Generated TypeScript.', 'ok');
+        if (typeof gtag === 'function') { gtag('event', 'devtool_use', { tool: 'json-to-typescript' }); }
+      } catch(e){
+        out.textContent = '';
+        setStatus('✗ ' + e.message, 'error');
+      }
+    }
+
+    function copyOut(){
+      var t = out.textContent;
+      if(!t){ setStatus('Nothing to copy.', 'error'); return; }
+      navigator.clipboard.writeText(t).then(function(){ setStatus('Copied to clipboard.', 'ok'); if(window.qtEvent) qtEvent('copy_result', { tool: 'json-to-typescript' }); });
+    }
+
+    function clearAll(){ inp.value = ''; out.textContent = ''; setStatus(''); inp.focus(); }
+
+    function loadSample(){
+      document.getElementById('rootName').value = 'User';
+      inp.value = '{\n  "id": 42,\n  "name": "Ada Lovelace",\n  "active": true,\n  "score": null,\n  "roles": ["admin", "user"],\n  "address": {\n    "city": "London",\n    "zip": "W1"\n  },\n  "posts": [\n    { "id": 1, "title": "Hello", "pinned": true },\n    { "id": 2, "title": "World" }\n  ]\n}';
+      convert();
+    }
+  </script>
+  <script src="/assets/analytics.js" defer></script>
+</body>
+</html>

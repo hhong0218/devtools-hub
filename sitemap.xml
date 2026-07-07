@@ -21,6 +21,7 @@
   <url><loc>https://dev.quietools.com/yaml-formatter</loc><priority>0.8</priority></url>
   <url><loc>https://dev.quietools.com/sql-formatter</loc><priority>0.8</priority></url>
   <url><loc>https://dev.quietools.com/html-entities</loc><priority>0.8</priority></url>
+  <url><loc>https://dev.quietools.com/json-to-typescript</loc><priority>0.8</priority></url>
   <url><loc>https://dev.quietools.com/about</loc><priority>0.5</priority></url>
   <url><loc>https://dev.quietools.com/contact</loc><priority>0.5</priority></url>
   <url><loc>https://dev.quietools.com/privacy</loc><priority>0.3</priority></url>
@@ -36,4 +37,5 @@
   <url><loc>https://dev.quietools.com/guides/unix-timestamp-explained</loc><priority>0.7</priority></url>
   <url><loc>https://dev.quietools.com/guides/how-to-format-sql-queries</loc><priority>0.7</priority></url>
   <url><loc>https://dev.quietools.com/guides/html-entities-explained</loc><priority>0.7</priority></url>
+  <url><loc>https://dev.quietools.com/guides/json-to-typescript-guide</loc><priority>0.7</priority></url>
 </urlset>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Convert JSON to TypeScript Interfaces | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/json-to-typescript-guide">
+  <meta name="description" content="How to turn a JSON object or API response into TypeScript interfaces: nested objects, arrays, unions, optional keys, and interface vs type. A clear developer guide.">
+  <meta name="keywords" content="json to typescript, json to interface, generate typescript from json, typescript interface from json, json to type, api response to typescript">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="How to Convert JSON to TypeScript Interfaces">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Turn any JSON object or API response into clean TypeScript interfaces: nested objects, arrays, unions, optional keys, and interface vs type.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/json-to-typescript-guide">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How do I convert JSON to a TypeScript interface?","acceptedAnswer":{"@type":"Answer","text":"Paste a representative JSON object or API response into a JSON to TypeScript converter. It walks the value, maps each JSON type to its TypeScript equivalent (string, number, boolean), extracts nested objects into their own interfaces, and infers array element types. You then copy the generated interface into your project and use it to type the parsed response."}},
+      {"@type":"Question","name":"Should I use interface or type for JSON shapes?","acceptedAnswer":{"@type":"Answer","text":"Both work for describing the shape of a JSON object. Interfaces support declaration merging and are the common convention for object shapes, while type aliases are more flexible for unions and intersections. For a plain data shape from JSON, either is fine; pick whichever matches your codebase style."}},
+      {"@type":"Question","name":"How are null values handled when generating types?","acceptedAnswer":{"@type":"Answer","text":"A value that is null in the sample can be treated two ways. You can make the property optional (name?: string) so the type reflects that the field may be absent or null, or you can keep an explicit null in the type (name: string | null). A good converter lets you toggle between the two so the generated type matches how your API actually behaves."}},
+      {"@type":"Question","name":"Is a type generated from one sample always correct?","acceptedAnswer":{"@type":"Answer","text":"Not necessarily. A generated type only reflects the sample you provide. If some fields are sometimes absent, nullable, or hold different types across responses, feed the converter an array of several representative samples so it can merge them into optional keys and unions, then review the result before committing it."}}
+    ]
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › How to Convert JSON to TypeScript</p>
+      <h1>How to Convert JSON to TypeScript Interfaces</h1>
+      <p>Most TypeScript projects consume JSON they didn't define — a REST endpoint, a third-party webhook, a config file. Parsing that JSON with <code>JSON.parse</code> gives you a value typed as <code>any</code>, which throws away everything TypeScript is good at. The fix is to write an <em>interface</em> that describes the shape, so the compiler can catch typos and missing fields. Writing those interfaces by hand is tedious; generating them from a sample is instant. This guide shows how the conversion works and how to make the result trustworthy.</p>
+
+      <h2>The basic idea</h2>
+      <p>A JSON to TypeScript converter reads one representative value and maps each JSON type to its TypeScript equivalent: a JSON string becomes <code>string</code>, a number becomes <code>number</code>, a boolean becomes <code>boolean</code>, an object becomes a named interface, and an array becomes a typed array. You paste JSON, you get a ready-to-use type.</p>
+      <pre><code>// Input JSON
+{ "id": 1, "name": "Ada", "active": true }
+
+// Generated TypeScript
+export interface Root {
+  id: number;
+  name: string;
+  active: boolean;
+}</code></pre>
+
+      <a class="cta" href="/json-to-typescript">Open the JSON to TypeScript generator →</a>
+
+      <h2>Nested objects become their own interfaces</h2>
+      <p>When a property holds another object, it is cleaner to give that object its own named interface and reference it, rather than inlining a deeply nested shape. A good generator does this automatically, naming the child interface after its key.</p>
+      <pre><code>export interface Address {
+  city: string;
+  zip: string;
+}
+
+export interface User {
+  id: number;
+  address: Address;
+}</code></pre>
+
+      <h2>Arrays and unions</h2>
+      <p>Arrays are the tricky part, because JSON arrays can hold anything. The converter inspects the elements and infers a single element type:</p>
+      <ul>
+        <li>An array of strings becomes <code>string[]</code>.</li>
+        <li>An array of mixed primitives becomes a union: <code>(string | number)[]</code>.</li>
+        <li>An array of objects is merged into one interface. If a key appears in some elements but not all, it becomes <strong>optional</strong>.</li>
+        <li>An empty array can't be inferred, so it falls back to <code>unknown[]</code> — a signal to look closer.</li>
+      </ul>
+      <div class="note">💡 Feed the generator several representative rows, not just one. If your API sometimes omits a field or returns <code>null</code>, a single sample won't show it — a handful of rows will, and the merged type captures the optional keys and unions correctly.</div>
+
+      <h2>Handling null: optional vs explicit</h2>
+      <p>JSON's <code>null</code> maps to two reasonable TypeScript shapes, and which you want depends on your API:</p>
+      <table>
+        <tr><th>Choice</th><th>Generated field</th><th>Use when…</th></tr>
+        <tr><td>Optional</td><td><code>score?: number</code></td><td>The field may be absent or null and callers should guard for both</td></tr>
+        <tr><td>Explicit null</td><td><code>score: number | null</code></td><td>The field is always present but can carry a null value</td></tr>
+      </table>
+      <p>The generator on this site exposes a <strong>null → optional</strong> toggle so you can produce whichever your endpoint actually returns.</p>
+
+      <h2>interface vs type</h2>
+      <p>You'll see both in the wild. For describing a plain JSON object shape they are interchangeable: <code>interface User { … }</code> and <code>type User = { … }</code> compile to the same structural check. Interfaces support declaration merging and are the conventional choice for object shapes; type aliases shine for unions and intersections. Pick whatever matches your codebase — the generator can emit either.</p>
+
+      <h2>Review before you commit</h2>
+      <p>A generated type is a strong starting point, not gospel. It reflects only the sample you pasted. Before you rely on it, sanity-check three things: are any "always present" fields actually optional in production, are numeric-looking strings really strings (IDs often are), and do enum-like fields deserve a literal union such as <code>"active" | "archived"</code> instead of a bare <code>string</code>. A minute of review turns a decent type into an accurate one.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>How do I convert JSON to a TypeScript interface?</strong> Paste a representative object or API response into the generator; it maps each value to its TypeScript type, extracts nested objects into named interfaces, and infers array element types.</p>
+      <p><strong>Should I use interface or type?</strong> Either works for a data shape. Interfaces are the common convention for objects; type aliases are handier for unions and intersections.</p>
+      <p><strong>How are null values handled?</strong> You choose: make the property optional (<code>name?: string</code>) or keep an explicit <code>null</code> in the type (<code>name: string | null</code>).</p>
+      <p><strong>Is one sample enough?</strong> Often not. Paste several representative rows so optional keys and unions are detected, then review the result.</p>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-is-base64-encoding">What Is Base64 Encoding?</a> — a text-safe representation for binary data.</li>
+        <li><a href="/guides/url-encoding-explained">URL Encoding Explained</a> — placing text safely inside a URL.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+
+      <h2>Generate your types now</h2>
+      <p>Paste any JSON object or API response and get clean TypeScript interfaces in a click — all in your browser, nothing uploaded.</p>
+      <a class="cta" href="/json-to-typescript">Convert JSON to TypeScript →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>
