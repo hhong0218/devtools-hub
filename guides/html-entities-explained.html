@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Entities Explained (Escaping &amp; and &lt; Safely) | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/html-entities-explained">
+  <meta name="description" content="What HTML entities are, why you must escape &lt; &gt; and &amp;, named vs numeric entities, and how escaping prevents broken pages and XSS. A clear developer guide.">
+  <meta name="keywords" content="html entities explained, escape html, what is &amp;amp; &amp;lt; &amp;gt;, named vs numeric entities, html special characters, unescape html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="HTML Entities Explained (Escaping &amp; and &lt; Safely)">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Why you must escape < > and &, named vs numeric entities, and how escaping prevents broken pages and XSS.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/html-entities-explained">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
+  </script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.85);backdrop-filter:blur(8px);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:700;color:var(--text)}
+    .logo span{color:var(--accent)}
+    main{max-width:760px;margin:0 auto;padding:2.5rem 1.5rem}
+    .crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:2rem;margin-bottom:.75rem;line-height:1.25}
+    article h2{font-size:1.35rem;margin:2rem 0 .6rem}
+    article p{margin-bottom:1rem;color:#c9d1d9}
+    article ul,article ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}
+    article li{margin-bottom:.4rem}
+    code{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:.12rem .4rem;font-family:'SFMono-Regular',Consolas,monospace;font-size:.88em}
+    pre{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;font-family:'SFMono-Regular',Consolas,monospace;font-size:.85rem;margin-bottom:1rem}
+    pre code{border:none;background:none;padding:0}
+    .note{font-size:.92rem;margin:1.25rem 0;padding:.85rem 1rem;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;background:var(--panel)}
+    .cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:600;padding:.7rem 1.3rem;border-radius:8px;margin:1rem 0;text-decoration:none}
+    .cta:hover{text-decoration:none;opacity:.9}
+    table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:.92rem}
+    th,td{border:1px solid var(--border);padding:.5rem .7rem;text-align:left}
+    th{background:var(--panel)}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Which characters must be escaped in HTML?","acceptedAnswer":{"@type":"Answer","text":"The three critical ones are the ampersand (&), the less-than sign (<), and the greater-than sign (>). Inside a double-quoted attribute value you should also escape the double quote (\"), and inside a single-quoted attribute the single quote ('). Escaping these prevents the browser from misreading your text as markup."}},
+      {"@type":"Question","name":"What is the difference between named and numeric HTML entities?","acceptedAnswer":{"@type":"Answer","text":"A named entity uses a memorable label, like &amp;copy; for the copyright symbol. A numeric entity uses the character's Unicode code point, either in decimal (&#169;) or hexadecimal (&#xA9;). Numeric entities work for every character, while named entities exist only for a defined set. Both render identically."}},
+      {"@type":"Question","name":"Is HTML escaping the same as encryption?","acceptedAnswer":{"@type":"Answer","text":"No. HTML escaping is reversible formatting that tells the browser to treat certain characters as text rather than markup. It provides no secrecy and anyone can decode it instantly. Its real purpose is preventing broken pages and cross-site scripting (XSS)."}},
+      {"@type":"Question","name":"Do I need to escape every non-ASCII character?","acceptedAnswer":{"@type":"Answer","text":"Usually not. If your page is served as UTF-8, you can write accented letters, symbols, and emoji directly. You only need to escape the markup-critical characters. Escaping all non-ASCII characters is optional and mainly useful for legacy pipelines or email templates that are not reliably UTF-8."}}
+    ]
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Dev<span>Tools</span> Hub</a>
+    <a href="/guides/">Guides</a>
+  </header>
+  <main>
+    <article>
+      <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › HTML Entities Explained</p>
+      <h1>HTML Entities Explained</h1>
+      <p>HTML entities are the mechanism that lets you show characters like <code>&lt;</code>, <code>&gt;</code>, and <code>&amp;</code> as literal text instead of having the browser treat them as markup. Get this wrong and your page renders half-broken — or worse, opens a door to cross-site scripting. This guide explains what entities are, which characters you must escape, the difference between named and numeric forms, and when to reach for escaping at all.</p>
+
+      <h2>Why HTML needs escaping</h2>
+      <p>An HTML parser reads a document looking for structural signals. A <code>&lt;</code> starts a tag. An <code>&amp;</code> starts an entity or character reference. If your <em>content</em> happens to contain one of those characters, the parser can't tell your data apart from the page's structure.</p>
+      <p>Say you want the words <code>a &lt; b</code> to appear on the page. Written raw, the browser sees <code>&lt; b</code> and starts hunting for a tag named <code>b</code>. The fix is to escape the character: write <code>&amp;lt;</code> and the browser renders a literal less-than sign.</p>
+      <pre><code>Raw     : if (a &lt; b) doThing();
+Escaped : if (a &amp;lt; b) doThing();</code></pre>
+
+      <a class="cta" href="/html-entities">Open the HTML Entity Encoder / Decoder →</a>
+
+      <h2>The characters you must escape</h2>
+      <p>Only a small set is truly mandatory. The rest is context.</p>
+      <table>
+        <tr><th>Character</th><th>Entity</th><th>Escape when…</th></tr>
+        <tr><td><code>&amp;</code></td><td><code>&amp;amp;</code></td><td>Always — it begins every entity</td></tr>
+        <tr><td><code>&lt;</code></td><td><code>&amp;lt;</code></td><td>Always — it begins every tag</td></tr>
+        <tr><td><code>&gt;</code></td><td><code>&amp;gt;</code></td><td>In text (safe practice; prevents edge cases)</td></tr>
+        <tr><td><code>&quot;</code></td><td><code>&amp;quot;</code></td><td>Inside a double-quoted attribute value</td></tr>
+        <tr><td><code>'</code></td><td><code>&amp;#39;</code></td><td>Inside a single-quoted attribute value</td></tr>
+      </table>
+      <p>A reliable rule: escape <code>&amp;</code>, <code>&lt;</code>, and <code>&gt;</code> in any text you insert, and also escape quotes whenever you build an attribute value from untrusted input.</p>
+
+      <h2>Named vs numeric entities</h2>
+      <p>Every entity comes in two flavors, and they render identically:</p>
+      <ul>
+        <li><strong>Named</strong> — a human-friendly label, e.g. <code>&amp;copy;</code> for ©, <code>&amp;mdash;</code> for —, <code>&amp;nbsp;</code> for a non-breaking space. Easy to read, but only defined for a fixed set of characters.</li>
+        <li><strong>Numeric</strong> — the character's Unicode code point in decimal (<code>&amp;#169;</code>) or hexadecimal (<code>&amp;#xA9;</code>). Works for <em>any</em> character, including emoji.</li>
+      </ul>
+      <div class="note">💡 When in doubt, numeric entities always work. Named entities are nicer to read but you have to know the name exists. For the five markup-critical characters, prefer the well-known names: <code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>&amp;quot;</code>.</div>
+
+      <h2>Escaping and security (XSS)</h2>
+      <p>The most important reason to escape is safety. When you drop user-supplied text straight into a page, an attacker can inject <code>&lt;script&gt;</code> tags that run in your visitors' browsers — a cross-site scripting (XSS) attack. Escaping <code>&lt;</code> and <code>&amp;</code> turns that payload into inert text: <code>&amp;lt;script&amp;gt;</code> displays as harmless characters instead of executing. Always escape untrusted input at the point you insert it into HTML.</p>
+
+      <h2>Do you need to escape accented letters and emoji?</h2>
+      <p>Usually no. If your page declares <code>&lt;meta charset="utf-8"&gt;</code> — which it should — you can write <code>café</code>, <code>€</code>, and <code>😀</code> directly. Escaping every non-ASCII character is optional and mainly helps legacy systems or email templates that can't be trusted to preserve UTF-8. The encoder above offers a "non-ASCII" mode for exactly those cases.</p>
+
+      <h2>Frequently asked questions</h2>
+      <p><strong>Which characters must be escaped?</strong> Always <code>&amp;</code> and <code>&lt;</code>; also <code>&gt;</code> in text, and quotes inside attribute values.</p>
+      <p><strong>Named or numeric?</strong> Both render the same. Numeric works for every character; named is more readable but limited to a defined set.</p>
+      <p><strong>Is escaping the same as encryption?</strong> No — it's reversible formatting with zero secrecy. Its job is correct rendering and XSS prevention.</p>
+      <p><strong>Do I need to escape emoji and accents?</strong> Not on a UTF-8 page. Escape only the markup-critical characters unless a legacy pipeline forces otherwise.</p>
+
+      <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/url-encoding-explained">URL Encoding Explained</a> — the percent-encoding cousin, for placing text in a URL.</li>
+        <li><a href="/guides/what-is-base64-encoding">What Is Base64 Encoding?</a> — a text-safe representation for binary data.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+
+      <h2>Escape or unescape now</h2>
+      <p>Paste any text to convert special characters into HTML entities, or paste entities to decode them back — all in your browser.</p>
+      <a class="cta" href="/html-entities">Encode or decode HTML entities →</a>
+    </article>
+  </main>
+  <footer>
+    <p>DevTools Hub — free browser-based developer utilities. Everything runs locally; your data is never sent to a server.</p>
+  </footer>
+</body>
+</html>
