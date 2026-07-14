@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://dev.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Clean a CSV File Without Losing Data | DevTools Hub</title>
+  <link rel="canonical" href="https://dev.quietools.com/guides/how-to-clean-csv-data">
+  <meta name="description" content="A practical guide to cleaning CSV and TSV files safely: delimiters, quoted fields, whitespace, blank rows, duplicate rows, headers, UTF-8 and import checks.">
+  <meta name="keywords" content="how to clean csv, remove duplicates csv, clean csv data, csv whitespace, csv delimiter, csv import errors, csv data quality">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://dev.quietools.com/guides/how-to-clean-csv-data">
+  <meta property="og:title" content="How to Clean a CSV File Without Losing Data">
+  <meta property="og:description" content="A cautious workflow for cleaning delimiters, whitespace, blank rows and exact duplicates before your next import.">
+  <meta property="og:image" content="https://dev.quietools.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"How to Clean a CSV File Without Losing Data",
+    "description":"A practical workflow for safely cleaning CSV and TSV files before importing them into spreadsheets, databases, CRMs or analytics tools.",
+    "datePublished":"2026-07-14",
+    "dateModified":"2026-07-14",
+    "inLanguage":"en",
+    "author":{"@type":"Organization","name":"DevTools Hub","url":"https://dev.quietools.com/"},
+    "publisher":{"@type":"Organization","name":"Quietools","url":"https://quietools.com/"},
+    "mainEntityOfPage":"https://dev.quietools.com/guides/how-to-clean-csv-data"
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','dev.quietools.com']}});}</script>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.72}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;position:sticky;top:0;background:rgba(13,17,23,.9);backdrop-filter:blur(8px);z-index:10;display:flex;justify-content:space-between;gap:1rem}.logo{font-size:1.25rem;font-weight:700;color:var(--text)}.logo span{color:var(--accent)}
+    main{max-width:790px;margin:0 auto;padding:2.3rem 1.35rem}.crumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}h1{font-size:2rem;line-height:1.25;margin-bottom:.7rem}.lead{color:var(--muted);font-size:1.05rem;margin-bottom:1.5rem}h2{font-size:1.35rem;margin:2rem 0 .55rem}h3{font-size:1.05rem;margin:1.2rem 0 .35rem}p{color:#c9d1d9;margin-bottom:.9rem}ul,ol{margin:0 0 1rem 1.25rem;color:#c9d1d9}li{margin-bottom:.35rem}code{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.08rem .3rem;font-size:.88em}.note{background:var(--panel);border-left:3px solid var(--accent);border-radius:5px;padding:.8rem .95rem;margin:1rem 0;color:#c9d1d9}.cta{display:inline-block;background:var(--accent);color:#0d1117;font-weight:700;padding:.7rem 1.15rem;border-radius:7px;margin:.5rem 0 1rem}.cta:hover{text-decoration:none;opacity:.9}table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}th,td{border:1px solid var(--border);padding:.55rem .65rem;text-align:left}th{background:var(--panel)}footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header><a href="/" class="logo">Dev<span>Tools</span> Hub</a><a href="/guides/">Guides</a></header>
+  <main>
+    <p class="crumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › Clean CSV Data</p>
+    <article>
+      <h1>How to Clean a CSV File Without Losing Data</h1>
+      <p class="lead">CSV cleanup looks simple until a comma inside a note splits one record into three columns, Excel changes an identifier, or a broad “remove duplicates” rule deletes two different customers. A safe process makes small, explicit changes and verifies them before import.</p>
+      <a class="cta" href="/csv-cleaner">Open the private CSV Cleaner →</a>
+
+      <h2>Keep an untouched source file</h2>
+      <p>Start by duplicating the original export. Never clean the only copy. Give the source and output distinct names such as <code>contacts-export-raw.csv</code> and <code>contacts-export-cleaned.csv</code>. If an import count looks wrong later, the source lets you reproduce every step.</p>
+
+      <h2>Confirm the delimiter before changing data</h2>
+      <p>“CSV” often means any delimited text file. Commas are common in the United States, tabs are common for clipboard and TSV exports, and semicolons appear where a comma is used as a decimal separator. A correct parser must also ignore delimiters inside double-quoted fields.</p>
+      <table>
+        <tr><th>Format</th><th>Example</th><th>Typical clue</th></tr>
+        <tr><td>Comma</td><td><code>name,email,team</code></td><td>Most web and database exports</td></tr>
+        <tr><td>Tab</td><td><code>name[TAB]email</code></td><td>Copied spreadsheet cells or .tsv</td></tr>
+        <tr><td>Semicolon</td><td><code>name;email;team</code></td><td>Regional spreadsheet settings</td></tr>
+      </table>
+      <div class="note">If the preview shows every record in one column, the delimiter is probably wrong. If it creates too many columns around a note or address, check whether quoted fields are being parsed correctly.</div>
+
+      <h2>Trim whitespace, but do not normalize blindly</h2>
+      <p>Leading and trailing spaces are a common source of failed joins and duplicate-looking values. <code>"Ada"</code> and <code>" Ada "</code> look alike in a spreadsheet but compare as different strings. Trimming cell edges is usually safe. Collapsing spaces inside a value is more dangerous: it can alter names, codes, indentation or free-form notes.</p>
+
+      <h2>Remove only truly empty rows and columns</h2>
+      <p>An empty row has no value in any cell. An empty column has no value in any row. This is different from removing rows with a missing email or a blank optional field. A partial record may still be valid and should not disappear just because one cell is empty.</p>
+
+      <h2>Choose a duplicate rule you can explain</h2>
+      <p>The safest automatic rule is an exact full-row match after optional edge trimming. Two rows are duplicates only when every remaining cell is identical. Deduplicating by a single field such as a name is riskier: two people can share a name, and one customer can legitimately have several accounts.</p>
+      <p>When the destination system has a documented unique key, such as an immutable customer ID, key-based deduplication can be appropriate. Keep it as a separate, deliberate step and record which key you used.</p>
+
+      <h2>Protect identifiers and non-English text</h2>
+      <p>Spreadsheet software may turn long IDs into scientific notation, strip leading zeros from postal codes, or interpret values as dates. A browser cleaner can preserve the text exactly, but the application that opens the result may still infer a type. Use the destination's import wizard when available and mark identifier columns as text.</p>
+      <p>For Excel compatibility, a UTF-8 byte order mark (BOM) can help it recognize Japanese, Korean and other non-ASCII text. Most databases and modern tools accept UTF-8 without a BOM, so make this an explicit download option rather than changing every file automatically.</p>
+
+      <h2>Review counts before importing</h2>
+      <ol>
+        <li>Compare original and cleaned row counts.</li>
+        <li>Confirm that the difference equals the reported blank and duplicate rows.</li>
+        <li>Check the header names and column count.</li>
+        <li>Review rows containing commas, quotes, line breaks and non-English text.</li>
+        <li>Import a small sample into the destination before replacing production data.</li>
+      </ol>
+
+      <h2>A conservative cleanup sequence</h2>
+      <p>A reliable order is: parse the correct delimiter, trim cell edges, remove fully blank rows, remove fully blank columns, then remove exact duplicates. Running deduplication after trimming catches rows that differ only by stray spaces. It also makes the change count easy to audit.</p>
+      <a class="cta" href="/csv-cleaner">Clean and preview a CSV locally →</a>
+
+      <h2>Related tools and guides</h2>
+      <ul>
+        <li><a href="/json-csv">JSON ⇄ CSV Converter</a> — move between API-style JSON arrays and spreadsheet rows.</li>
+        <li><a href="/diff-checker">Text Diff Checker</a> — compare two text versions line by line.</li>
+        <li><a href="/guides/json-to-typescript-guide">JSON to TypeScript guide</a> — turn representative API data into typed interfaces.</li>
+        <li><a href="/guides/">Browse all developer guides →</a></li>
+      </ul>
+    </article>
+  </main>
+  <footer><p>DevTools Hub — free browser-based developer utilities. Everything runs locally.</p></footer>
+</body>
+</html>
